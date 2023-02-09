@@ -89,7 +89,7 @@ const Login = () => {
       </form>
     </section>
   );
-  return { content };
+  return content
 };
 
 export default Login;

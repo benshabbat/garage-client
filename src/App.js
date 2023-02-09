@@ -1,14 +1,25 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Public from "./components/Public";
 import "./App.css";
-import Login from "./pages/login/Login.jsx";
+import Login from "./features/auth/Login";
+import Welcome from "./features/auth/Welcome";
+import RequireAuth from "./features/auth/RequireAuth";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login/>}/>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* public routes */}
+        <Route index element={<Public />} />
+        <Route path="login" element={<Login />} />
+
+        {/* protected routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="welcome" element={<Welcome />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 

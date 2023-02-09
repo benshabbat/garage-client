@@ -5,16 +5,13 @@ const Public = () => {
     const content = (
         <section className="public">
             <header>
-                <h1>Welcome to Repair Store!</h1>
+                <h1>Welcome to Garage!</h1>
             </header>
             <main>
-                <p>Located in Beautiful Downtown Foo City, Repair Store provides a trained staff ready to meet your repair needs.</p>
-                <p>&nbsp;</p>
                 <address>
-                    Repair Store<br />
-                    555 Foo Drive<br />
-                    Foo City, CA 12345<br />
-                    <a href="tel:+15555555555">(555) 555-5555</a>
+                Garage 770<br />
+                    Foo City Jerusalem and Lod, Israel<br />
+                    <a href="tel:+972 770-7707707">(770) 7707707</a>
                 </address>
             </main>
             <footer>
