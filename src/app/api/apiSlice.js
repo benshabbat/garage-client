@@ -3,11 +3,15 @@ import { setCredentials, logOut } from "../../features/auth/authSlice.js";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'http://localhost:8800/api',
-  credentials: "include",
+  credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
     if (token) {
-      headers.set("Authorization", `bearer ${token}`);
+      console.log(token)
+      headers.set("Authorization",'Access-Control-Allow-Origin',"Access-Control-Allow-Methods","*",`Bearer${token}`);
+    }
+    else{
+      console.log("token is false")
     }
     return headers;
   },
