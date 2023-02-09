@@ -1,55 +1,95 @@
-import React, { useContext,useState } from "react";
-import "./login.css";
-import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { setCredentials } from "./authSlice";
+import { useLoginMutation } from "./authApiSlice";
+
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    username: undefined,
-    password: undefined,
-  });
-  const {loading, error, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const userRef = useRef();
+  const errRef = useRef();
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
+  const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
 
-  const handleClick = async e=>{
-    e.preventDefault()
-    dispatch({type:"LOGIN_START"})
-    try{
-        const res = await axios.post("/auth/login",credentials)
-        dispatch({type:"LOGIN_SUCCESS",payload:res.data})
-        navigate("/")
-    }catch(err)
-    {
-        dispatch({type:"LOGIN_FAIL",payload:err.response.data})
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, password]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userData = await login({ user, password }).unwrap();
+      dispatch(setCredentials({ ...userData, user }));
+      setUser("");
+      setPassword("");
+      navigate("/");
+    } catch (err) {
+      if (!err?.originalStatus) {
+        // isLoading: true until timeout occurs
+        setErrMsg("No Server Response");
+      } else if (err.originalStatus === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.originalStatus === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
     }
-  }
-  
-  return (
-    <div className="login">
-      <div className="login-container">
+  };
+  const handleUserInput = (e) => setUser(e.target.value);
+
+  const handlePasswordInput = (e) => setPassword(e.target.value);
+
+  const content = isLoading ? (
+    <h1>Loading...</h1>
+  ) : (
+    <section className="login">
+      <p
+        ref={errRef}
+        className={errMsg ? "errmsg" : "offscreen"}
+        aria-live="assertive"
+      >
+        {errMsg}
+      </p>
+
+      <h1>Employee Login</h1>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username:</label>
         <input
-          className="login-input"
           type="text"
-          placeholder="username"
           id="username"
-          onChange={handleChange}
+          ref={userRef}
+          value={user}
+          onChange={handleUserInput}
+          autoComplete="off"
+          required
         />
+
+        <label htmlFor="password">Password:</label>
         <input
-          className="login-input"
           type="password"
-          placeholder="password"
           id="password"
-          onChange={handleChange}
+          onChange={handlePasswordInput}
+          value={password}
+          required
         />
-        <button disabled={loading} className="login-button" onClick={handleClick}>Login </button>
-        {error && <span>{error.message}</span>}
-      </div>
-    </div>
+        <button>Sign In</button>
+      </form>
+    </section>
   );
+  return { content };
 };
 
 export default Login;
