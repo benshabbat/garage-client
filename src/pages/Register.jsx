@@ -13,6 +13,7 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  const onSubmit = (e) => e.preventDefault();
   return (
     <>
       <section className="heading">
@@ -23,7 +24,7 @@ const Register = () => {
       </section>
 
       <section className="form">
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
               placeholder="UserName for the user"
@@ -38,8 +39,8 @@ const Register = () => {
             <input
               placeholder="Phone for the user"
               className="form-control"
-              type="email"
-              name="email"
+              type="phone"
+              name="phone"
               onChange={handleChange}
               required
             />
@@ -48,8 +49,8 @@ const Register = () => {
             <input
               placeholder="Email for the user"
               className="form-control"
-              type="number"
-              name="phone"
+              type="email"
+              name="email"
               onChange={handleChange}
               required
             />
@@ -65,7 +66,9 @@ const Register = () => {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-block">Create</button>
+            <button type="submit" className="btn btn-block">
+              Create
+            </button>
           </div>
         </form>
       </section>
