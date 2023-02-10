@@ -64,6 +64,9 @@ const Register = () => {
               required
             />
           </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-block">Create</button>
+          </div>
         </form>
       </section>
     </>
