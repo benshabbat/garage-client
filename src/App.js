@@ -1,25 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Public from "./components/Public";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";  
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Login from "./features/auth/Login";
-import Welcome from "./features/auth/Welcome";
-import RequireAuth from "./features/auth/RequireAuth";
+
 
 function App() {
   return (
+    <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
-        {/* public routes */}
-        <Route index element={<Public />} />
-        <Route path="login" element={<Login />} />
-
-        {/* protected routes */}
-        <Route element={<RequireAuth />}>
-          <Route path="welcome" element={<Welcome />} />
-        </Route>
-      </Route>
+      <Route path="/" element={<Dashboard/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/register" element={<Register/>} />
     </Routes>
+  </BrowserRouter>
   );
 }
 
