@@ -9,12 +9,17 @@ const register = async (userData) => {
   if (data) {
     localStorage.setItem("user", JSON.stringify(data));
   }
-
   return data;
 };
 
-const authService={
-    register
-}
+// Logout user
+const logout = () => {
+  localStorage.removeItem("user");
+};
 
-export default authService
+const authService = {
+  register,
+  logout,
+};
+
+export default authService;
