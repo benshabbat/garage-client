@@ -4,7 +4,8 @@ import Register from "./pages/Register.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header.jsx";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <ToastContainer/>
     </>
   );
 }
