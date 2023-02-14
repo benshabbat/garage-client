@@ -108,7 +108,7 @@ const authSlice = createSlice({
         state.message = action.payload;
         state.user = null;
       })
-      .addCase(logout.fulfilled, (state) => (state.user = null))
+      .addCase(logout.fulfilled, (state) => {state.user = null})
       // .addCase(logout.refresh, (state,action) => (state.user = action.payload));
   },
 });
