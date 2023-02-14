@@ -29,6 +29,7 @@ export const register = createAsyncThunk(
     }
   }
 );
+
 //Login
 export const login = createAsyncThunk(
   "auth/login",
@@ -51,6 +52,10 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
+// //Logout 
+// export const refresh = createAsyncThunk("auth/refresh", async () => {
+//   await authService.refresh();
+// });
 
 const authSlice = createSlice({
   name: "auth",
@@ -103,11 +108,12 @@ const authSlice = createSlice({
         state.message = action.payload;
         state.user = null;
       })
-      .addCase(logout.fulfilled, (state) => (state.user = null));
+      .addCase(logout.fulfilled, (state) => (state.user = null))
+      // .addCase(logout.refresh, (state,action) => (state.user = action.payload));
   },
 });
 
-export const { reset, setCredentials, logOut } = authSlice.actions;
+export const { reset} = authSlice.actions;
 
 export default authSlice.reducer;
 
