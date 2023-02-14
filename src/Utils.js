@@ -10,7 +10,7 @@ const addItem = (url, obj) => {
   axios.post(url, obj);
 };
 const updateItem = (url, id, obj) => {
-  axios.patch(`${url}/${id}`, obj);
+  axios.put(`${url}/${id}`, obj);
 };
 const deleteItem = (url, id) => {
   axios.delete(`${url}/${id}`);
