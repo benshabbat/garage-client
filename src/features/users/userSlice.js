@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const userSlice = createSlice({
-  name: "auth",
+  name: "user",
   initialState,
   reducers: {
     reset: (state) => initialState,
