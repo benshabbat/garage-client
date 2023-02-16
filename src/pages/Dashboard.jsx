@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -11,7 +10,13 @@ const Dashboard = () => {
     if (!user) navigate("/login");
   }, [user, navigate]);
 
-  return <div>{user?.username}</div>;
+  return (
+    <>
+      <section className="heading">
+        <h1>Welcome {user && user.username}</h1>
+      </section>
+    </>
+  );
 };
 
 export default Dashboard;
