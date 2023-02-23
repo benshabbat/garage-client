@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getServicesByIdCar } from "../features/user/userSlice";
+import { getServicesByIdCar } from "../features/users/userSlice";
 import { useParams } from "react-router-dom";
 const Services = () => {
   const dispatch = useDispatch();
@@ -10,12 +10,9 @@ const Services = () => {
 debugger
   const { carId } = useParams();
 
-  // const { cars } = user;
-  
+
 
   const carNumberPlate = user.cars.filter(car=>carId === car._id)[0].numberPlate
-  // const carNumberPlate = car.map(car=>car.numberPlate)
-  // debugger
 
   useEffect(() => {
     dispatch(getServicesByIdCar(carId));

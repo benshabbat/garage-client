@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../features/user/userSlice";
+import { getUser } from "../features/users/userSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -12,17 +12,6 @@ const Home = () => {
   const { _id } = useSelector((state) => state.auth.user);
   const { user } = useSelector((state) => state.user);
 
-  //   const { cars, username } = user;
-
-  //   const fecth = async () => {
-  //     const getUser = await axios.get(
-  //       `http://localhost:8800/api/users/${_Id}`,
-  //       { withCredentials: true }
-  //     );
-  //     const user = await getUser.data;
-  //     console.log(user);
-  //     dispatch(updateUserInfo({ ...user }));
-  //   };
   const onServices = (e) => {
     console.log(e.target.value);
     const carId = e.target.value;
