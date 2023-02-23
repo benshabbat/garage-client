@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../features/users/userSlice";
+import { getUser } from "../features/user/userSlice"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ const Home = () => {
   };
   useEffect(() => {
     dispatch(getUser(_id));
-    // return () => {};
   }, [_id, dispatch]);
   return (
     <>
@@ -36,18 +35,13 @@ const Home = () => {
             <th>km</th>
             {/* <th>owner</th> */}
             <th>last treatment</th>
-            <th>servise</th>
-            <th>servise history</th>
+            <th>service</th>
+            <th>service history</th>
           </tr>
         </thead>
         <tbody>
           {user?.cars?.[0]?._id &&
             user?.cars.map((car) => {
-              // const date = new Date(car.updatedAt);
-              // const month =  date.getMonth()
-              // const day =  date.getDate()
-              // const year = date.getFullYear()
-
               const dateArray = car.updatedAt.slice(0, 10).split("-");
               console.log(dateArray);
               const [year, month, day] = dateArray;
