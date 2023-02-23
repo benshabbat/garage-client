@@ -2,6 +2,7 @@ import axios from "axios";
 
 const API_URL_REGISTER = "/auth/register";
 const API_URL_LOGIN = "/auth/login";
+const API_URL_LOGOUT = "/auth/logout";
 // const API_URL_USERS = "/api/users";
 
 //Create a new User
@@ -25,7 +26,8 @@ const login = async (userData) => {
 };
 
 // Logout user
-const logout = () => {
+const logout = async() => {
+  await axios.post(API_URL_LOGOUT);
   localStorage.removeItem("user");
 };
 

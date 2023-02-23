@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 const Services = () => {
   const dispatch = useDispatch();
 
-  // const { user } = useSelector((state) => state.user);
   const { services, user } = useSelector((state) => state.user);
 debugger
   const { carId } = useParams();
@@ -18,7 +17,6 @@ debugger
     dispatch(getServicesByIdCar(carId));
   }, [carId, dispatch]);
 
-  //  useEffect(() => dispatch(getServicesByIdCar(carId)), [carId, dispatch]);
   return (
     <>
       {/* <h1>{`hello ${carId}`}</h1> */}
