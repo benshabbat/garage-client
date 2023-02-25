@@ -6,12 +6,11 @@ const Services = () => {
   const dispatch = useDispatch();
 
   const { services, user } = useSelector((state) => state.user);
-debugger
+
   const { carId } = useParams();
 
-
-
-  const carNumberPlate = user.cars.filter(car=>carId === car._id)[0].numberPlate
+  const carNumberPlate = user.cars.filter((car) => carId === car._id)[0]
+    .numberPlate;
 
   useEffect(() => {
     dispatch(getServicesByIdCar(carId));
@@ -20,7 +19,7 @@ debugger
   return (
     <>
       {/* <h1>{`hello ${carId}`}</h1> */}
-      <h2>{`histo Services for ${carNumberPlate} `}</h2>
+      <h2>{`history Services for ${carNumberPlate} `}</h2>
 
       <table border={1}>
         <thead>

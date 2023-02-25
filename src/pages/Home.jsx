@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../features/user/userSlice"
+import { getUser } from "../features/user/userSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,7 +39,7 @@ const Home = () => {
         </thead>
         <tbody>
           {user?.cars?.[0]?._id &&
-            user?.cars.map((car) => {
+            user?.cars?.map((car) => {
               const dateArray = car.updatedAt.slice(0, 10).split("-");
               console.log(dateArray);
               const [year, month, day] = dateArray;
@@ -52,9 +50,7 @@ const Home = () => {
                   <td>{car.numberPlate}</td>
                   <td>{car.km}</td>
                   {/* <td>{car.updatedAt}</td> */}
-
                   <td>{`${day}/${month}/${year}`}</td>
-
                   <td>
                     <Link to="">Booking service</Link>
                   </td>
