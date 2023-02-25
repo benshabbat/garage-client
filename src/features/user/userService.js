@@ -18,10 +18,15 @@ const getServicesByIdCar = async (carId) => {
     
     return data
 }
-
+const getServicesByIdUser = async (userId) => {
+    const {data} = await axios.get(`${API_URL_SERVICES}/user/${userId}`)
+    
+    return data
+}
 const userService = {
     getUser,
-    getServicesByIdCar
+    getServicesByIdCar,
+    getServicesByIdUser
 };
 
 export default userService;

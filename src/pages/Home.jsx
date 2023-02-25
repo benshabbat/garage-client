@@ -13,7 +13,7 @@ const Home = () => {
   const onServices = (e) => {
     console.log(e.target.value);
     const carId = e.target.value;
-    navigate(`/services/${carId}`);
+    navigate(`/services/car/${carId}`);
   };
   useEffect(() => {
     dispatch(getUser(_id));
@@ -27,6 +27,7 @@ const Home = () => {
       <table border={1}>
         <thead>
           <tr>
+            <th>mark</th>
             <th>brand</th>
             <th>model</th>
             <th>numberPlate</th>
@@ -41,10 +42,10 @@ const Home = () => {
           {user?.cars?.[0]?._id &&
             user?.cars?.map((car) => {
               const dateArray = car.updatedAt.slice(0, 10).split("-");
-              console.log(dateArray);
               const [year, month, day] = dateArray;
               return (
                 <tr key={car._id}>
+                  <td><input type="checkbox"/></td>
                   <td>{car.brand.split("-")[0]}</td>
                   <td>{car.brand.split("-")[1]}</td>
                   <td>{car.numberPlate}</td>

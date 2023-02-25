@@ -7,6 +7,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  
 
   const onLogout = () => {
     dispatch(logout());
@@ -34,6 +35,9 @@ const Header = () => {
             </li>
             <li>
               <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/services">Services</Link>
             </li>
           </>
         ) : (
