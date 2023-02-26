@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/Services.jsx";
+import ReqService from "./pages/ReqService.jsx";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/services/req" element={<ReqService />} />
             <Route path="/services/car/:carId" element={<Services />} />
             <Route path="/services/user/:userId" element={<Services />} />
           </Routes>

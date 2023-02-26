@@ -66,6 +66,22 @@ export const getServicesByIdUser = createAsyncThunk(
     }
   }
 );
+export const createReqServicesByIdUser = createAsyncThunk(
+  "user/createReqServicesByIdUser",
+  async (userId, thunkAPI) => {
+    try {
+      return await userService.createReqServicesByIdUser(userId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -112,6 +128,20 @@ const userSlice = createSlice({
         state.services = action.payload;
       })
       .addCase(getServicesByIdUser.rejected, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isError = true;
+        state.fetchState.message = action.payload;
+        state.user = null;
+      })
+      .addCase(createReqServicesByIdUser.pending, (state) => {
+        state.fetchState.isLoading = true;
+      })
+      .addCase(createReqServicesByIdUser.fulfilled, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(createReqServicesByIdUser.rejected, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;

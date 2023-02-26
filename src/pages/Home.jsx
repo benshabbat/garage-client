@@ -15,6 +15,9 @@ const Home = () => {
     const carId = e.target.value;
     navigate(`/services/car/${carId}`);
   };
+  const onReqServices = (e) => {
+    navigate(`/services/req/`);
+  };
   useEffect(() => {
     dispatch(getUser(_id));
   }, [_id, dispatch]);
@@ -53,7 +56,9 @@ const Home = () => {
                   {/* <td>{car.updatedAt}</td> */}
                   <td>{`${day}/${month}/${year}`}</td>
                   <td>
-                    <Link to="">Booking service</Link>
+                  <button onClick={onReqServices}>
+                      Request Service
+                    </button>
                   </td>
                   <td>
                     <button value={car._id} onClick={onServices}>
