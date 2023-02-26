@@ -16,7 +16,7 @@ const Home = () => {
     navigate(`/services/car/${carId}`);
   };
   const onReqServices = (e) => {
-    navigate(`/services/req/`);
+    navigate(`/services/req/${user._id}`);
   };
   useEffect(() => {
     dispatch(getUser(_id));

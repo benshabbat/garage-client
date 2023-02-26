@@ -6,6 +6,11 @@ const API_URL_SERVICES = "/services"
 const API_URL_MESSAGES = "/messages"
 const ADMIN = "63e14deca4340e45d23f20b2"
 
+const createReqService = async (dataMessage) => {
+    const {data} = await axios.post(`${API_URL_MESSAGES}/to/${ADMIN}`,dataMessage)
+    
+    return data
+}
 // get user by _id
 
 const getUser = async (id) => {
@@ -24,16 +29,11 @@ const getServicesByIdUser = async (userId) => {
     
     return data
 }
-const createReqServicesByIdUser = async (userId,userData) => {
-    const {data} = await axios.post(`${API_URL_MESSAGES}/${userId}/${ADMIN}`,userData)
-    
-    return data
-}
 const userService = {
     getUser,
     getServicesByIdCar,
     getServicesByIdUser,
-    createReqServicesByIdUser
+    createReqService
 };
 
 export default userService;

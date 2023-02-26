@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createReqServicesByIdUser } from "../features/user/userSlice";
+import { createReqService,getUser } from "../features/user/userSlice";
+import { useParams } from "react-router-dom";
+
 const ReqService = () => {
+  const { userId } = useParams();
   const { user } = useSelector((state) => state.user);
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState({form:userId,title:"",description:""});
 
   // const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -12,10 +15,14 @@ const ReqService = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+  useEffect(() => {
+    dispatch(getUser(userId));
+  }, [userId, dispatch]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createReqServicesByIdUser(user?._id, formData));
+    console.log(formData)
+    dispatch(createReqService(formData));
   };
   return (
     <>
@@ -26,12 +33,12 @@ const ReqService = () => {
 
       <section className="form">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          {/* <div className="form-group">
             <input
               className="form-control"
               type="text"
               name="from"
-              value={user?.username}
+              // value={user?.username}
               onChange={handleChange}
               required
             />
@@ -41,11 +48,11 @@ const ReqService = () => {
               className="form-control"
               type="text"
               name="to"
-              value="Admin"
+              // value="Admin"
               onChange={handleChange}
               required
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <input
               placeholder="title"
@@ -57,13 +64,12 @@ const ReqService = () => {
             />
           </div>
           <div className="form-group">
-            <textarea
+            <input
               placeholder="description"
               className="form-control"
               type="text"
               name="description"
               onChange={handleChange}
-              rows={8}
               required
             />
           </div>
