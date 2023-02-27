@@ -16,7 +16,8 @@ const Home = () => {
     navigate(`/services/car/${carId}`);
   };
   const onReqServices = (e) => {
-    navigate(`/services/req/${user._id}`);
+    const carId = e.target.value;
+    navigate(`/services/req/${carId}`);
   };
   useEffect(() => {
     dispatch(getUser(_id));
@@ -56,7 +57,7 @@ const Home = () => {
                   {/* <td>{car.updatedAt}</td> */}
                   <td>{`${day}/${month}/${year}`}</td>
                   <td>
-                  <button onClick={onReqServices}>
+                  <button value={car._id} onClick={onReqServices}>
                       Request Service
                     </button>
                   </td>
