@@ -4,6 +4,7 @@ import Register from "./pages/Register.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header.jsx";
+import HeaderMui from "./components/HeaderMui.jsx"
 import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home.jsx";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,7 +15,8 @@ function App() {
     <>
       <BrowserRouter>
         <div className="container">
-          <Header />
+          {/* <Header /> */}
+          <HeaderMui />
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />

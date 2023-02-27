@@ -7,6 +7,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const {_id}= useSelector(state=>state.user.user)
   
 
   const onLogout = () => {
@@ -25,7 +26,7 @@ const Header = () => {
         <Link to="/">Garage770</Link>
       </div>
       <ul>
-        {user ? (
+        {user&&_id ? (
           <>
             <li>
               <button className="btn" onClick={onLogout}>
@@ -37,7 +38,7 @@ const Header = () => {
               <Link to="/home">Home</Link>
             </li>
             <li>
-              <Link to="/services">Services</Link>
+              <Link to={`/services/user/${_id}`}>Services</Link>
             </li>
           </>
         ) : (

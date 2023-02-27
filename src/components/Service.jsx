@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Service = ({services}) => {
+const Service = ({ services }) => {
   return (
-    <div>{services &&
+    <>
+      {services &&
         services.map((service) => {
           return (
-            <table border={1}>
+            <table key={service._id} border={1}>
               <thead>
                 <tr>
                   <th>title</th>
@@ -13,15 +14,17 @@ const Service = ({services}) => {
                 </tr>
               </thead>
               <tbody>
-                <tr key={service._id}>
+                <tr>
                   <td>{service.title}</td>
                   <td>{service.description}</td>
                 </tr>
               </tbody>
             </table>
           );
-        })}</div>
-  )
-}
+        })}
+      <br />
+    </>
+  );
+};
 
-export default Service
+export default Service;

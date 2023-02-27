@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) navigate("/login");
-  }, [user, navigate]);
+  // useEffect(() => {
+  //   if (!user) navigate("/login");
+  // }, [user, navigate]);
 
   return (
     <>
