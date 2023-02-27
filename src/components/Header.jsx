@@ -40,6 +40,9 @@ const Header = () => {
             <li>
               <Link to={`/services/user/${_id}`}>Services</Link>
             </li>
+            <li>
+              <Link to={`/messages/${_id}`}>Messages</Link>
+            </li>
           </>
         ) : (
           <>

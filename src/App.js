@@ -10,18 +10,20 @@ import Home from "./pages/Home.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/Services.jsx";
 import ReqService from "./pages/ReqService.jsx";
+import Messages from "./pages/Messages.jsx";
 function App() {
   return (
     <>
       <BrowserRouter>
         <div className="container">
-          {/* <Header /> */}
-          <HeaderMui />
+          <Header />
+          {/* <HeaderMui /> */}
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/messages/:userId" element={<Messages />} />
             <Route path="/services/req/:userId" element={<ReqService />} />
             <Route path="/services/car/:carId" element={<Services />} />
             <Route path="/services/user/:userId" element={<Services />} />

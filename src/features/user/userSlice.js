@@ -12,6 +12,7 @@ const initialState = {
   user: { _id: "", cars: [] },
   //{...cars, ...services}
   services: [],
+  messages: [],
   fetchState,
 };
 
@@ -66,6 +67,24 @@ export const getServicesByIdUser = createAsyncThunk(
     }
   }
 );
+export const getMessagesByIdUser = createAsyncThunk(
+  "user/getMessagesByIdUser",
+  async (userId, thunkAPI) => {
+    try {
+      return await userService.getMessagesByIdUser(userId);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
 export const createReqService = createAsyncThunk(
   "user/createReqService",
   async (data, thunkAPI) => {
@@ -117,7 +136,7 @@ const userSlice = createSlice({
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
-        state.user = null;
+        state.services = null;
       })
       .addCase(getServicesByIdUser.pending, (state) => {
         state.fetchState.isLoading = true;
@@ -131,7 +150,7 @@ const userSlice = createSlice({
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
-        state.user = null;
+        state.services = null;
       })
       .addCase(createReqService.pending, (state) => {
         state.fetchState.isLoading = true;
@@ -146,7 +165,21 @@ const userSlice = createSlice({
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
         state.user = null;
-      });
+      })
+      .addCase(getMessagesByIdUser.pending, (state) => {
+        state.fetchState.isLoading = true;
+      })
+      .addCase(getMessagesByIdUser.fulfilled, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isSuccess = true;
+        state.messages = action.payload;
+      })
+      .addCase(getMessagesByIdUser.rejected, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isError = true;
+        state.fetchState.message = action.payload;
+        state.messages = null;
+      })
   },
 });
 

@@ -29,11 +29,16 @@ const getServicesByIdUser = async (userId) => {
     
     return data
 }
+const getMessagesByIdUser = async (userId) => {
+    const {data} = await axios.get(`${API_URL_MESSAGES}/user/${userId}`)
+    
+    return data
+}
 const userService = {
     getUser,
     getServicesByIdCar,
     getServicesByIdUser,
-    createReqService
+    createReqService,getMessagesByIdUser
 };
 
 export default userService;
