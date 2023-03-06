@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../features/user/userSlice";
 
@@ -49,7 +49,9 @@ const Home = () => {
               const [year, month, day] = dateArray;
               return (
                 <tr key={car._id}>
-                  <td><input type="checkbox"/></td>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
                   <td>{car.brand.split("-")[0]}</td>
                   <td>{car.brand.split("-")[1]}</td>
                   <td>{car.numberPlate}</td>
@@ -57,7 +59,7 @@ const Home = () => {
                   {/* <td>{car.updatedAt}</td> */}
                   <td>{`${day}/${month}/${year}`}</td>
                   <td>
-                  <button value={car._id} onClick={onReqServices}>
+                    <button value={car._id} onClick={onReqServices}>
                       Request Service
                     </button>
                   </td>

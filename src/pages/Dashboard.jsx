@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.username}</h1>
+        {user&&<h1>Welcome {user && user.username}</h1>}
       </section>
     </>
   );
