@@ -2,7 +2,7 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavUser from "../../components/navUser/NavUser";
-import Landing from "../../components/landing/Landing";
+import Landing from "../navLanding/NavLanding";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const { _id } = useSelector((state) => state.user.user);

@@ -1,4 +1,3 @@
-import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/services/Services.jsx";
 import ReqService from "./pages/ReqService.jsx";
 import Messages from "./pages/messages/Messages.jsx";
+import PageLanding from "./pages/pageLanding/PageLanding.jsx";
 function App() {
   return (
     <>
@@ -17,7 +17,7 @@ function App() {
         <Header />
         {/* <HeaderMui /> */}
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<PageLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Account" element={<Account />} />

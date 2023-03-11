@@ -1,12 +1,18 @@
 import React from "react";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+// import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
-const Landing = ({ id }) => {
+const NavLanding = ({ id }) => {
   return (
     <>
+      {/* <li>
+        <a href="#home">Home1</a>
+      </li>
       <li>
-        <Link to="/home">Home</Link>
+        <a href="#reviews">reviews1</a>
+      </li> */}
+      <li>
+        <Link  to="/home">Home</Link>
       </li>
       <li>
         <Link to="/reviews">Reviews</Link>
@@ -32,4 +38,4 @@ const Landing = ({ id }) => {
   );
 };
 
-export default Landing;
+export default NavLanding;
