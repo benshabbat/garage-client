@@ -1,0 +1,17 @@
+.header-container {
+  background-color: aqua;
+  display: flex;
+  height: 80px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end
+}
+
+.header-container li {
+    display: inline;
+    margin-right: 12px;
+}
+
+.header-container li:hover {
+    color: #484646;
+}
