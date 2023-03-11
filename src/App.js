@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/Header.jsx";
 import { ToastContainer } from "react-toastify";
-import Home from "./pages/Home.jsx";
+import Account from "./pages/Account.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/Services.jsx";
 import ReqService from "./pages/ReqService.jsx";
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/Account" element={<Account />} />
           <Route path="/messages/:userId" element={<Messages />} />
           <Route path="/services/req/:carId" element={<ReqService />} />
           <Route path="/services/car/:carId" element={<Services />} />

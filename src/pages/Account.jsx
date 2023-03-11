@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../features/user/userSlice";
 
-const Home = () => {
+const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -77,4 +77,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Account;

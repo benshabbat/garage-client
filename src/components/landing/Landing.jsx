@@ -18,13 +18,10 @@ const Landing = ({ id }) => {
         <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
-      </li>
-      <li>
         <Link to={`/services/user/${id}`}>Services</Link>
       </li>
       <li>
-        <Link to={`/messages/${id}`}>Messages</Link>
+        <Link to={`/messages/${id}`}>Contact</Link>
       </li>
       <li>
         <Link to="/login" className="">

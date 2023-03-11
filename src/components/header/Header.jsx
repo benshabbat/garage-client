@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <>
       <header className="header-container">
-        <div>
+        <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
         <ul>{user && _id ? <NavUser /> : <Landing id={_id} />}</ul>
