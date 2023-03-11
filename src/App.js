@@ -7,9 +7,9 @@ import Header from "./components/header/Header.jsx";
 import { ToastContainer } from "react-toastify";
 import Account from "./pages/Account.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import Services from "./pages/Services.jsx";
+import Services from "./pages/services/Services.jsx";
 import ReqService from "./pages/ReqService.jsx";
-import Messages from "./pages/Messages.jsx";
+import Messages from "./pages/messages/Messages.jsx";
 function App() {
   return (
     <>

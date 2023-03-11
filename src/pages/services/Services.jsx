@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getServicesByIdCar,getUser } from "../features/user/userSlice";
+import { getServicesByIdCar,getUser } from "../../features/user/userSlice";
 import { useParams } from "react-router-dom";
-import Service from "../components/service/Service";
+import Service from "../../components/service/Service";
 
 const Services = () => {
   const dispatch = useDispatch();
