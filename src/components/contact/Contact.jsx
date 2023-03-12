@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createReqService } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
+import "./contact.css";
 const Contact = () => {
   const ADMIN = "63e14deca4340e45d23f20b2";
   const [formData, setFormData] = useState({
@@ -22,9 +23,9 @@ const Contact = () => {
   return (
     <div id="contact" style={{ height: 500 }}>
       <form onSubmit={onSubmit}>
-        <div className="form-group">
+        <div>
           <input
-            className="form-control"
+            placeholder="from"
             type="text"
             name="from"
             // value={user?.username}
@@ -32,31 +33,27 @@ const Contact = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div>
           <input
             placeholder="title"
-            className="form-control"
             type="text"
             name="title"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="form-group">
+        <div>
           <textarea
             rows={8}
             placeholder="description"
-            className="form-control"
             type="text"
             name="description"
             onChange={handleChange}
             required
           />
         </div>
-        <div className="form-group">
-          <button type="submit" className="btn btn-block">
-            Send
-          </button>
+        <div>
+          <button type="submit">Send</button>
         </div>
       </form>
     </div>
