@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import Account from "./pages/Account.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/services/Services.jsx";
-import ReqService from "./pages/ReqService.jsx";
+import ReqService from "./pages/reqService/ReqService.jsx";
 import Messages from "./pages/messages/Messages.jsx";
 import PageLanding from "./pages/pageLanding/PageLanding.jsx";
 function App() {

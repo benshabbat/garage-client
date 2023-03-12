@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>About</div>
+    <div id='about' style={{height:500}}>About</div>
   )
 }
 
