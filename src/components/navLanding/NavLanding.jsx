@@ -21,7 +21,7 @@ const NavLanding = ({ id }) => {
         <a href="#services">Services</a>
       </li>
       <li>
-        <a href="#message">Contact</a>
+        <a href="#contact">Contact</a>
       </li>
       {/* <li>
         <Link  to="/home">Home</Link>

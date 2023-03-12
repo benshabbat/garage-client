@@ -34,7 +34,7 @@ const ReqService = () => {
     dispatch(createReqService(formData));
   };
   return (
-    <div id="message">
+    <>
       <section className="heading">
         <h1>Send Request</h1>
         <p>Put your Request Service</p>
@@ -91,7 +91,7 @@ const ReqService = () => {
           </div>
         </form>
       </section>
-    </div>
+    </>
   );
 };
 
