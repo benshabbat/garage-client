@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./reviews.css";
+import CreateReviews from "../createReviews/CreateReviews";
 
 const Reviews = () => {
+  const [openModel, setOpenModel] = useState(false);
+  const handelClick = () => {
+      setOpenModel(!openModel);
+    };
+  
   const reviewsCustomers = [
     {
       name: "tal",
@@ -27,10 +33,11 @@ const Reviews = () => {
 
   return (
     <div id="reviews" className="reviews">
+      <h1>Reviews</h1>
       <div className="reviews-container">
-        {reviewsCustomers.map((customer) => {
+        {reviewsCustomers.map((customer, index) => {
           return (
-            <div className="one-review">
+            <div className="one-review" key={index}>
               <h1>{customer.name}</h1>
               <div className="stars">
                 <div className="star" />
@@ -42,7 +49,10 @@ const Reviews = () => {
           );
         })}
       </div>
-      <div className="create-review"></div>
+      <button onClick={handelClick}>Add Review</button>
+      {openModel && (
+        <CreateReviews handelClick={handelClick}/>
+      )}
     </div>
   );
 };

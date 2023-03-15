@@ -1,0 +1,34 @@
+.create-review{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.419);
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create-review-container{
+    background-color: white;
+    padding: 16px;
+    position: relative;
+    border: 4px solid gray;
+    border-radius: 16px;
+    height: 600px;
+    width: 400px;
+}
+.review-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+.btn{
+    background-color: blueviolet;
+    width: 120px;
+    height: 60px;
+    border-radius: 20px;
+}
