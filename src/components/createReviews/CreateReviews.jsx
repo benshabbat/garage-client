@@ -6,7 +6,7 @@ const CreateReviews = ({ handelClick }) => {
   const numRef = useRef();
 
   return (
-    <div className="create-review">
+    <div className="create-review" >
       <div className="create-review-container">
         <form>
           <label>
