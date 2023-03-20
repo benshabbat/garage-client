@@ -1,34 +1,92 @@
-.create-review{
+.create-review {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.419);
+    background-color: rgba(0, 0, 0, 0.386);
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.create-review-container{
-    background-color: white;
-    padding: 16px;
+  }
+  .create-review-container {
+    /* background-color: white; */
+    /* padding: 16px; */
     position: relative;
-    border: 4px solid gray;
-    border-radius: 16px;
+    border-radius: 5px;
     height: 600px;
     width: 400px;
-}
-.review-close{
+    box-shadow: 1px 1px 13px 2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 1px 13px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 13px 2px rgba(0, 0, 0, 0.75);
+  }
+  
+  .create-review-container form {
+    background-color: rgb(72, 71, 82);
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  .create-review-container label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* .create-review-container input, */
+  
+  label span {
+    margin-bottom: 15px;
+  }
+  
+  label input, label textarea {
+    background-color: rgb(241, 251, 252);
+    border-radius: 0px;
+    width: 90%;
+    height: 20px;
+  }
+  
+  label textarea {
+    height: 150px;
+  }
+  
+  label input:hover, label textarea:hover {
+    background-color: rgb(255, 255, 255);
+  }
+  
+  
+  .create-review-container .num {
+      background-color: rgba(205, 50, 50, 0);
+      text-align: center;
+      width: auto;
+      height: auto;
+      padding-top: 0px;
+      pointer-events: none;
+  }
+  
+  
+  
+  
+  .review-close {
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
     width: 24px;
     height: 24px;
-}
-.btn{
-    background-color: blueviolet;
+    margin: 6px;
+    color: rgb(241, 251, 252);
+  }
+  
+  .btn {
+    background-color: rgb(142, 154, 222);
     width: 120px;
     height: 60px;
     border-radius: 20px;
-}
+    margin: auto;
+  }
+  
+  .btn:hover {
+    background-color: rgb(96, 115, 222);
+  }
