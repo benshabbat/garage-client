@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./reviews.css";
 import CreateReviews from "../createReviews/CreateReviews";
-import { FreeMode } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
 import Review from "../review/Review";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 
 const Reviews = () => {
   const [openModel, setOpenModel] = useState(false);
@@ -35,43 +34,36 @@ const Reviews = () => {
       stars: 4,
     },
   ];
-
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   return (
     <div id="reviews" className="reviews">
       <h1>Reviews</h1>
-      <div className="reviews-container">
-        <Swiper
-          freeMode={true}
-          grabCursor={true}
-          modules={[FreeMode]}
-          className="mySwiper"
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 10,
-            },
-            480: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            // 1024: {
-            //   slidesPerView: 4,
-            //   spaceBetween:20
-            // },
-          }}
-        >
-          {reviewsCustomers.map((customer, index) => {
+      <div >
+        <Carousel responsive={responsive}>
+        {reviewsCustomers.map((customer, index) => {
             return (
-              <SwiperSlide>
-                <Review customer={customer} index={index} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+              <Review customer={customer} key={index} />
+              );
+            })}
+            </Carousel>
       </div>
       <button onClick={handelClick}>Add Review</button>
       {openModel && <CreateReviews handelClick={handelClick} />}
