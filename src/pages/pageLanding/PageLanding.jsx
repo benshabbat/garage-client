@@ -8,14 +8,17 @@ import Contact from "../../components/contact/Contact";
 import "./pageLanding.css";
 const PageLanding = () => {
   return (
-    <>
+    <div className="main">
       <Home />
-      <Reviews />
       <Address />
       <About />
       <ServicesLanding />
       <Contact />
-    </>
+      <Reviews />
+      <footer>
+        Written By Menachem & DavidChen
+      </footer>
+    </div>
   );
 };
 

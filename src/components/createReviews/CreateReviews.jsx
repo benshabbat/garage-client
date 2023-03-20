@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Rating } from "@mui/material";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 import "./createReviews.css";
 const CreateReviews = ({ handelClick }) => {
   const nameRef = useRef();
@@ -10,12 +10,12 @@ const CreateReviews = ({ handelClick }) => {
   const [star, setStar] = useState(5);
 
   return (
-    <div className="create-review" >
+    <div className="create-review-background">
       <div className="create-review-container">
-        <CancelIcon onClick={handelClick} className="review-close" />
-        <form>
+        <form className="create-review-form">
+          <CancelIcon onClick={handelClick} className="review-close" />
           <h1>garage review</h1>
-          <label>
+          <label className="create-review-label">
             <Rating
               style={{ fontSize: 45, top: "15px" }}
               value={star}
@@ -24,8 +24,8 @@ const CreateReviews = ({ handelClick }) => {
               }}
             />
           </label>
-          <label>
-            <span className="review-name">Name</span>
+          <label className="create-review-label">
+            <span>Name</span>
             <input
               ref={nameRef}
               type="text"
@@ -33,8 +33,8 @@ const CreateReviews = ({ handelClick }) => {
               placeholder="type your name.."
             />
           </label>
-          <label>
-            <span className="review-desc">Description </span>
+          <label className="create-review-label">
+            <span>Description </span>
             <textarea
               ref={descRef}
               maxLength={maxLength}
@@ -58,7 +58,7 @@ const CreateReviews = ({ handelClick }) => {
                 desc: descRef.current.value,
                 star,
               });
-              handelClick()
+              handelClick();
             }}
           >
             Add Reviews
@@ -68,7 +68,5 @@ const CreateReviews = ({ handelClick }) => {
     </div>
   );
 };
-
-
 
 export default CreateReviews;

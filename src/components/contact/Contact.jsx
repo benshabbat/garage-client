@@ -22,8 +22,9 @@ const Contact = () => {
   };
   return (
     <div id="contact" style={{ height: 500 }}>
-      <form onSubmit={onSubmit}>
-        <div>
+      <form className="contact-form" onSubmit={onSubmit}>
+        <label className="contact-label">
+          <span>Name</span>
           <input
             placeholder="from"
             type="text"
@@ -32,8 +33,9 @@ const Contact = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div>
+        </label>
+        <label className="contact-label">
+          <span>Title</span>
           <input
             placeholder="title"
             type="text"
@@ -41,20 +43,22 @@ const Contact = () => {
             onChange={handleChange}
             required
           />
-        </div>
-        <div>
+        </label>
+        <label className="contact-label">
+          <span>Description </span>
           <textarea
             rows={8}
             placeholder="description"
             type="text"
             name="description"
             onChange={handleChange}
+            row={8}
             required
           />
-        </div>
-        <div>
-          <button type="submit">Send</button>
-        </div>
+        </label>
+        <button className="btn" type="submit">
+          Send
+        </button>
       </form>
     </div>
   );

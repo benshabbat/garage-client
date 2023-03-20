@@ -77,7 +77,9 @@ const Reviews = () => {
           })}
         </Carousel>
       </div>
-      <button onClick={handelClick}>Add Review</button>
+      <button className="btn" onClick={handelClick}>
+        Add Review
+      </button>
       {openModel && <CreateReviews handelClick={handelClick} />}
     </div>
   );
