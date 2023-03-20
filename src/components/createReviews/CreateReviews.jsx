@@ -69,3 +69,6 @@ const CreateReviews = ({ handelClick }) => {
   );
 };
 
+
+
+export default CreateReviews;
