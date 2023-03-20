@@ -11,15 +11,13 @@
 .reviews-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .one-review {
   background-color: blanchedalmond;
   width: 250px;
   height: 220px;
-  margin: 20px;
-  padding: 5px;
 }
 
 .one-review h1 {
@@ -39,3 +37,7 @@
   background-color: black;
 }
 
+/* .mySwiper{
+  width: 1200px;
+  background-color: red;
+} */
