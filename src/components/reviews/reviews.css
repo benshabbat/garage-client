@@ -1,11 +1,11 @@
-.reviews {
+#reviews {
   display: flex;
   flex-direction: column;
   background-color: rgb(185, 206, 249);
   text-align: center;
   
 }
-.reviews h1 {
+#reviews h1 {
   font-size: 30px;
 }
 

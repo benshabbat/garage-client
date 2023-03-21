@@ -68,7 +68,7 @@ const Reviews = () => {
     },
   };
   return (
-    <div id="reviews" className="reviews">
+    <div id="reviews">
       <h1>Reviews</h1>
       <div>
         <Carousel infinite={true} responsive={responsive}>
