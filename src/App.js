@@ -10,6 +10,7 @@ import Services from "./pages/services/Services.jsx";
 import ReqService from "./pages/reqService/ReqService.jsx";
 import Messages from "./pages/messages/Messages.jsx";
 import PageLanding from "./pages/pageLanding/PageLanding.jsx";
+
 function App() {
   return (
     <>
@@ -20,7 +21,8 @@ function App() {
           <Route path="/" element={<PageLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/Account" element={<Account />} />
+
+          <Route path="/account" element={<Account />} />
           <Route path="/messages/:userId" element={<Messages />} />
           <Route path="/services/req/:carId" element={<ReqService />} />
           <Route path="/services/car/:carId" element={<Services />} />
@@ -30,6 +32,5 @@ function App() {
       <ToastContainer />
     </>
   );
-}
-
+  }
 export default App;

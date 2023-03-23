@@ -13,7 +13,7 @@ const Header = () => {
         <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
-        <ul>{user && _id ? <NavUser /> : <Landing id={_id} />}</ul>
+        <ul>{user && _id ? <NavUser /> : <Landing />}</ul>
       </header>
     </>
   );
