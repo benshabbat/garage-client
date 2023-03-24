@@ -1,5 +1,5 @@
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavUser from "../../components/navUser/NavUser";
 import Landing from "../navLanding/NavLanding";
@@ -7,6 +7,7 @@ const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const { _id } = useSelector((state) => state.user.user);
 
+  
   return (
     <>
       <header className="header-container">
@@ -15,6 +16,7 @@ const Header = () => {
         </div>
         <ul>{user && _id ? <NavUser /> : <Landing />}</ul>
       </header>
+      <Outlet/>
     </>
   );
 };

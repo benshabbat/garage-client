@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../features/user/userSlice";
-
+import { logout, reset } from "../features/auth/authSlice";
 const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +21,12 @@ const Account = () => {
   };
   useEffect(() => {
     dispatch(getUser(_id));
-  }, [_id, dispatch]);
+    if (!_id || user===undefined|| _id===undefined||_id===null||user===null) {
+      dispatch(logout());
+      dispatch(reset());
+      navigate("/");
+    }
+  }, [_id, dispatch,navigate,user]);
   return (
     <>
       <h3>user id from local storage: {_id ? _id : null}</h3>
