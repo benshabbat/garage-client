@@ -1,11 +1,8 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { logout, reset } from "../../features/auth/authSlice";
-import { useSelector, useDispatch } from "react-redux";
-import Services from "../../pages/services/Services";
-import ReqService from "../../pages/reqService/ReqService";
+import { useDispatch } from "react-redux";
 const NavUser = () => {
-  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onLogout = () => {

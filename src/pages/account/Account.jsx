@@ -22,7 +22,7 @@ const Account = () => {
   };
   useEffect(() => {
     dispatch(getUser(_id));
-    if (!_id || !user) {
+    if (!user) {
       navigate("/");
       dispatch(logout());
       dispatch(reset());
@@ -44,6 +44,8 @@ const Account = () => {
             <th>km</th>
             {/* <th>owner</th> */}
             <th>last treatment</th>
+            <th>history service</th>
+            <th>Request Service</th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +64,16 @@ const Account = () => {
                   <td>{car.km}</td>
                   {/* <td>{car.updatedAt}</td> */}
                   <td>{`${day}/${month}/${year}`}</td>
+                  <td>
+                    <button value={car._id} onClick={onServices}>
+                      services
+                    </button>
+                  </td>
+                  <td>
+                    <button value={car._id} onClick={onReqServices}>
+                      req services
+                    </button>
+                  </td>
                 </tr>
               );
             })}
