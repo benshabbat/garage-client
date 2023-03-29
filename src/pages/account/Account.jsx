@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../features/user/userSlice";
-import { logout, reset } from "../features/auth/authSlice";
+import { getUser } from "../../features/user/userSlice";
+import { logout, reset } from "../../features/auth/authSlice";
+import "./account.css";
 const Account = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,21 +22,21 @@ const Account = () => {
   };
   useEffect(() => {
     dispatch(getUser(_id));
-    if (!_id || user===undefined|| _id===undefined||_id===null||user===null) {
+    if (!_id || !user) {
+      navigate("/");
       dispatch(logout());
       dispatch(reset());
-      navigate("/");
     }
-  }, [_id, dispatch,navigate,user]);
+  }, []);
   return (
     <>
       <h3>user id from local storage: {_id ? _id : null}</h3>
       <h1>{`hello ${user?.username}`}</h1>
       <h2>Your car</h2>
 
-      <table border={1}>
-        <thead>
-          <tr>
+      <table className="table">
+        <thead className="table-head">
+          <tr className="table-row">
             <th>mark</th>
             <th>brand</th>
             <th>model</th>
@@ -43,8 +44,6 @@ const Account = () => {
             <th>km</th>
             {/* <th>owner</th> */}
             <th>last treatment</th>
-            <th>service</th>
-            <th>service history</th>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +52,7 @@ const Account = () => {
               const dateArray = car.updatedAt.slice(0, 10).split("-");
               const [year, month, day] = dateArray;
               return (
-                <tr key={car._id}>
+                <tr key={car._id} className="table-row">
                   <td>
                     <input type="checkbox" />
                   </td>
@@ -63,16 +62,6 @@ const Account = () => {
                   <td>{car.km}</td>
                   {/* <td>{car.updatedAt}</td> */}
                   <td>{`${day}/${month}/${year}`}</td>
-                  <td>
-                    <button value={car._id} onClick={onReqServices}>
-                      Request Service
-                    </button>
-                  </td>
-                  <td>
-                    <button value={car._id} onClick={onServices}>
-                      see service history
-                    </button>
-                  </td>
                 </tr>
               );
             })}

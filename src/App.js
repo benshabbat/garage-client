@@ -1,10 +1,10 @@
-import Login from "./pages/Login.jsx";
+import Login from "./pages/login/Login.jsx";
 import Register from "./pages/Register.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/Header.jsx";
 import { ToastContainer } from "react-toastify";
-import Account from "./pages/Account.jsx";
+import Account from "./pages/account/Account.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import Services from "./pages/services/Services.jsx";
 import ReqService from "./pages/reqService/ReqService.jsx";
@@ -25,7 +25,7 @@ function App() {
             <Route path="/messages/:userId" element={<Messages />} />
             <Route path="/services/req/:carId" element={<ReqService />} />
             <Route path="/services/car/:carId" element={<Services />} />
-            <Route path="/services/user/:userId" element={<Services />} />
+            <Route path="/services/user/" element={<Services />} />
           </Route>
         </Routes>
       </BrowserRouter>

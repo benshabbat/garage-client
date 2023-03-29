@@ -1,0 +1,16 @@
+.table {
+  margin: auto;
+  margin-top: 200px;
+  border-radius: 20px;
+  background-color: brown;
+  width: 750px;
+}
+.table-head {
+  background-color: rgb(154, 123, 76);
+}
+.table-row:nth-child(2) {
+  background-color: rgba(154, 123, 76, 0.427);
+}
+.table-row td {
+  text-align: center;
+}
