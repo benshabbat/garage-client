@@ -22,11 +22,11 @@ const Services = () => {
   const carNumberPlate = user?.cars?.filter((car) => carId === car._id)[0]
     ?.numberPlate;
 
-  const servicesUser = services?.map((service) => {
+  const servicesUser = services?.map((car) => {
     return (
-      <div key={service._id}>
-        <h2>{`history Services for ${service.numberPlate} `}</h2>
-        <Service services={service.services} />
+      <div key={car._id}>
+        <h2>{`history Services for ${car.numberPlate} `}</h2>
+        <Service services={car.services} />
       </div>
     );
   });
@@ -34,9 +34,7 @@ const Services = () => {
   return (
     <>
       {/* <h1>{`hello ${carId}`}</h1> */}
-      <h2>{`history Services for ${carNumberPlate} `}</h2>
-      {console.log(services)}
-      <Service services={services} />
+     {servicesUser}
     </>
   );
 };

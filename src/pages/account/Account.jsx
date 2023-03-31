@@ -22,7 +22,7 @@ const Account = () => {
   };
   useEffect(() => {
     dispatch(getUser(_id));
-    if (!user) {
+    if (!_id) {
       navigate("/");
       dispatch(logout());
       dispatch(reset());

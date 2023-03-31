@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getServicesByIdCar,
+} from "../../features/user/userSlice";
 
-const Service = ({ services }) => {
+const Service = ({ carId }) => {
+  const { services } = useSelector((state) => state.user.user.cars);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getServicesByIdCar(carId));
+  }, []);
   return (
     <>
-      {services &&
-        services.map((service) => {
+      {
+        services?.map((service) => {
           return (
             <table key={service._id} border={1}>
               <thead>
