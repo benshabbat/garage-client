@@ -5,7 +5,7 @@ import NavUser from "../../components/navUser/NavUser";
 import Landing from "../navLanding/NavLanding";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
-  const { _id } = useSelector((state) => state.user.user);
+  // const { _id } = useSelector((state) => state.user.user);
 
   
   return (
@@ -14,11 +14,12 @@ const Header = () => {
         <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
-        <ul>{user && _id ? <NavUser /> : <Landing />}</ul>
+        <ul>{user ? (<NavUser /> ): (<Landing />)}</ul>
       </header>
       <Outlet/>
     </>
   );
 };
+
 
 export default Header;

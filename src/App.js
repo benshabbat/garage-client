@@ -16,9 +16,9 @@ function App() {
     <>
       <BrowserRouter>
         {/* <HeaderMui /> */}
+          <Header />
         <Routes>
-          <Route path="/" element={<Header />}>
-            <Route path="/" element={<PageLanding />} />
+            {/* <Route path="/" element={<PageLanding />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />} />
@@ -26,7 +26,6 @@ function App() {
             <Route path="/services/req/:carId" element={<ReqService />} />
             <Route path="/services/car/:carId" element={<Services />} />
             <Route path="/services/user/" element={<Services />} />
-          </Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer />

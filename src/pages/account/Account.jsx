@@ -9,7 +9,9 @@ const Account = () => {
   const navigate = useNavigate();
 
   const { _id } = useSelector((state) => state.auth.user);
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.auth);
+  const { user, isError, message  } = useSelector((state) => state.user);
+
 
   const onServices = (e) => {
     console.log(e.target.value);
@@ -21,13 +23,16 @@ const Account = () => {
     navigate(`/services/req/${carId}`);
   };
   useEffect(() => {
+    if (isError) {
+      console.log(message)
+    }
     dispatch(getUser(_id));
     if (!_id) {
-      navigate("/");
+      navigate("/login");
       dispatch(logout());
       dispatch(reset());
     }
-  }, []);
+  }, [_id, navigate, isError, message, dispatch])
   return (
     <>
       <h3>user id from local storage: {_id ? _id : null}</h3>
