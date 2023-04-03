@@ -195,7 +195,7 @@ const userSlice = createSlice({
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
         state.messages = null;
-
+      })
       .addCase(getCarsByIdUser.pending, (state) => {
         state.fetchState.isLoading = true;
       })
