@@ -9,7 +9,6 @@ const Account = () => {
   const navigate = useNavigate();
 
   const { _id } = useSelector((state) => state.auth.user);
-  // const { user } = useSelector((state) => state.auth);
   const { user, isError, message  } = useSelector((state) => state.user);
 
 

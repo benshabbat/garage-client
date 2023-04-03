@@ -130,13 +130,13 @@ const userSlice = createSlice({
       .addCase(getServicesByIdCar.fulfilled, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isSuccess = true;
-        state.user.cars.services = action.payload;
+        state.services = action.payload;
       })
       .addCase(getServicesByIdCar.rejected, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
-        state.user.cars.services = null;
+        state.services = null;
       })
       .addCase(getServicesByIdUser.pending, (state) => {
         state.fetchState.isLoading = true;
