@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL_USER = "/users"
-
+const API_URL_CAR = "/cars"
 const API_URL_SERVICES = "/services"
 const API_URL_MESSAGES = "/messages"
 const ADMIN = "63e14deca4340e45d23f20b2"
@@ -34,11 +34,16 @@ const getMessagesByIdUser = async (userId) => {
     
     return data
 }
+const getCarsByIdUser = async (userId) => {
+    const {data} = await axios.get(`${API_URL_CAR}/user/${userId}`)
+    
+    return data
+}
 const userService = {
     getUser,
     getServicesByIdCar,
     getServicesByIdUser,
-    createReqService,getMessagesByIdUser
+    createReqService,getMessagesByIdUser,getCarsByIdUser
 };
 
 export default userService;
