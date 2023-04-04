@@ -1,16 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getServicesByIdCar } from "../../features/user/userSlice";
-const Service = ({ car, carServices }) => {
-  const { services } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (car) {
-      dispatch(getServicesByIdCar(car));
-    } else return;
-  }, []);
+import React from "react";
 
-  // const servicesByfilter = services.filter(service=>service.car===car)
+const Service = ({ carServices }) => {
   return (
     <>
       <table border={1}>
@@ -23,27 +13,16 @@ const Service = ({ car, carServices }) => {
           </tr>
         </thead>
         <tbody>
-          {car
-            ? services?.map((service) => {
-                return (
-                  <tr key={service._id}>
-                    <td>{service?.title}</td>
-                    <td>{service?.description}</td>
-                    <td>{service?.price}</td>
-                    <td>{service?.paid}</td>
-                  </tr>
-                );
-              })
-            : carServices?.map((service) => {
-                return (
-                  <tr key={service._id}>
-                    <td>{service?.title}</td>
-                    <td>{service?.description}</td>
-                    <td>{service?.price}</td>
-                    <td>{service?.paid}</td>
-                  </tr>
-                );
-              })}
+          {carServices?.map((service ,index) => {
+            return (
+              <tr key={index}>
+                <td>{service?.title}</td>
+                <td>{service?.description}</td>
+                <td>{service?.price}</td>
+                <td>{service?.paid}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       <br />

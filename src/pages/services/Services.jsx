@@ -1,39 +1,43 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
-import {getCarsByIdUser} from "../../features/user/userSlice";
+import { getCarsByIdUser, getUser } from "../../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Services = () => {
-
+  const { _id } = useSelector((state) => state.auth.user);
   const { user } = useSelector((state) => state.user);
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (user) {
-      dispatch(getCarsByIdUser(user._id));
+    if (_id) {
+      dispatch(getUser(_id));
+      dispatch(getCarsByIdUser(_id));
     } else return;
-  }, []);
-
-  const carNumberPlate = user?.cars?.filter((car) => carId === car._id)[0]
-    ?.numberPlate;
-  // const servicesCar= user?.cars?.services?.filter((car) => car._id===carId)
+  }, [_id,carId,dispatch]);
+  
+  const carFilter = user?.cars?.filter((car) => car._id === carId);
 
   return (
     <>
-      <h1>{`hello ${carNumberPlate}`}</h1>
-      {carId ? (
-        <Service car={carId} />
-      ) : (
-        user?.cars?.map((car) => {
-          return (
-            <div key={car._id}>
-              <h2>{car.numberPlate}</h2>
-              <Service carServices={car.services} />
-            </div>
-          );
-        })
-      )}
+      <h1>{`hello ${user?.username}`}</h1>
+      {carId
+        ? carFilter.map((car) => {
+            return (
+              <div key={car?._id}>
+                <h2>{car?.numberPlate}</h2>
+                <Service carServices={car?.services} />
+              </div>
+            );
+          })
+        : user?.cars?.map((car) => {
+            return (
+              <div key={car?._id}>
+                <h2>{car?.numberPlate}</h2>
+                <Service carServices={car?.services} />
+              </div>
+            );
+          })}
     </>
   );
 };

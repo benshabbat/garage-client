@@ -13,9 +13,10 @@ const NavUser = () => {
   return (
     <>
       <li>
-        <Link to={`/services/user`}>
-          Services
-        </Link>
+        <Link to={`/services/user`}>Services</Link>
+      </li>
+      <li>
+        <Link to={`/account`}>Account</Link>
       </li>
       {/* <li>
         <Link to={`/services/req/${carId}`}>
