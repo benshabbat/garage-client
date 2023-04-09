@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createReqService, getUser } from "../../features/user/userSlice";
+import { createReqService } from "../../features/user/userSlice";
 import { useParams } from "react-router-dom";
 import "./reqService.css"
 
@@ -24,14 +24,9 @@ const ReqService = () => {
   };
 
   const car = user?.cars.find((c) => c._id === carId);
-  console.log("car filter", car);
-  // useEffect(() => {
-  //   dispatch(getUser(user._id));
-  // }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     dispatch(createReqService(formData));
   };
   return (
@@ -49,7 +44,7 @@ const ReqService = () => {
           />
         </label>
         <label className="r-service-label">
-          <span>Title</span>
+          <span>Description</span>
           <textarea
             rows={8}
             placeholder="description"

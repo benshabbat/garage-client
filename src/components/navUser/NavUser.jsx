@@ -18,6 +18,9 @@ const NavUser = () => {
       <li>
         <Link to={`/account`}>Account</Link>
       </li>
+      <li>
+        <Link to={`/messages`}>Messages</Link>
+      </li>
       {/* <li>
         <Link to={`/services/req/${carId}`}>
           <ReqService />
