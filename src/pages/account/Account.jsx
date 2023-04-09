@@ -10,8 +10,6 @@ const Account = () => {
 
   const { _id } = useSelector((state) => state.auth.user);
   const { user, isError, message  } = useSelector((state) => state.user);
-
-
   const onServices = (e) => {
     console.log(e.target.value);
     const carId = e.target.value;
@@ -25,13 +23,13 @@ const Account = () => {
     if (isError) {
       console.log(message)
     }
-    dispatch(getUser(_id));
     if (!_id) {
       navigate("/login");
       dispatch(logout());
       dispatch(reset());
     }
-  }, [_id, navigate, isError, message, dispatch])
+    dispatch(getUser(_id));
+  }, [])
   return (
     <>
       <h3>user id from local storage: {_id ? _id : null}</h3>

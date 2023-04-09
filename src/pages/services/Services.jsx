@@ -14,7 +14,7 @@ const Services = () => {
       dispatch(getUser(_id));
       dispatch(getCarsByIdUser(_id));
     } else return;
-  }, [_id,carId,dispatch]);
+  }, []);
   
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
