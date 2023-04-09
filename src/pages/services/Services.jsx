@@ -13,8 +13,8 @@ const Services = () => {
     if (_id) {
       dispatch(getUser(_id));
       dispatch(getCarsByIdUser(_id));
-    } else return;
-  }, []);
+    }
+  }, [_id]);
   
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 

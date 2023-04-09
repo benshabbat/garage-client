@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMessagesByIdUser } from "../../features/user/userSlice";
-import { useParams } from "react-router-dom";
 
 const Messages = () => {
-  const { messages, user } = useSelector((state) => state.user);
+  const { messages } = useSelector((state) => state.user);
+  const { _id } = useSelector((state) => state.auth.user);
 
-  // const { userId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMessagesByIdUser(user._id));
+    dispatch(getMessagesByIdUser(_id));
   }, []);
   return (
     <div>
