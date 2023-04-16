@@ -11,15 +11,15 @@ const Messages = () => {
     dispatch(getMessagesByIdUser(_id));
   }, []);
   return (
-    <div class="table">
-      <section class="table__header">
+    <div className="table">
+      <section className="table__header">
         <h1>Messages</h1>
-        <div class="input-group">
+        <div className="input-group">
           <input type="search" placeholder="Search Data..." />
         </div>
       </section>
-      <section class="table__body">
-        <table>
+      <section className="table__body">
+        <table className="table-messages">
           <thead>
             <tr>
               <th>from</th>

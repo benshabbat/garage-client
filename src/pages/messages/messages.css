@@ -6,6 +6,7 @@
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
     overflow: hidden;
+     margin: auto;
 }
 
 .table__header {
@@ -76,20 +77,11 @@
     visibility: visible;
 }
 
-table {
+.table-messages {
     width: 100%;
 }
 
-td img {
-    width: 36px;
-    height: 36px;
-    margin-right: .5rem;
-    border-radius: 50%;
-
-    vertical-align: middle;
-}
-
-table, th, td {
+.table-messages, th, td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
