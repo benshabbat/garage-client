@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
-import { getCarsByIdUser, getUser } from "../../features/user/userSlice";
+import { getCarsByIdUser } from "../../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Services = () => {
@@ -10,17 +10,14 @@ const Services = () => {
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (_id) {
-      dispatch(getUser(_id));
-      dispatch(getCarsByIdUser(_id));
-    }
-  }, [_id]);
-  
+    dispatch(getCarsByIdUser(_id));
+  }, []);
+
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
   return (
     <>
-      <h1>{`hello ${user?.username}`}</h1>
+      <h1>{`hello ${user.username}`}</h1>
       {carId
         ? carFilter.map((car) => {
             return (
