@@ -1,24 +1,36 @@
-import React, { useEffect } from "react";
+import "./account.css";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/user/userSlice";
 import { logout, reset } from "../../features/auth/authSlice";
-import "./account.css";
-const Account = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+import ReqService from "../reqService/ReqService";
 
+
+const Account = () => {
   const { _id } = useSelector((state) => state.auth.user);
   const { user, isError, message  } = useSelector((state) => state.user);
+  const [carId,setCarId]= useState("")
+  const [openModel, setOpenModel] = useState(false);
+
+  const handelClick = (e) => {
+    console.log(e.target.value);
+    setCarId(e.target.value)
+    setOpenModel(!openModel);
+
+  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const onServices = (e) => {
     console.log(e.target.value);
     const carId = e.target.value;
     navigate(`/services/car/${carId}`);
   };
-  const onReqServices = (e) => {
-    const carId = e.target.value;
-    navigate(`/services/req/${carId}`);
-  };
+  // const onReqServices = (e) => {
+  //   const carId = e.target.value;
+  //   navigate(`/services/req/${carId}`);
+  // };
   useEffect(() => {
     if (isError) {
       console.log(message)
@@ -72,9 +84,10 @@ const Account = () => {
                     </button>
                   </td>
                   <td>
-                    <button value={car._id} onClick={onReqServices}>
+                    <button value={car._id} onClick={handelClick}>
                       req services
                     </button>
+                    {openModel && <ReqService carId={carId} handelClick={handelClick} />}
                   </td>
                 </tr>
               );
