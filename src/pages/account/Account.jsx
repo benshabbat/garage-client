@@ -6,22 +6,20 @@ import { getUser } from "../../features/user/userSlice";
 import { logout, reset } from "../../features/auth/authSlice";
 import ReqService from "../reqService/ReqService";
 
-
 const Account = () => {
   const { _id } = useSelector((state) => state.auth.user);
-  const { user, isError, message  } = useSelector((state) => state.user);
-  const [carId,setCarId]= useState("")
+  const { user, isError, message } = useSelector((state) => state.user);
+  const [carId, setCarId] = useState("");
   const [openModel, setOpenModel] = useState(false);
 
   const handelClick = (e) => {
     console.log(e.target.value);
-    setCarId(e.target.value)
+    setCarId(e.target.value);
     setOpenModel(!openModel);
-
   };
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const onServices = (e) => {
     console.log(e.target.value);
     const carId = e.target.value;
@@ -33,7 +31,7 @@ const Account = () => {
   // };
   useEffect(() => {
     if (isError) {
-      console.log(message)
+      console.log(message);
     }
     if (!_id) {
       // navigate("/login");
@@ -41,7 +39,7 @@ const Account = () => {
       dispatch(reset());
     }
     dispatch(getUser(_id));
-  }, [])
+  }, []);
   return (
     <>
       <h3>user id from local storage: {_id ? _id : null}</h3>
@@ -87,13 +85,13 @@ const Account = () => {
                     <button value={car._id} onClick={handelClick}>
                       req services
                     </button>
-                    {openModel && <ReqService carId={carId} handelClick={handelClick} />}
                   </td>
                 </tr>
               );
             })}
         </tbody>
       </table>
+      {openModel && <ReqService carId={carId} handelClick={handelClick} />}
     </>
   );
 };
