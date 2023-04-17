@@ -1,8 +1,13 @@
 import React from "react";
 // import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-
-import { Link } from "react-router-dom";
+import Login from "../../pages/login/Login";
+import { useState } from "react";
+// import { Link } from "react-router-dom";
 const NavLanding = ({ id }) => {
+  const [openModel, setOpenModel] = useState(false);
+  const handelClick = () => {
+    setOpenModel(!openModel);
+  };
   return (
     <>
       <li>
@@ -42,9 +47,8 @@ const NavLanding = ({ id }) => {
         <Link to={`/messages/${id}`}>Contact</Link>
       </li> */}
       <li>
-        <Link to="/login" className="">
-          Login
-        </Link>
+        <button onClick={handelClick}>Login</button>
+        {openModel && <Login handelClick={handelClick} />}
       </li>
     </>
   );

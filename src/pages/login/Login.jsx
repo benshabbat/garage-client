@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../../features/auth/authSlice";
 import Spinner from "../../components/Spinner";
+import CancelIcon from "@mui/icons-material/Cancel";
 import "./login.css";
 
-const Login = () => {
+const Login = ({ handelClick }) => {
   const [formData, setFormData] = useState();
 
   const navigate = useNavigate();
@@ -30,33 +31,35 @@ const Login = () => {
     dispatch(login(formData));
   };
   const labelData = (name, type) => {
-    return(
-      <label className="contact-label">
-      <span className="title-label">{name}</span>
-      <input
-        placeholder="UserName for the user"
-        className="form-control"
-        type={type}
-        name={name}
-        onChange={handleChange}
-        required
-      />
-    </label>
-    )
-
+    return (
+      <label className="login-label">
+        <span className="title-label">{name}</span>
+        <input
+          placeholder="UserName for the user"
+          className="form-control"
+          type={type}
+          name={name}
+          onChange={handleChange}
+          required
+        />
+      </label>
+    );
   };
   if (isLoading) return <Spinner />;
   return (
-    <>
-      <form className="contact-form" onSubmit={onSubmit}>
-        <h1 className="header">Login</h1>
-        {labelData("username", "text")}
-        {labelData("password", "password")}
-        <button type="submit" className="btn">
-          Login
-        </button>
-      </form>
-    </>
+    <div className="login-background">
+      <div className="login-container">
+        <form className="login-form" onSubmit={onSubmit}>
+        <CancelIcon onClick={handelClick} className="review-close" />
+          <h1 className="header">Login</h1>
+          {labelData("username", "text")}
+          {labelData("password", "password")}
+          <button type="submit" className="login-btn">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

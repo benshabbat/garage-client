@@ -18,8 +18,8 @@ function App() {
         {/* <HeaderMui /> */}
           <Header />
         <Routes>
-            {/* <Route path="/" element={<PageLanding />} /> */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<PageLanding />} />
+            {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />} />
             <Route path="/messages" element={<Messages />} />

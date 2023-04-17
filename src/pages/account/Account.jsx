@@ -24,7 +24,7 @@ const Account = () => {
       console.log(message)
     }
     if (!_id) {
-      navigate("/login");
+      // navigate("/login");
       dispatch(logout());
       dispatch(reset());
     }
