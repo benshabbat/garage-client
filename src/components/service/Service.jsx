@@ -1,5 +1,5 @@
-import React from "react";
 import "./service.css";
+import React from "react";
 const Service = ({ carServices }) => {
   return (
     <>

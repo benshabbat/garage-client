@@ -1,8 +1,7 @@
 import "./reviews.css";
 import "react-multi-carousel/lib/styles.css";
 import React, { useState } from "react";
-import CreateReviews from "../createReviews/CreateReviews";
-import Review from "../review/Review";
+import {CreateReviews,Review} from "../index";
 import Carousel from "react-multi-carousel";
 
 const Reviews = () => {
