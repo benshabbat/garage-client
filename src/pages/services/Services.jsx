@@ -17,12 +17,12 @@ const Services = () => {
 
   return (
     <>
-      <h1>{`hello ${user.username}`}</h1>
+      <h1 className="title">{`hello ${user.username}`}</h1>
       {carId
         ? carFilter.map((car) => {
             return (
-              <div key={car?._id}>
-                <h2>{car?.numberPlate}</h2>
+              <div  key={car?._id}>
+                <h2 className="title">{car?.numberPlate}</h2>
                 <Service carServices={car?.services} />
               </div>
             );
@@ -30,7 +30,7 @@ const Services = () => {
         : user?.cars?.map((car) => {
             return (
               <div key={car?._id}>
-                <h2>{car?.numberPlate}</h2>
+                <h2 className="title">{car?.numberPlate}</h2>
                 <Service carServices={car?.services} />
               </div>
             );
