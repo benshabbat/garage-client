@@ -11,13 +11,13 @@ const Services = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCarsByIdUser(_id));
-  }, [_id]);
+  }, []);
 
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
   return (
     <>
-      <h1 className="h-title">{`hello ${user.username}`}</h1>
+      <h1 className="h-title">{`hello ${user?.username}`}</h1>
       {carId
         ? carFilter.map((car) => {
             return (

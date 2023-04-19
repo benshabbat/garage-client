@@ -15,7 +15,7 @@ const Account = () => {
   const handelClick = (e) => {
     console.log(e.target.value);
     setCarId(e.target.value);
-    setOpenModel(!openModel);
+    setOpenModel((current) => !current);
   };
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +42,9 @@ const Account = () => {
   }, []);
   return (
     <>
-      <h3 className="h-title">user id from local storage: {_id ? _id : null}</h3>
+      <h3 className="h-title">
+        user id from local storage: {_id ? _id : null}
+      </h3>
       <h1 className="h-title">{`hello ${user?.username}`}</h1>
       <h2 className="title">Your cars</h2>
 
