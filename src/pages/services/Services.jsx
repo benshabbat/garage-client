@@ -11,7 +11,7 @@ const Services = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCarsByIdUser(_id));
-  }, []);
+  }, [_id]);
 
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
