@@ -42,9 +42,9 @@ const Account = () => {
   }, []);
   return (
     <>
-      <h3>user id from local storage: {_id ? _id : null}</h3>
-      <h1>{`hello ${user?.username}`}</h1>
-      <h2>Your car</h2>
+      <h3 className="h-title">user id from local storage: {_id ? _id : null}</h3>
+      <h1 className="h-title">{`hello ${user?.username}`}</h1>
+      <h2 className="title">Your cars</h2>
 
       <table className="table">
         <thead className="table-head">

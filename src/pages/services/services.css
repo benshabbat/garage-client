@@ -1,4 +1,8 @@
-.title{
-    align-items: center;
-    margin:auto;
+.h-title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.title {
+    text-align: center;
 }
