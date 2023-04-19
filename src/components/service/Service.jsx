@@ -1,11 +1,11 @@
 import React from "react";
-
+import "./service.css";
 const Service = ({ carServices }) => {
   return (
     <>
-      <table border={1}>
-        <thead>
-          <tr>
+      <table className="table">
+        <thead className="table-head">
+          <tr className="table-row">
             <th>title</th>
             <th>description</th>
             <th>price</th>
@@ -13,7 +13,7 @@ const Service = ({ carServices }) => {
           </tr>
         </thead>
         <tbody>
-          {carServices?.map((service ,index) => {
+          {carServices?.map((service, index) => {
             return (
               <tr key={index}>
                 <td>{service?.title}</td>
