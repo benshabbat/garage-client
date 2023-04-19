@@ -21,7 +21,7 @@ const Contact = () => {
     dispatch(createReqService(formData));
   };
   return (
-    <div id="contact" style={{ height: 500 }}>
+    <div id="contact">
       <form className="contact-form" onSubmit={onSubmit}>
         <label className="contact-label">
           <span>Name</span>
