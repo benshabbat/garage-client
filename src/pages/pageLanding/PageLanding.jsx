@@ -1,11 +1,14 @@
+import "./pageLanding.css";
 import React from "react";
 import Home from "../home/Home";
-import Reviews from "../../components/reviews/Reviews";
-import Address from "../../components/address/Address";
-import About from "../../components/about/About";
-import ServicesLanding from "../../components/servicesLanding/ServiceLanding";
-import Contact from "../../components/contact/Contact";
-import "./pageLanding.css";
+import {
+  Reviews,
+  Address,
+  About,
+  ServicesLanding,
+  Contact,
+} from "../../components";
+
 const PageLanding = () => {
   return (
     <div className="main">
@@ -15,9 +18,7 @@ const PageLanding = () => {
       <ServicesLanding />
       <Contact />
       <Reviews />
-      <footer>
-        Written By Menachem & DavidChen
-      </footer>
+      <footer>Written By Menachem & DavidChen</footer>
     </div>
   );
 };
