@@ -35,11 +35,11 @@ const NavUser = () => {
         <ReqService />
         </Link>
       </li> */}
-      {/* <li>
+      <li>
         <button className="" onClick={onLogout}>
           LogOut
         </button>
-      </li> */}
+      </li>
     </>
   );
 };

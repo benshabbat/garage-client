@@ -13,9 +13,9 @@ const Header = () => {
         <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
-        <div>{user ? <NavUser /> : <NavLanding />}</div>
+        <ul>{user ? <NavUser /> : <NavLanding />}</ul>
       </header>
-      <MyAccount />
+      {/* <MyAccount /> */}
       <Outlet />
     </>
   );
