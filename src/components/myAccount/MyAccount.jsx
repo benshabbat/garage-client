@@ -1,9 +1,12 @@
 import "./myAccount.css";
-import React from "react";
+import React,{useEffect} from "react";
 import { logout, reset } from "../../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../features/user/userSlice";
 const MyAccount = () => {
+  const { _id } = useSelector((state) => state.auth.user);
+  const { user} = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onLogout = () => {
@@ -11,19 +14,20 @@ const MyAccount = () => {
     dispatch(reset());
     navigate("/");
   };
+  useEffect(() => {
+
+    dispatch(getUser(_id));
+  }, []);
   return (
     <>
-      <button className="dropbtn">
-        My Account
-        <i className="fa fa-caret-down"></i>
-      </button>
+      <button className="dropbtn">My Account</button>
       <div className="dropdown-content">
         <div>
-          <button className="" onClick={onLogout}>
-            LogOut
-          </button>
+          <Link to={`/account`}>{user?.username}</Link>
         </div>
-        <div>test2</div>
+        <div>
+          <button onClick={onLogout}>LogOut</button>
+        </div>
       </div>
     </>
   );
