@@ -7,15 +7,28 @@ const Header = () => {
   const { user } = useSelector((state) => state.auth);
   // const { _id } = useSelector((state) => state.user.user);
 
+  //   return (
+  //     <>
+  //       <nav className="header-container">
+  //         <div className="logo">
+  //           <Link to="/">Garage770</Link>
+  //         </div>
+  //         <div>{user ? <NavUser /> : <NavLanding />}</div>
+  //       </nav>
+  //       <Outlet />
+  //     </>
+  //   );
+  // };
+
+  // export default Header;
   return (
     <>
-      <header className="header-container">
+      <div className="navbar">
         <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
-        <ul>{user ? <NavUser /> : <NavLanding />}</ul>
-      </header>
-      {/* <MyAccount /> */}
+        <div>{user ? <NavUser /> : <NavLanding />}</div>
+      </div>
       <Outlet />
     </>
   );
