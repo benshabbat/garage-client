@@ -2,7 +2,7 @@ import "./header.css";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { NavUser, NavLanding } from "../index";
-
+import MyAccount from "../myAccount/MyAccount";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   // const { _id } = useSelector((state) => state.user.user);
@@ -13,8 +13,9 @@ const Header = () => {
         <div className="logo">
           <Link to="/">Garage770</Link>
         </div>
-        <ul>{user ? <NavUser /> : <NavLanding />}</ul>
+        <div>{user ? <NavUser /> : <NavLanding />}</div>
       </header>
+      <MyAccount />
       <Outlet />
     </>
   );

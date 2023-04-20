@@ -9,7 +9,7 @@ const NavLanding = ({ id }) => {
     setOpenModel(!openModel);
   };
   return (
-    <>
+    <ul>
       <li>
         <a href="#home">Home</a>
       </li>
@@ -50,7 +50,7 @@ const NavLanding = ({ id }) => {
         <button onClick={handelClick}>Login</button>
         {openModel && <Login handelClick={handelClick} />}
       </li>
-    </>
+    </ul>
   );
 };
 
