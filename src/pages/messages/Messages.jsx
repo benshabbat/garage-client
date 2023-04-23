@@ -3,12 +3,10 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessagesByIdUser } from "../../features/user/userSlice";
 const Messages = () => {
-  const { messages } = useSelector((state) => state.user);
-  const { _id } = useSelector((state) => state.auth.user);
-
+  const { messages,user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMessagesByIdUser(_id));
+    dispatch(getMessagesByIdUser(user?._id));
   }, []);
   return (
     <div className="table">

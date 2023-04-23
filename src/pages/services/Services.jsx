@@ -5,12 +5,11 @@ import Service from "../../components/service/Service";
 import { getCarsByIdUser } from "../../features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 const Services = () => {
-  const { _id } = useSelector((state) => state.auth.user);
   const { user } = useSelector((state) => state.user);
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCarsByIdUser(_id));
+    dispatch(getCarsByIdUser(user?._id));
   }, []);
 
   const carFilter = user?.cars?.filter((car) => car._id === carId);

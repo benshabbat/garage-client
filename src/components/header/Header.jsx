@@ -1,18 +1,32 @@
 import "./header.css";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../features/user/userSlice";
+import { logout, reset } from "../../features/auth/authSlice";
 import { NavUser, NavLanding } from "../index";
 import MyAccount from "../myAccount/MyAccount";
 import Login from "../../pages/login/Login";
 import OpenModel from "../openModel/OpenModel";
+import NavAdmin from "../NavAdmin";
 const Header = () => {
-  const { user } = useSelector((state) => state.auth);
-
+  const { user: userAuth } = useSelector((state) => state.auth);
+  const { user, isError, message } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [openModel, setOpenModel] = useState(false);
   const handelClick = () => {
     setOpenModel(!openModel);
   };
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    } else if (!userAuth) {
+      dispatch(logout());
+      dispatch(reset());
+    } else {
+      dispatch(getUser(userAuth));
+    }
+  }, []);
   return (
     <>
       <div className="main-header">
@@ -21,16 +35,19 @@ const Header = () => {
             <Link to="/">Garage770</Link>
           </div>
           <div>
-            {user ? <NavUser /> : <NavLanding />}
-            {user ? (
+            {userAuth ? <NavUser /> : <NavLanding />}
+            {userAuth && user?.isAdmin && <NavAdmin />}
+            {userAuth ? (
               <div className="item-nav dropdown">
                 <MyAccount />
               </div>
             ) : (
-
               <div className="item-nav">
                 <button onClick={handelClick}>Login</button>
-                <OpenModel open={openModel} model={<Login handelClick={handelClick}/>}/>
+                <OpenModel
+                  open={openModel}
+                  model={<Login handelClick={handelClick} />}
+                />
               </div>
             )}
           </div>

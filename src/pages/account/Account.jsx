@@ -1,15 +1,12 @@
 import "./account.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../../features/user/userSlice";
-import { logout, reset } from "../../features/auth/authSlice";
+import { useSelector } from "react-redux";
 import ReqService from "../reqService/ReqService";
 import OpenModel from "../../components/openModel/OpenModel"
 
 const Account = () => {
-  const { _id } = useSelector((state) => state.auth.user);
-  const { user, isError, message } = useSelector((state) => state.user);
+  const { user} = useSelector((state) => state.user);
   const [carId, setCarId] = useState("");
   const [openModel, setOpenModel] = useState(false);
 
@@ -18,7 +15,7 @@ const Account = () => {
     setCarId(e.target.value);
     setOpenModel((current) => !current);
   };
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const onServices = (e) => {
@@ -26,26 +23,8 @@ const Account = () => {
     const carId = e.target.value;
     navigate(`/services/car/${carId}`);
   };
-  // const onReqServices = (e) => {
-  //   const carId = e.target.value;
-  //   navigate(`/services/req/${carId}`);
-  // };
-  useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
-    if (!_id) {
-      // navigate("/login");
-      dispatch(logout());
-      dispatch(reset());
-    }
-    dispatch(getUser(_id));
-  }, []);
   return (
     <>
-      <h3 className="h-title">
-        user id from local storage: {_id ? _id : null}
-      </h3>
       <h1 className="h-title">{`hello ${user?.username}`}</h1>
       <h2 className="title">Your cars</h2>
 
