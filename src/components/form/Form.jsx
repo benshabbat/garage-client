@@ -28,7 +28,7 @@ const Form = ({ title, sec_title, inputs, onSubmit, handelClick,setData }) => {
         );
       })}
       <button type="submit" className="login-btn">
-        Login
+        {title}
       </button>
     </form>
   );

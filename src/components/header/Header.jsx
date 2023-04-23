@@ -1,5 +1,5 @@
 import "./header.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/user/userSlice";
@@ -7,25 +7,20 @@ import { logout, reset } from "../../features/auth/authSlice";
 import { NavUser, NavLanding } from "../index";
 import MyAccount from "../myAccount/MyAccount";
 import Login from "../../pages/login/Login";
-import OpenModel from "../openModel/OpenModel";
 import NavAdmin from "../NavAdmin";
+import useOpenModel from "../../hooks/useOpenModel";
 const Header = () => {
   const { user: userAuth } = useSelector((state) => state.auth);
   const { user, isError, message } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [openModel, setOpenModel] = useState(false);
-  const handelClick = () => {
-    setOpenModel(!openModel);
-  };
+  const { openModel, handelClick } = useOpenModel();
   useEffect(() => {
     if (isError) {
       console.log(message);
-    } 
-    else if (!userAuth) {
+    } else if (!userAuth) {
       dispatch(logout());
       dispatch(reset());
-    } 
-    else {
+    } else {
       dispatch(getUser(userAuth));
     }
   }, []);
@@ -46,10 +41,7 @@ const Header = () => {
             ) : (
               <div className="item-nav">
                 <button onClick={handelClick}>Login</button>
-                <OpenModel
-                  open={openModel}
-                  model={<Login handelClick={handelClick} />}
-                />
+                <Login handelClick={handelClick} open={openModel} />
               </div>
             )}
           </div>

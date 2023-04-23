@@ -1,10 +1,13 @@
 import React from "react";
 
-const OpenModel = ({model,open}) => {
-    
+const OpenModel = ({ comp=null, open=false }) => {
   return (
-    <>{open&&model}</>
-  )
-}
+    open && (
+      <div className="login-background">
+        <div className="login-container">{comp} </div>
+      </div>
+    )
+  );
+};
 
-export default OpenModel
+export default OpenModel;

@@ -7,8 +7,9 @@ import Spinner from "../../components/Spinner";
 import "./login.css";
 
 import Form from "../../components/form/Form";
+import OpenModel from "../../components/openModel/OpenModel";
 
-const Login = ({ handelClick }) => {
+const Login = ({ handelClick ,open}) => {
   const [formData, setFormData] = useState();
 
   const navigate = useNavigate();
@@ -30,21 +31,18 @@ const Login = ({ handelClick }) => {
 
   if (isLoading) return <Spinner />;
   return (
-    <div className="login-background">
-      <div className="login-container">
-        <Form
-          setData={setFormData}
-          title="Login"
-          sec_title="enter your name & password"
-          inputs={[
-            { name: "username", type: "text" },
-            { name: "password", type: "password" },
-          ]}
-          handelClick={handelClick}
-          onSubmit={onSubmit}
-        />
-      </div>
-    </div>
+    <OpenModel comp={<Form
+      setData={setFormData}
+      title="Login"
+      sec_title="enter your name & password"
+      inputs={[
+        { name: "username", type: "text" },
+        { name: "password", type: "password" },
+      ]}
+      handelClick={handelClick}
+      onSubmit={onSubmit}
+    />} open={open}/>
+ 
   );
 };
 
