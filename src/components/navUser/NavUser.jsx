@@ -1,15 +1,10 @@
 import "./navUser.css";
-import React, { useCallback, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
+import React from "react";
+import {  Link } from "react-router-dom";
 import MyAccount from "../myAccount/MyAccount";
-// import MyAccount from "../myAccount/MyAccount";
+
 const NavUser = () => {
-  // const [showAccount, setShowAccount] = useState(false);
-  // const toggleAccount = useCallback(() => {
-  //   setShowAccount((current) => !current);
-  // }, []);
+
 
   return (
     <>
@@ -22,9 +17,7 @@ const NavUser = () => {
       <div className="item-nav">
         <Link to={`/messages`}>Messages</Link>
       </div>
-      <div className="item-nav dropdown">
-        <MyAccount />
-      </div>
+     
     </>
   );
 };

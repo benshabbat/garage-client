@@ -25,6 +25,10 @@
 .header-container div:hover {
   color: #484646;
 }
+.main-header{
+  position: sticky;
+  top: 0;
+}
 .navbar {
   overflow: hidden;
   background-color: #80f2f8;
@@ -37,6 +41,7 @@
   align-items: flex-end;
   font: bold;
   top: 0;
+  
 }
 
 .navbar div {

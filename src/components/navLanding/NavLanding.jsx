@@ -1,13 +1,6 @@
 import React from "react";
-// import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-import Login from "../../pages/login/Login";
-import { useState } from "react";
-// import { Link } from "react-router-dom";
-const NavLanding = ({ id }) => {
-  const [openModel, setOpenModel] = useState(false);
-  const handelClick = () => {
-    setOpenModel(!openModel);
-  };
+
+const NavLanding = () => {
   return (
     <>
       <div className="item-nav">
@@ -28,10 +21,9 @@ const NavLanding = ({ id }) => {
       <div className="item-nav">
         <a href="#contact">Contact</a>
       </div>
-      <div className="item-nav">
-        <button onClick={handelClick}>Login</button>
-        {openModel && <Login handelClick={handelClick} />}
-      </div>
+      {/* <div className="item-nav dropdown">
+        <MyAccount />
+      </div> */}
     </>
   );
 };
