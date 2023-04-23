@@ -20,10 +20,12 @@ const Header = () => {
   useEffect(() => {
     if (isError) {
       console.log(message);
-    } else if (!userAuth) {
+    } 
+    else if (!userAuth) {
       dispatch(logout());
       dispatch(reset());
-    } else {
+    } 
+    else {
       dispatch(getUser(userAuth));
     }
   }, []);
