@@ -1,11 +1,8 @@
 import "./navUser.css";
 import React from "react";
-import {  Link } from "react-router-dom";
-import MyAccount from "../myAccount/MyAccount";
+import { Link } from "react-router-dom";
 
 const NavUser = () => {
-
-
   return (
     <>
       <div className="item-nav">
@@ -17,7 +14,6 @@ const NavUser = () => {
       <div className="item-nav">
         <Link to={`/messages`}>Messages</Link>
       </div>
-     
     </>
   );
 };

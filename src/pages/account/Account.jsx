@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/user/userSlice";
 import { logout, reset } from "../../features/auth/authSlice";
 import ReqService from "../reqService/ReqService";
+import OpenModel from "../../components/openModel/OpenModel"
 
 const Account = () => {
   const { _id } = useSelector((state) => state.auth.user);
@@ -93,7 +94,8 @@ const Account = () => {
             })}
         </tbody>
       </table>
-      {openModel && <ReqService carId={carId} handelClick={handelClick} />}
+      {/* {openModel && <ReqService carId={carId} handelClick={handelClick} />} */}
+      <OpenModel open={openModel} model={<ReqService carId={carId} handelClick={handelClick} />}/>
     </>
   );
 };

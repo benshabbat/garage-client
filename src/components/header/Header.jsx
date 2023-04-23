@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { NavUser, NavLanding } from "../index";
 import MyAccount from "../myAccount/MyAccount";
 import Login from "../../pages/login/Login";
+import OpenModel from "../openModel/OpenModel";
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
 
@@ -26,9 +27,10 @@ const Header = () => {
                 <MyAccount />
               </div>
             ) : (
+
               <div className="item-nav">
                 <button onClick={handelClick}>Login</button>
-                {openModel && <Login handelClick={handelClick} />}{" "}
+                <OpenModel open={openModel} model={<Login handelClick={handelClick}/>}/>
               </div>
             )}
           </div>

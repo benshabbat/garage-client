@@ -21,9 +21,6 @@ const NavLanding = () => {
       <div className="item-nav">
         <a href="#contact">Contact</a>
       </div>
-      {/* <div className="item-nav dropdown">
-        <MyAccount />
-      </div> */}
     </>
   );
 };
