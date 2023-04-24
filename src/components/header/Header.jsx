@@ -16,9 +16,9 @@ const Header = () => {
     if (isError) {
       console.log(message);
     } else if (userAuth) {
-      dispatch(getUser(userAuth));
+      dispatch(getUser(userAuth?._id));
     }
-  }, []);
+  }, [userAuth]);
   return (
     <>
       <div className="main-header">

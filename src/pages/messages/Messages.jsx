@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessagesByIdUser } from "../../features/user/userSlice";
 const Messages = () => {
-  const { messages,user } = useSelector((state) => state.user);
+  const { messages, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMessagesByIdUser(user?._id));
-  }, []);
+    if (user?._id) dispatch(getMessagesByIdUser(user?._id));
+  }, [user?._id]);
   return (
     <div className="table">
       <section className="table__header">
@@ -30,14 +30,14 @@ const Messages = () => {
           <tbody>
             {messages &&
               messages.map((message) => {
-                const dateArray = message.updatedAt.slice(0, 10).split("-");
+                const dateArray = message?.updatedAt.slice(0, 10).split("-");
                 const [year, month, day] = dateArray;
                 return (
-                  <tr key={message._id}>
-                    <td>{message.from?.username}</td>
-                    <td>{message.to?.username}</td>
-                    <td>{message.title}</td>
-                    <td>{message.description}</td>
+                  <tr key={message?._id}>
+                    <td>{message?.from?.username}</td>
+                    <td>{message?.to?.username}</td>
+                    <td>{message?.title}</td>
+                    <td>{message?.description}</td>
                     <td>{`${day}/${month}/${year}`}</td>
                   </tr>
                 );

@@ -9,8 +9,8 @@ const Services = () => {
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCarsByIdUser(user?._id));
-  }, []);
+    if(user?._id)dispatch(getCarsByIdUser(user?._id));
+  }, [user?._id]);
 
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
