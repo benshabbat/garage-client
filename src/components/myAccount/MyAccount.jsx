@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 import useLogout from "../../hooks/useLogout";
 const MyAccount = () => {
   const { user } = useSelector((state) => state.user);
-
   const { onLogout } = useLogout();
-
   return (
     <>
       <button className="dropbtn">My Account</button>
