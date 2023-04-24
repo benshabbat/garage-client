@@ -17,7 +17,7 @@ const Form = ({ title, sec_title, inputs, onSubmit, handelClick,setData }) => {
           <label key={index} className="login-label">
             <span className="title-label">{i.name}</span>
             <input
-              placeholder="UserName for the user"
+              placeholder={i.name}
               className="form-control"
               type={i.type}
               name={i.name}
