@@ -10,7 +10,6 @@ const fetchState = {
 
 const initialState = {
   user: { _id: "", cars: [] },
-  //{...cars, ...services}
   services: [],
   messages: [],
   fetchState,

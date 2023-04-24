@@ -9,6 +9,7 @@ const useLogout = () => {
         dispatch(reset());
         navigate("/");
       };
+    
   return { onLogout };
 };
 export default useLogout;
