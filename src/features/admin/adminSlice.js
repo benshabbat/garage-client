@@ -12,7 +12,6 @@ const initialState = {
   users: [],
   cars: [],
   services: [],
-  messages: [],
   fetchState,
 };
 
@@ -56,22 +55,22 @@ export const getCars = createAsyncThunk("user/getCars", async (thunkAPI) => {
   }
 });
 
-export const getMessages = createAsyncThunk(
-  "user/getMessages",
-  async (thunkAPI) => {
-    try {
-      return await userService.getMessages();
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
+// export const getMessages = createAsyncThunk(
+//   "user/getMessages",
+//   async (thunkAPI) => {
+//     try {
+//       return await userService.getMessages();
+//     } catch (error) {
+//       const message =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
 
 export const createCar = createAsyncThunk(
   "user/createCar",
@@ -140,20 +139,6 @@ const adminSlice = createSlice({
         state.fetchState.message = action.payload;
         state.services = null;
       })
-      .addCase(getMessages.pending, (state) => {
-        state.fetchState.isLoading = true;
-      })
-      .addCase(getMessages.fulfilled, (state, action) => {
-        state.fetchState.isLoading = false;
-        state.fetchState.isSuccess = true;
-        state.messages = action.payload;
-      })
-      .addCase(getMessages.rejected, (state, action) => {
-        state.fetchState.isLoading = false;
-        state.fetchState.isError = true;
-        state.fetchState.message = action.payload;
-        state.messages = null;
-      });
   },
 });
 

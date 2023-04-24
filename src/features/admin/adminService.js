@@ -3,9 +3,6 @@ import axios from "axios";
 const API_URL_USER = "/users"
 const API_URL_CAR = "/cars"
 const API_URL_SERVICES = "/services"
-const API_URL_MESSAGES = "/messages"
-
-
 
 // get users
 
@@ -14,32 +11,22 @@ const getUsers = async () => {
     
     return data
 }
+const getCars = async () => {
+    const {data} = await axios.get(`${API_URL_CAR}`)
+    
+    return data
+}
 
-const getServicesByIdCar = async (carId) => {
-    const {data} = await axios.get(`${API_URL_SERVICES}/car/${carId}`)
+const getServices = async () => {
+    const {data} = await axios.get(`${API_URL_SERVICES}`)
     
     return data
 }
-const getServicesByIdUser = async (userId) => {
-    const {data} = await axios.get(`${API_URL_SERVICES}/user/${userId}`)
-    
-    return data
-}
-const getMessagesByIdUser = async (userId) => {
-    const {data} = await axios.get(`${API_URL_MESSAGES}/user/${userId}`)
-    
-    return data
-}
-const getCarsByIdUser = async (userId) => {
-    const {data} = await axios.get(`${API_URL_CAR}/user/${userId}`)
-    
-    return data
-}
-const userService = {
+
+const adminService = {
     getUsers,
-    getServicesByIdCar,
-    getServicesByIdUser,
-    createReqService,getMessagesByIdUser,getCarsByIdUser
+    getServices,
+    getCars
 };
 
-export default userService;
+export default adminService;
