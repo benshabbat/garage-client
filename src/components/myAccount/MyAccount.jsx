@@ -1,18 +1,12 @@
 import "./myAccount.css";
 import React from "react";
-import { logout, reset } from "../../features/auth/authSlice";
-import { useNavigate, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useLogout from "../../hooks/useLogout.js";
 const MyAccount = () => {
   const { user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const onLogout = () => {
-    dispatch(logout());
-    dispatch(reset());
-    navigate("/");
-  };
+  const { onLogout } = useLogout();
+
   return (
     <>
       <button className="dropbtn">My Account</button>
