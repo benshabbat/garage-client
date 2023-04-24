@@ -1,12 +1,17 @@
 import "./myAccount.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import useLogout from "../../hooks/useLogout.js";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../features/user/userSlice";
+import useLogout from "../../hooks/useLogout"
 const MyAccount = () => {
+  const { _id } = useSelector((state) => state.auth.user);
   const { user } = useSelector((state) => state.user);
-  const { onLogout } = useLogout();
-
+  const dispatch = useDispatch();
+  const {onLogout} = useLogout();
+  useEffect(() => {
+    dispatch(getUser(_id));
+  }, []);
   return (
     <>
       <button className="dropbtn">My Account</button>

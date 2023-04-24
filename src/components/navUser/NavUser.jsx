@@ -1,7 +1,7 @@
 import "./navUser.css";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import MyAccount from "../myAccount/MyAccount";
 const NavUser = () => {
   return (
     <>
@@ -13,6 +13,9 @@ const NavUser = () => {
       </div>
       <div className="item-nav">
         <Link to={`/messages`}>Messages</Link>
+      </div>
+      <div className="item-nav dropdown">
+        <MyAccount />
       </div>
     </>
   );
