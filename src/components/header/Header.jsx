@@ -32,17 +32,22 @@ const Header = () => {
             <Link to="/">Garage770</Link>
           </div>
           <div>
-            {userAuth ? <NavUser /> : <NavLanding />}
-            {userAuth && user?.isAdmin && <NavAdmin />}
             {userAuth ? (
-              <div className="item-nav dropdown">
-                <MyAccount />
-              </div>
+              <>
+              {user?.isAdmin && <NavAdmin />}
+                <NavUser />
+                <div className="item-nav dropdown">
+                  <MyAccount />
+                </div>
+              </>
             ) : (
-              <div className="item-nav">
-                <button onClick={handelClick}>Login</button>
-                <Login handelClick={handelClick} open={openModel} />
-              </div>
+              <>
+                <NavLanding />
+                <div className="item-nav">
+                  <button onClick={handelClick}>Login</button>
+                  <Login handelClick={handelClick} open={openModel} />
+                </div>
+              </>
             )}
           </div>
         </div>
