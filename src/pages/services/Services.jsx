@@ -1,15 +1,21 @@
-import "./services.css"
+import "./services.css";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
 import { getCarsByIdUser } from "../../features/user/userSlice";
+import { getServices } from "../../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";
+
 const Services = () => {
   const { user } = useSelector((state) => state.user);
+  const { services } = useSelector((state) => state.admin);
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    if(user?._id)dispatch(getCarsByIdUser(user?._id));
+    if (user?.isAdmin) {
+      dispatch(getServices());
+    }
+    if (user?._id) dispatch(getCarsByIdUser(user?._id));
   }, [user?._id]);
 
   const carFilter = user?.cars?.filter((car) => car._id === carId);
@@ -20,7 +26,7 @@ const Services = () => {
       {carId
         ? carFilter.map((car) => {
             return (
-              <div  key={car?._id}>
+              <div key={car?._id}>
                 <h2 className="title">{car?.numberPlate}</h2>
                 <Service carServices={car?.services} />
               </div>
@@ -34,6 +40,7 @@ const Services = () => {
               </div>
             );
           })}
+      {<Service carServices={services} />}
     </>
   );
 };
