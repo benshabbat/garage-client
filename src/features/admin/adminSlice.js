@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import userService from "./adminService";
+import adminService from "./adminService";
 
 const fetchState = {
   isError: false,
@@ -15,9 +15,9 @@ const initialState = {
   fetchState,
 };
 
-export const getUsers = createAsyncThunk("user/getUsers", async (thunkAPI) => {
+export const getUsers = createAsyncThunk("admin/getUsers", async (thunkAPI) => {
   try {
-    return await userService.getUsers();
+    return await adminService.getUsers();
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -28,10 +28,10 @@ export const getUsers = createAsyncThunk("user/getUsers", async (thunkAPI) => {
 });
 
 export const getServices = createAsyncThunk(
-  "user/getServices",
+  "admin/getServices",
   async (thunkAPI) => {
     try {
-      return await userService.getServices();
+      return await adminService.getServices();
     } catch (error) {
       const message =
         (error.response &&
@@ -43,9 +43,9 @@ export const getServices = createAsyncThunk(
     }
   }
 );
-export const getCars = createAsyncThunk("user/getCars", async (thunkAPI) => {
+export const getCars = createAsyncThunk("admin/getCars", async (thunkAPI) => {
   try {
-    return await userService.getCars();
+    return await adminService.getCars();
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -73,10 +73,10 @@ export const getCars = createAsyncThunk("user/getCars", async (thunkAPI) => {
 // );
 
 export const createCar = createAsyncThunk(
-  "user/createCar",
+  "admin/createCar",
   async (data, thunkAPI) => {
     try {
-      return await userService.createCar(data);
+      return await adminService.createCar(data);
     } catch (error) {
       const message =
         (error.response &&
@@ -138,7 +138,7 @@ const adminSlice = createSlice({
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
         state.services = null;
-      })
+      });
   },
 });
 

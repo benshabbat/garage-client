@@ -15,6 +15,9 @@ const NavAdmin = () => {
     <div className="item-nav">
         <Link to={`/users`}>Get Users</Link>
       </div>
+    <div className="item-nav">
+        <Link to={`/cars`}>Get Cars</Link>
+      </div>
        {/* <div className="item-nav">
         <button onClick={handelClick}>Create Car</button>
         <Register handelClick={handelClick} open={openModel} setOpen={setOpenModel} />

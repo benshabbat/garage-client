@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../features/admin/adminSlice";
-const Users = () => {
-  const { users } = useSelector((state) => state.admin);
+import { getCars } from "../features/admin/adminSlice";
+const Cars = () => {
+  const { cars } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getCars());
   }, []);
   return (
     <div className="table">
@@ -20,18 +20,20 @@ const Users = () => {
         <table className="table-messages">
           <thead>
             <tr>
-              <th>username</th>
-              <th>email</th>
-              <th>phone</th>
+              <th>owner</th>
+              <th>numberPlate</th>
+              <th>km</th>
+              <th>brand</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {cars.map((car) => {
               return (
-                <tr key={user?._id}>
-                  <td>{user?.username}</td>
-                  <td>{user?.email}</td>
-                  <td>{user?.phone}</td>
+                <tr key={car?._id}>
+                  <td>{car?.owner}</td>
+                  <td>{car?.numberPlate}</td>
+                  <td>{car?.km}</td>
+                  <td>{car?.brand}</td>
                 </tr>
               );
             })}
@@ -42,4 +44,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Cars;
