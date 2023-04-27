@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCars } from "../features/admin/adminSlice";
+import { getCarsByType } from "../features/admin/adminSlice";
 const Cars = () => {
   const { cars } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(getCarsByType());
   }, []);
   return (
     <div className="table">
@@ -30,7 +30,7 @@ const Cars = () => {
             {cars.map((car) => {
               return (
                 <tr key={car?._id}>
-                  <td>{car?.owner}</td>
+                  <td>{car?.owner?.username}</td>
                   <td>{car?.numberPlate}</td>
                   <td>{car?.km}</td>
                   <td>{car?.brand}</td>

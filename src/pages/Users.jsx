@@ -23,6 +23,7 @@ const Users = () => {
               <th>username</th>
               <th>email</th>
               <th>phone</th>
+              {/* <th>cars</th> */}
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,7 @@ const Users = () => {
                   <td>{user?.username}</td>
                   <td>{user?.email}</td>
                   <td>{user?.phone}</td>
+                  {/* <td>{user?.cars}</td> */}
                 </tr>
               );
             })}
