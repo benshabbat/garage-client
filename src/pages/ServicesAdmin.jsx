@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { getServices } from "../features/admin/adminSlice";
+import { getServicesByType } from "../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";
 const ServicesAdmin = () => {
     const { services } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
     useEffect(() => {
       
-        dispatch(getServices());
+        dispatch(getServicesByType());
       
     }, []);
   
@@ -34,7 +34,7 @@ const ServicesAdmin = () => {
           {services.map((service) => {
             return (
               <tr key={service?._id}>
-                <td>{service?.car}</td>
+                <td>{service?.car?.numberPlate}</td>
                 <td>{service?.title}</td>
                 <td>{service?.description}</td>
                 <td>{service?.price}</td>

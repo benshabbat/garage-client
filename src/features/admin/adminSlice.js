@@ -43,6 +43,22 @@ export const getServices = createAsyncThunk(
     }
   }
 );
+export const getServicesByType = createAsyncThunk(
+  "admin/getServicesByType",
+  async (thunkAPI) => {
+    try {
+      return await adminService.getServicesByType();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 export const getCars = createAsyncThunk("admin/getCars", async (thunkAPI) => {
   try {
     return await adminService.getCars();
@@ -131,6 +147,20 @@ const adminSlice = createSlice({
         state.services = action.payload;
       })
       .addCase(getServices.rejected, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isError = true;
+        state.fetchState.message = action.payload;
+        state.services = null;
+      })
+      .addCase(getServicesByType.pending, (state) => {
+        state.fetchState.isLoading = true;
+      })
+      .addCase(getServicesByType.fulfilled, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isSuccess = true;
+        state.services = action.payload;
+      })
+      .addCase(getServicesByType.rejected, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;

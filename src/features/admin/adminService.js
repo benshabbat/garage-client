@@ -27,12 +27,18 @@ const getServices = async () => {
     
     return data
 }
+const getServicesByType = async () => {
+    const {data} = await axios.get(`${API_URL_SERVICES}/populate?populate=car`)
+    
+    return data
+}
 
 const adminService = {
     getUsers,
     getServices,
     getCars,
-    getCarsByType
+    getCarsByType,
+    getServicesByType
 };
 
 export default adminService;
