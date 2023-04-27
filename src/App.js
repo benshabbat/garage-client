@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Account,Services,Messages,PageLanding} from "./pages"
+import {Account,Services,Messages,PageLanding,Users} from "./pages"
 import Header from "./components/header/Header.jsx";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PageLanding />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/users" element={<Users />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/services/user/" element={<Services />} />
           <Route path="/services/car/:carId" element={<Services />} />
