@@ -3,18 +3,13 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
 import { getCarsByIdUser } from "../../features/user/userSlice";
-import { getServices } from "../../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Services = () => {
   const { user } = useSelector((state) => state.user);
-  const { services } = useSelector((state) => state.admin);
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    if (user?.isAdmin) {
-      dispatch(getServices());
-    }
     if (user?._id) dispatch(getCarsByIdUser(user?._id));
   }, [user?._id]);
 
@@ -40,7 +35,6 @@ const Services = () => {
               </div>
             );
           })}
-      {<Service carServices={services} />}
     </>
   );
 };
