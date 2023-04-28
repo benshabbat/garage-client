@@ -13,9 +13,9 @@ const PageLanding = () => {
   return (
     <div className="main">
       <Home />
-      <Address />
       <About />
       <ServicesLanding />
+      <Address />
       <Contact />
       <Reviews />
       <footer>Written By Menachem & DavidChen</footer>
