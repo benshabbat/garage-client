@@ -38,8 +38,8 @@ const ServicesAdmin = () => {
                 <td>{service?.title}</td>
                 <td>{service?.description}</td>
                 <td>{service?.price}</td>
-                <td>{service?.paid}</td>
-                <td>{service?.status}</td>
+                <td>{service?.paid&&"paid"}</td>
+                <td><div className={`status2 ${service?.status}`}>{service?.status}</div></td>
               </tr>
             );
           })}

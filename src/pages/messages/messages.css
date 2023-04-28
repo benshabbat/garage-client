@@ -101,28 +101,24 @@ tbody tr:nth-child(even) {
   background-color: #0000000b;
 }
 
-.status {
-  padding: 0.4rem 0;
-  border-radius: 2rem;
+.status2 {
+  width: max-content;
+  padding: 4px 4px;
   text-align: center;
 }
-
-.status.delivered {
+.done {
   background-color: #86e49d;
   color: #006b21;
 }
 
-.status.cancelled {
+.pending {
   background-color: #d893a3;
   color: #b30021;
 }
 
-.status.pending {
+.on-work {
   background-color: #ebc474;
-}
-
-.status.shipped {
-  background-color: #6fcaea;
+  color: #8e7d12;
 }
 
 @media (max-width: 1000px) {
