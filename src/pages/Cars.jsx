@@ -7,7 +7,7 @@ const Cars = () => {
   useEffect(() => {
     dispatch(getCarsByType());
   }, []);
-  const [filterCars, setFilterCars] = useState(cars);
+  const [filterCars, setFilterCars] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
 
@@ -46,7 +46,7 @@ const Cars = () => {
             </tr>
           </thead>
           <tbody>
-            {filterCars?filterCars.map((car) => {
+            {filterCars?filterCars?.map((car) => {
               return (
                 <tr key={car?._id}>
                   <td>{car?.owner?.username}</td>
@@ -55,7 +55,7 @@ const Cars = () => {
                   <td>{car?.brand}</td>
                 </tr>
               );
-            }):cars.map((car) => {
+            }):cars?.map((car) => {
               return (
                 <tr key={car?._id}>
                   <td>{car?.owner?.username}</td>

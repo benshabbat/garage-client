@@ -7,7 +7,7 @@ const Users = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, []);
-  const [filterUsers, setFilterUsers] = useState(users);
+  const [filterUsers, setFilterUsers] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
 
@@ -45,7 +45,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {filterUsers?filterUsers.map((user) => {
+            {filterUsers?filterUsers?.map((user) => {
               return (
                 <tr key={user?._id}>
                   <td>{user?.username}</td>
@@ -54,7 +54,7 @@ const Users = () => {
                   {/* <td>{user?.cars}</td> */}
                 </tr>
               );
-            }):users.map((user) => {
+            }):users?.map((user) => {
               return (
                 <tr key={user?._id}>
                   <td>{user?.username}</td>

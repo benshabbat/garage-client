@@ -7,7 +7,7 @@ const ServicesAdmin = () => {
   useEffect(() => {
     dispatch(getServicesByType());
   }, []);
-  const [servicesFilter, setServicesFilter] = useState("");
+  const [servicesFilter, setServicesFilter] = useState();
 
   const filterSearch = (e) => {
     const { value } = e.target;
