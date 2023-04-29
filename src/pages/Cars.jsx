@@ -16,11 +16,21 @@ const Cars = () => {
     setFilterCars(
       cars.filter(
         (item) =>
-        item.owner?.username.includes(value) ||
-        item.numberPlate.includes(value) ||
-        item.km.toString().includes(value) ||
-        item.brand.includes(value)
+          item.owner?.username.includes(value) ||
+          item.numberPlate.includes(value) ||
+          item.km.toString().includes(value) ||
+          item.brand.includes(value)
       )
+    );
+  };
+  const bodyCars = (car) => {
+    return (
+      <tr key={car?._id}>
+        <td>{car?.owner?.username}</td>
+        <td>{car?.numberPlate}</td>
+        <td>{car?.km}</td>
+        <td>{car?.brand}</td>
+      </tr>
     );
   };
   return (
@@ -46,25 +56,7 @@ const Cars = () => {
             </tr>
           </thead>
           <tbody>
-            {filterCars?filterCars?.map((car) => {
-              return (
-                <tr key={car?._id}>
-                  <td>{car?.owner?.username}</td>
-                  <td>{car?.numberPlate}</td>
-                  <td>{car?.km}</td>
-                  <td>{car?.brand}</td>
-                </tr>
-              );
-            }):cars?.map((car) => {
-              return (
-                <tr key={car?._id}>
-                  <td>{car?.owner?.username}</td>
-                  <td>{car?.numberPlate}</td>
-                  <td>{car?.km}</td>
-                  <td>{car?.brand}</td>
-                </tr>
-              );
-            })}
+            {filterCars ? filterCars?.map(bodyCars) : cars?.map(bodyCars)}
           </tbody>
         </table>
       </section>

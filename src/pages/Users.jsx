@@ -10,16 +10,23 @@ const Users = () => {
   const [filterUsers, setFilterUsers] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
-
-    // const filterS = users?;
-
     setFilterUsers(
       users.filter(
         (item) =>
-        item.username.includes(value) ||
-        item.email.includes(value) ||
-        item.phone.includes(value)
+          item.username.includes(value) ||
+          item.email.includes(value) ||
+          item.phone.includes(value)
       )
+    );
+  };
+  const bodyUser = (user) => {
+    return (
+      <tr key={user?._id}>
+        <td>{user?.username}</td>
+        <td>{user?.email}</td>
+        <td>{user?.phone}</td>
+        {/* <td>{user?.cars}</td> */}
+      </tr>
     );
   };
   return (
@@ -45,25 +52,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {filterUsers?filterUsers?.map((user) => {
-              return (
-                <tr key={user?._id}>
-                  <td>{user?.username}</td>
-                  <td>{user?.email}</td>
-                  <td>{user?.phone}</td>
-                  {/* <td>{user?.cars}</td> */}
-                </tr>
-              );
-            }):users?.map((user) => {
-              return (
-                <tr key={user?._id}>
-                  <td>{user?.username}</td>
-                  <td>{user?.email}</td>
-                  <td>{user?.phone}</td>
-                  {/* <td>{user?.cars}</td> */}
-                </tr>
-              );
-            })}
+            {filterUsers ? filterUsers?.map(bodyUser) : users?.map(bodyUser)}
           </tbody>
         </table>
       </section>

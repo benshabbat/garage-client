@@ -15,13 +15,27 @@ const ServicesAdmin = () => {
     setServicesFilter(
       services.filter(
         (item) =>
-        item.car?.numberPlate.includes(value) ||
-        item.title.includes(value) ||
-        item.description.includes(value) ||
-        item.price.toString().includes(value) ||
-        item.paid.toString().includes(value) ||
-        item.status.includes(value)
+          item.car?.numberPlate.includes(value) ||
+          item.title.includes(value) ||
+          item.description.includes(value) ||
+          item.price.toString().includes(value) ||
+          item.paid.toString().includes(value) ||
+          item.status.includes(value)
       )
+    );
+  };
+  const bodyServices = (service) => {
+    return (
+      <tr key={service?._id}>
+        <td>{service?.car?.numberPlate}</td>
+        <td>{service?.title}</td>
+        <td>{service?.description}</td>
+        <td>{service?.price}</td>
+        <td>{service?.paid ? "true" : "false"}</td>
+        <td>
+          <div className={`status2 ${service?.status}`}>{service?.status}</div>
+        </td>
+      </tr>
     );
   };
   return (
@@ -49,37 +63,9 @@ const ServicesAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {servicesFilter?servicesFilter?.map((service) => {
-              return (
-                <tr key={service?._id}>
-                  <td>{service?.car?.numberPlate}</td>
-                  <td>{service?.title}</td>
-                  <td>{service?.description}</td>
-                  <td>{service?.price}</td>
-                  <td>{service?.paid ? "true" : "false"}</td>
-                  <td>
-                    <div className={`status2 ${service?.status}`}>
-                      {service?.status}
-                    </div>
-                  </td>
-                </tr>
-              );
-            }):services?.map((service) => {
-              return (
-                <tr key={service?._id}>
-                  <td>{service?.car?.numberPlate}</td>
-                  <td>{service?.title}</td>
-                  <td>{service?.description}</td>
-                  <td>{service?.price}</td>
-                  <td>{service?.paid ? "true" : "false"}</td>
-                  <td>
-                    <div className={`status2 ${service?.status}`}>
-                      {service?.status}
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            {servicesFilter
+              ? servicesFilter?.map(bodyServices)
+              : services?.map(bodyServices)}
           </tbody>
         </table>
       </section>
