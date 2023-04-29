@@ -1,3 +1,4 @@
+import "../components/table.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
@@ -30,7 +31,7 @@ const Users = () => {
     );
   };
   return (
-    <div className="table">
+    <div className="table-container">
       <section className="table__header">
         <h1>Users</h1>
         <div className="input-group">
@@ -42,7 +43,7 @@ const Users = () => {
         </div>
       </section>
       <section className="table__body">
-        <table className="table-messages">
+        <table>
           <thead>
             <tr>
               <th>username</th>

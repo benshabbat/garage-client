@@ -1,3 +1,4 @@
+import "../components/table.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCarsByType } from "../features/admin/adminSlice";
@@ -10,9 +11,6 @@ const Cars = () => {
   const [filterCars, setFilterCars] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
-
-    // const filterS = users?;
-
     setFilterCars(
       cars.filter(
         (item) =>
@@ -34,7 +32,7 @@ const Cars = () => {
     );
   };
   return (
-    <div className="table">
+    <div className="table-container">
       <section className="table__header">
         <h1>Cars</h1>
         <div className="input-group">
@@ -46,7 +44,7 @@ const Cars = () => {
         </div>
       </section>
       <section className="table__body">
-        <table className="table-messages">
+        <table>
           <thead>
             <tr>
               <th>owner</th>

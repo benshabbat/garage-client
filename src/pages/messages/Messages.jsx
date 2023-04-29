@@ -1,4 +1,4 @@
-import "./messages.css";
+import "../../components/table.css"
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessagesByIdUser } from "../../features/user/userSlice";
@@ -9,7 +9,7 @@ const Messages = () => {
     if (user?._id) dispatch(getMessagesByIdUser(user?._id));
   }, [user?._id]);
   return (
-    <div className="table">
+    <div className="table-container">
       <section className="table__header">
         <h1>Messages</h1>
         <div className="input-group">
@@ -17,7 +17,7 @@ const Messages = () => {
         </div>
       </section>
       <section className="table__body">
-        <table className="table-messages">
+        <table>
           <thead>
             <tr>
               <th>from</th>

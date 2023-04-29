@@ -1,3 +1,4 @@
+import "../components/table.css"
 import React, { useEffect, useState } from "react";
 import { getServicesByType } from "../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -33,13 +34,13 @@ const ServicesAdmin = () => {
         <td>{service?.price}</td>
         <td>{service?.paid ? "true" : "false"}</td>
         <td>
-          <div className={`status2 ${service?.status}`}>{service?.status}</div>
+          <div className={`status ${service?.status}`}>{service?.status}</div>
         </td>
       </tr>
     );
   };
   return (
-    <div className="table">
+    <div className="table-container">
       <section className="table__header">
         <h1>Services</h1>
         <div className="input-group">
@@ -51,7 +52,7 @@ const ServicesAdmin = () => {
         </div>
       </section>
       <section className="table__body">
-        <table className="table-messages">
+        <table>
           <thead>
             <tr>
               <th>car</th>
