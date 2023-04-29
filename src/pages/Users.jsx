@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
@@ -8,12 +8,31 @@ const Users = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, []);
+  const [filterUsers, setFilterUsers] = useState(users);
+  const filterSearch = (e) => {
+    const { value } = e.target;
+
+    // const filterS = users?;
+
+    setFilterUsers(
+      users.filter(
+        (s) =>
+          s.username.includes(value) ||
+          s.email.includes(value) ||
+          s.phone.includes(value)
+      )
+    );
+  };
   return (
     <div className="table">
       <section className="table__header">
         <h1>Users</h1>
         <div className="input-group">
-          <input type="search" placeholder="Search Data..." />
+          <input
+            type="search"
+            placeholder="Search Data..."
+            onChange={filterSearch}
+          />
         </div>
       </section>
       <section className="table__body">
@@ -27,7 +46,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {filterUsers.map((user) => {
               return (
                 <tr key={user?._id}>
                   <td>{user?.username}</td>

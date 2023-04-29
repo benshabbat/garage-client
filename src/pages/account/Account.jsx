@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ReqService from "../reqService/ReqService";
-import OpenModel from "../../components/openModel/OpenModel"
 
 const Account = () => {
   const { user} = useSelector((state) => state.user);
@@ -73,8 +72,11 @@ const Account = () => {
             })}
         </tbody>
       </table>
-      {/* {openModel && <ReqService carId={carId} handelClick={handelClick} />} */}
-      <OpenModel open={openModel} model={<ReqService carId={carId} handelClick={handelClick} />}/>
+      {openModel && <ReqService carId={carId} handelClick={handelClick} />}
+      
+      {/* {
+         <ReqService carId={carId} handelClick={handelClick} open={openModel} />
+      } */}
     </>
   );
 };

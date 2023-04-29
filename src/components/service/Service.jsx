@@ -10,6 +10,7 @@ const Service = ({ carServices }) => {
             <th>description</th>
             <th>price</th>
             <th>paid</th>
+            <th>status</th>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +20,8 @@ const Service = ({ carServices }) => {
                 <td>{service?.title}</td>
                 <td>{service?.description}</td>
                 <td>{service?.price}</td>
-                <td>{service?.paid}</td>
+                <td>{service?.paid&&"paid"}</td>
+                <td><div className={`status2 ${service?.status}`}>{service?.status}</div></td>
               </tr>
             );
           })}
