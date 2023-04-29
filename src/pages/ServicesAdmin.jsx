@@ -7,20 +7,20 @@ const ServicesAdmin = () => {
   useEffect(() => {
     dispatch(getServicesByType());
   }, []);
-  const [servicesFilter, setServicesFilter] = useState(services);
+  const [servicesFilter, setServicesFilter] = useState("");
 
   const filterSearch = (e) => {
     const { value } = e.target;
 
     setServicesFilter(
       services.filter(
-        (s) =>
-          s?.car?.numberPlate.includes(value) ||
-          s.title.includes(value) ||
-          s.description.includes(value) ||
-          s.price.toString().includes(value) ||
-          s.paid.toString().includes(value) ||
-          s.status.includes(value)
+        (item) =>
+        item.car?.numberPlate.includes(value) ||
+        item.title.includes(value) ||
+        item.description.includes(value) ||
+        item.price.toString().includes(value) ||
+        item.paid.toString().includes(value) ||
+        item.status.includes(value)
       )
     );
   };
@@ -49,14 +49,29 @@ const ServicesAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {servicesFilter.map((service) => {
+            {servicesFilter?servicesFilter?.map((service) => {
               return (
                 <tr key={service?._id}>
                   <td>{service?.car?.numberPlate}</td>
                   <td>{service?.title}</td>
                   <td>{service?.description}</td>
                   <td>{service?.price}</td>
-                  <td>{service?.paid ?"true":"false"}</td>
+                  <td>{service?.paid ? "true" : "false"}</td>
+                  <td>
+                    <div className={`status2 ${service?.status}`}>
+                      {service?.status}
+                    </div>
+                  </td>
+                </tr>
+              );
+            }):services?.map((service) => {
+              return (
+                <tr key={service?._id}>
+                  <td>{service?.car?.numberPlate}</td>
+                  <td>{service?.title}</td>
+                  <td>{service?.description}</td>
+                  <td>{service?.price}</td>
+                  <td>{service?.paid ? "true" : "false"}</td>
                   <td>
                     <div className={`status2 ${service?.status}`}>
                       {service?.status}

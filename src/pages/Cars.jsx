@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCarsByType } from "../features/admin/adminSlice";
 const Cars = () => {
@@ -8,12 +7,32 @@ const Cars = () => {
   useEffect(() => {
     dispatch(getCarsByType());
   }, []);
+  const [filterCars, setFilterCars] = useState(cars);
+  const filterSearch = (e) => {
+    const { value } = e.target;
+
+    // const filterS = users?;
+
+    setFilterCars(
+      cars.filter(
+        (item) =>
+        item.owner?.username.includes(value) ||
+        item.numberPlate.includes(value) ||
+        item.km.toString().includes(value) ||
+        item.brand.includes(value)
+      )
+    );
+  };
   return (
     <div className="table">
       <section className="table__header">
-        <h1>Users</h1>
+        <h1>Cars</h1>
         <div className="input-group">
-          <input type="search" placeholder="Search Data..." />
+          <input
+            type="search"
+            placeholder="Search Data..."
+            onChange={filterSearch}
+          />
         </div>
       </section>
       <section className="table__body">
@@ -27,7 +46,16 @@ const Cars = () => {
             </tr>
           </thead>
           <tbody>
-            {cars.map((car) => {
+            {filterCars?filterCars.map((car) => {
+              return (
+                <tr key={car?._id}>
+                  <td>{car?.owner?.username}</td>
+                  <td>{car?.numberPlate}</td>
+                  <td>{car?.km}</td>
+                  <td>{car?.brand}</td>
+                </tr>
+              );
+            }):cars.map((car) => {
               return (
                 <tr key={car?._id}>
                   <td>{car?.owner?.username}</td>

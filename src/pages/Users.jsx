@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
 const Users = () => {
@@ -16,10 +15,10 @@ const Users = () => {
 
     setFilterUsers(
       users.filter(
-        (s) =>
-          s.username.includes(value) ||
-          s.email.includes(value) ||
-          s.phone.includes(value)
+        (item) =>
+        item.username.includes(value) ||
+        item.email.includes(value) ||
+        item.phone.includes(value)
       )
     );
   };
@@ -46,7 +45,16 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {filterUsers.map((user) => {
+            {filterUsers?filterUsers.map((user) => {
+              return (
+                <tr key={user?._id}>
+                  <td>{user?.username}</td>
+                  <td>{user?.email}</td>
+                  <td>{user?.phone}</td>
+                  {/* <td>{user?.cars}</td> */}
+                </tr>
+              );
+            }):users.map((user) => {
               return (
                 <tr key={user?._id}>
                   <td>{user?.username}</td>
