@@ -18,8 +18,8 @@ const ServicesAdmin = () => {
           s?.car?.numberPlate.includes(value) ||
           s.title.includes(value) ||
           s.description.includes(value) ||
-          // s.price.includes(value) ||
-          // s.paid.includes(value) ||
+          s.price.toString().includes(value) ||
+          s.paid.toString().includes(value) ||
           s.status.includes(value)
       )
     );
@@ -56,7 +56,7 @@ const ServicesAdmin = () => {
                   <td>{service?.title}</td>
                   <td>{service?.description}</td>
                   <td>{service?.price}</td>
-                  <td>{service?.paid && "paid"}</td>
+                  <td>{service?.paid ?"true":"false"}</td>
                   <td>
                     <div className={`status2 ${service?.status}`}>
                       {service?.status}
