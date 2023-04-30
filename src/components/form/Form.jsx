@@ -22,6 +22,7 @@ const Form = ({ title, sec_title, inputs, onSubmit, handelClick,setData }) => {
               className="form-control"
               type={i.type}
               name={i.name}
+              value={i.value}
               onChange={handleChange}
               required
             />

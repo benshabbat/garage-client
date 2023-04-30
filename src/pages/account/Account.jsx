@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ReqService from "../reqService/ReqService";
 
 const Account = () => {
-  const { user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const [carId, setCarId] = useState("");
   const [openModel, setOpenModel] = useState(false);
 
@@ -72,11 +72,9 @@ const Account = () => {
             })}
         </tbody>
       </table>
-      {openModel && <ReqService carId={carId} handelClick={handelClick} />}
-      
-      {/* {
-         <ReqService carId={carId} handelClick={handelClick} open={openModel} />
-      } */}
+      {/* {openModel && <ReqService carId={carId} handelClick={handelClick} />} */}
+
+      {<ReqService carId={carId} handelClick={handelClick} open={openModel} />}
     </>
   );
 };
