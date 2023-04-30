@@ -11,4 +11,7 @@ export { default as Service } from "./service/Service";
 export { default as ServicesLanding } from "./servicesLanding/ServicesLanding";
 export { default as OpenModel } from "./openModel/OpenModel";
 export { default as Form } from "./form/Form";
+export { default as CreateCar } from "./createCar/CreateCar";
+export { default as Register } from "./register/Register";
+export { default as Login } from "./login/Login";
 

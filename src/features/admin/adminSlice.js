@@ -70,17 +70,22 @@ export const getCars = createAsyncThunk("admin/getCars", async (thunkAPI) => {
     return thunkAPI.rejectWithValue(message);
   }
 });
-export const getCarsByType = createAsyncThunk("admin/getCarsByType", async (thunkAPI) => {
-  try {
-    return await adminService.getCarsByType();
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const getCarsByType = createAsyncThunk(
+  "admin/getCarsByType",
+  async (thunkAPI) => {
+    try {
+      return await adminService.getCarsByType();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 // export const getMessages = createAsyncThunk(
 //   "user/getMessages",
@@ -101,9 +106,9 @@ export const getCarsByType = createAsyncThunk("admin/getCarsByType", async (thun
 
 export const createCar = createAsyncThunk(
   "admin/createCar",
-  async (data, thunkAPI) => {
+  async (userId,data, thunkAPI) => {
     try {
-      return await adminService.createCar(data);
+      return await adminService.createCar(userId,data);
     } catch (error) {
       const message =
         (error.response &&
@@ -189,6 +194,19 @@ const adminSlice = createSlice({
         state.cars = action.payload;
       })
       .addCase(getCarsByType.rejected, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isError = true;
+        state.fetchState.message = action.payload;
+        state.services = null;
+      })
+      .addCase(createCar.pending, (state) => {
+        state.fetchState.isLoading = true;
+      })
+      .addCase(createCar.fulfilled, (state, action) => {
+        state.fetchState.isLoading = false;
+        state.fetchState.isSuccess = true;
+      })
+      .addCase(createCar.rejected, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;

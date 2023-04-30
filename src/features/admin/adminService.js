@@ -32,13 +32,20 @@ const getServicesByType = async () => {
     
     return data
 }
+const createCar = async (userId,dataUser) => {
+    const { data } = await axios.post(`${API_URL_CAR}/${userId}`,dataUser);
+  
+    return data;
+  };
+  
 
 const adminService = {
     getUsers,
     getServices,
     getCars,
     getCarsByType,
-    getServicesByType
+    getServicesByType,
+    createCar
 };
 
 export default adminService;
