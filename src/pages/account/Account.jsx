@@ -26,10 +26,10 @@ const Account = () => {
     <>
       <h1 className="h-title">{`hello ${user?.username}`}</h1>
       <h2 className="title">Your cars</h2>
-
-      <table className="table">
-        <thead className="table-head">
-          <tr className="table-row">
+      <section className="table__body">
+      <table>
+        <thead>
+          <tr>
             <th>mark</th>
             <th>brand</th>
             <th>model</th>
@@ -47,7 +47,7 @@ const Account = () => {
               const dateArray = car.updatedAt.slice(0, 10).split("-");
               const [year, month, day] = dateArray;
               return (
-                <tr key={car._id} className="table-row">
+                <tr key={car._id}>
                   <td>
                     <input type="checkbox" />
                   </td>
@@ -72,8 +72,7 @@ const Account = () => {
             })}
         </tbody>
       </table>
-      {/* {openModel && <ReqService carId={carId} handelClick={handelClick} />} */}
-
+      </section>
       {<ReqService carId={carId} handelClick={handelClick} open={openModel} />}
     </>
   );
