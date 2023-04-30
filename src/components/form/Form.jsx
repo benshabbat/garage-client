@@ -1,3 +1,4 @@
+import "./form.css"
 import React from "react";
 
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -8,14 +9,14 @@ const Form = ({ title, sec_title, inputs, onSubmit, handelClick,setData }) => {
     setData((prevState) => ({ ...prevState, [name]: value }));
   };
   return (
-    <form className="login-form" onSubmit={onSubmit}>
-      <CancelIcon onClick={handelClick} className="review-close" />
+    <form className="form" onSubmit={onSubmit}>
+      <CancelIcon onClick={handelClick} className="form-close" />
       <h1 className="header">{title}</h1>
       <h2>{sec_title}</h2>
       {inputs.map((i, index) => {
         return (
-          <label key={index} className="login-label">
-            <span className="title-label">{i.name}</span>
+          <label key={index} className="form-label">
+            <span className="form-label">{i.name}</span>
             <input
               placeholder={i.name}
               className="form-control"
@@ -27,7 +28,7 @@ const Form = ({ title, sec_title, inputs, onSubmit, handelClick,setData }) => {
           </label>
         );
       })}
-      <button  type="submit" className="login-btn" >
+      <button  type="submit" className="form-btn" >
         {title}
       </button>
     </form>

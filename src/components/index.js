@@ -9,4 +9,6 @@ export { default as Review } from "./review/Review";
 export { default as Reviews } from "./reviews/Reviews";
 export { default as Service } from "./service/Service";
 export { default as ServicesLanding } from "./servicesLanding/ServicesLanding";
+export { default as OpenModel } from "./openModel/OpenModel";
+export { default as Form } from "./form/Form";
 

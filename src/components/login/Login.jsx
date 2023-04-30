@@ -1,9 +1,8 @@
-import "./login.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
-import Form from "../form/Form";
-import OpenModel from "../openModel/OpenModel";
+import {Form,OpenModel} from "../index";
+
 
 const Login = ({ handelClick, open }) => {
   const [formData, setFormData] = useState();
