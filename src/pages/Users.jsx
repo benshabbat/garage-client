@@ -74,7 +74,7 @@ const Users = () => {
           </table>
         </section>
       </div>
-      {<CreateCar userId={userId} handelClick={handelClick} open={openModel} />}
+      <CreateCar userId={userId} handelClick={handelClick} open={openModel} />
     </>
   );
 };
