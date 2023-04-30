@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
-import {Form,OpenModel} from "../index";
+import { Form, OpenModel } from "../index";
 
-
-const Login = ({ handelClick, open }) => {
+const Login = ({ handelClick=null, open }) => {
   const [formData, setFormData] = useState();
   const dispatch = useDispatch();
   const onSubmit = (e) => {

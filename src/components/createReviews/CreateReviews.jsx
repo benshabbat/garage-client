@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { Rating } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import "./createReviews.css";
-const CreateReviews = ({ handelClick }) => {
+import { OpenModel } from "../index";
+const CreateReviews = ({ handelClick,open }) => {
   const nameRef = useRef();
   const descRef = useRef();
   const numRef = useRef();
@@ -10,12 +11,12 @@ const CreateReviews = ({ handelClick }) => {
   const [star, setStar] = useState(5);
 
   return (
-    <div className="create-review-background">
-      <div className="create-review-container">
-        <form className="create-review-form">
-          <CancelIcon onClick={handelClick} className="review-close" />
+        <OpenModel
+        comp={
+          <form className="form">
+          <CancelIcon onClick={handelClick} className="form-close" />
           <h1>garage review</h1>
-          <label className="create-review-label">
+          <label className="form-label">
             <Rating
               style={{ fontSize: 45, top: "15px" }}
               value={star}
@@ -24,7 +25,7 @@ const CreateReviews = ({ handelClick }) => {
               }}
             />
           </label>
-          <label className="create-review-label">
+          <label className="form-label">
             <span>Name</span>
             <input
               ref={nameRef}
@@ -33,7 +34,7 @@ const CreateReviews = ({ handelClick }) => {
               placeholder="type your name.."
             />
           </label>
-          <label className="create-review-label">
+          <label className="form-label">
             <span>Description </span>
             <textarea
               ref={descRef}
@@ -50,7 +51,7 @@ const CreateReviews = ({ handelClick }) => {
             <input className="num" ref={numRef} value={maxLength} readOnly />
           </label>
           <button
-            className="btn"
+            className="form-btn"
             onClick={(e) => {
               e.preventDefault();
               console.log({
@@ -64,8 +65,9 @@ const CreateReviews = ({ handelClick }) => {
             Add Reviews
           </button>
         </form>
-      </div>
-    </div>
+        }
+        open={open}
+      />
   );
 };
 

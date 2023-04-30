@@ -79,7 +79,7 @@ const Reviews = () => {
       <button className="btn" onClick={handelClick}>
         Add Review
       </button>
-      {openModel && <CreateReviews handelClick={handelClick} />}
+      {<CreateReviews handelClick={handelClick}open={openModel}/>}
     </div>
   );
 };
