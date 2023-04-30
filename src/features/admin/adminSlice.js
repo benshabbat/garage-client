@@ -87,40 +87,6 @@ export const getCarsByType = createAsyncThunk(
   }
 );
 
-// export const getMessages = createAsyncThunk(
-//   "user/getMessages",
-//   async (thunkAPI) => {
-//     try {
-//       return await userService.getMessages();
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
-//       return thunkAPI.rejectWithValue(message);
-//     }
-//   }
-// );
-
-export const createCar = createAsyncThunk(
-  "admin/createCar",
-  async (userId, thunkAPI) => {
-    try {
-      return await adminService.createCar(userId);  
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
 const adminSlice = createSlice({
   name: "admin",
   initialState,
@@ -194,19 +160,6 @@ const adminSlice = createSlice({
         state.cars = action.payload;
       })
       .addCase(getCarsByType.rejected, (state, action) => {
-        state.fetchState.isLoading = false;
-        state.fetchState.isError = true;
-        state.fetchState.message = action.payload;
-        state.services = null;
-      })
-      .addCase(createCar.pending, (state) => {
-        state.fetchState.isLoading = true;
-      })
-      .addCase(createCar.fulfilled, (state, action) => {
-        state.fetchState.isLoading = false;
-        state.fetchState.isSuccess = true;
-      })
-      .addCase(createCar.rejected, (state, action) => {
         state.fetchState.isLoading = false;
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
