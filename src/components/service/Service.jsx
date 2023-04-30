@@ -1,4 +1,4 @@
-import "../table.css";
+import "../table/table.css";
 import React from "react";
 const Service = ({ carServices }) => {
   return (

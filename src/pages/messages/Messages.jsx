@@ -1,4 +1,4 @@
-import "../../components/table.css"
+import "../../components/table/table.css"
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessagesByIdUser } from "../../features/user/userSlice";

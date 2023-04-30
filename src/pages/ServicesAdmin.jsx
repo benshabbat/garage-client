@@ -1,4 +1,4 @@
-import "../components/table.css"
+import "../components/table/table.css"
 import React, { useEffect, useState } from "react";
 import { getServicesByType } from "../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";

@@ -1,4 +1,4 @@
-import "../components/table.css";
+import "../components/table/table.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
@@ -37,7 +37,6 @@ const Users = () => {
         <td>{user?.username}</td>
         <td>{user?.email}</td>
         <td>{user?.phone}</td>
-        {/* <td>{user?.cars}</td> */}
         <td>
           <button value={user?._id} onClick={handleUserID}>
             Create Car
@@ -67,7 +66,6 @@ const Users = () => {
                 <th>email</th>
                 <th>phone</th>
                 <th>Create Car</th>
-                {/* <th>cars</th> */}
               </tr>
             </thead>
             <tbody>
