@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
 import { CreateCar } from "../components";
+import useOpenModel from "../hooks/useOpenModel";
 const Users = () => {
   const { users } = useSelector((state) => state.admin);
   const [userId, setUserId] = useState("");
-  const [openModel, setOpenModel] = useState(false);
+  const { openModel, handelClick,setOpenModel } = useOpenModel();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
@@ -23,10 +24,12 @@ const Users = () => {
       )
     );
   };
-  const handelClick = (e) => {
-    console.log(e.target.value);
-    setUserId(e.target.value);
-    setOpenModel((current) => !current);
+  const handleUserID = (e) => {
+    if (e.target.value) {
+      console.log(e.target.value);
+      setUserId(e.target.value);
+      setOpenModel((current) => !current);
+    }
   };
   const bodyUser = (user) => {
     return (
@@ -36,7 +39,7 @@ const Users = () => {
         <td>{user?.phone}</td>
         {/* <td>{user?.cars}</td> */}
         <td>
-          <button value={user?._id} onClick={handelClick}>
+          <button value={user?._id} onClick={handleUserID}>
             Create Car
           </button>
         </td>

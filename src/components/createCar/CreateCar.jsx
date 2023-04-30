@@ -1,22 +1,12 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createCar, getUsers } from "../../features/admin/adminSlice";
 import Form from "../form/Form";
 import OpenModel from "../openModel/OpenModel";
-
+import { createCar } from "../../Utils";
 const Register = ({ handelClick, open,userId }) => {
-  // const { users } = useSelector((state) => state.admin);
   const [formData, setFormData] = useState();
-  const dispatch = useDispatch();
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    // dispatch(getUsers());
-    // const user = users.filter((user) => user.username === formData.owner);
-    // console.log(formData);
-    // setFormData(formData?.numberPlate, formData?.km, formData?.brand);
-    // console.log(formData);
-    // console.log(user?._id);
-    dispatch(createCar(userId, formData));
+   await createCar(userId,formData);
     handelClick();
   };
 

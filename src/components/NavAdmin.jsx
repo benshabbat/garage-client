@@ -4,6 +4,7 @@ import useOpenModel from "../hooks/useOpenModel";
 import {Register,CreateCar} from "../components"
 const NavAdmin = () => {
   const { openModel, handelClick,setOpenModel } = useOpenModel();
+  const { openModel:openModel2, handelClick:handelClick2,setOpenModel:setOpenModel2 } = useOpenModel();
   return (
     <>
     <Link to="/">
@@ -23,8 +24,8 @@ const NavAdmin = () => {
       </div>
       <Link to="/">
        <div className="item-nav">
-        <button onClick={handelClick}>Create Car</button>
-        <CreateCar handelClick={handelClick} open={openModel} setOpen={setOpenModel} />
+        <button onClick={handelClick2}>Create Car</button>
+        <CreateCar handelClick={handelClick2} open={openModel2} setOpen={setOpenModel2} />
       </div>
       </Link>
   </>

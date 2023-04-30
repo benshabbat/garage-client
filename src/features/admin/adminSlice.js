@@ -106,9 +106,9 @@ export const getCarsByType = createAsyncThunk(
 
 export const createCar = createAsyncThunk(
   "admin/createCar",
-  async (userId,data, thunkAPI) => {
+  async (userId, thunkAPI) => {
     try {
-      return await adminService.createCar(userId,data);
+      return await adminService.createCar(userId);  
     } catch (error) {
       const message =
         (error.response &&

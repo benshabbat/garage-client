@@ -15,8 +15,10 @@ const PageLanding = () => {
       <Home />
       <About />
       <ServicesLanding />
-      <Address />
-      <Contact />
+      <div className="address_and_contact">
+        <Address />
+        <Contact />
+      </div>
       <Reviews />
       <footer>Written By Menachem & DavidChen</footer>
     </div>

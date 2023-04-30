@@ -33,6 +33,7 @@ const getServicesByType = async () => {
     return data
 }
 const createCar = async (userId,dataUser) => {
+    debugger
     const { data } = await axios.post(`${API_URL_CAR}/${userId}`,dataUser);
   
     return data;

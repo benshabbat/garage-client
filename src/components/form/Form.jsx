@@ -25,7 +25,7 @@ const Form = ({
       {inputs.map((i, index) => {
         return (
           <label key={index} className="form-label">
-            <span className="form-label">{i.name}</span>
+            <span>{i.name}</span>
             <input
               placeholder={i.name}
               className="form-control"

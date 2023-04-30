@@ -23,10 +23,12 @@ const NavLanding = () => {
       <div className="item-nav">
         <a href="#contact">Contact</a>
       </div>
+
       <div className="item-nav">
         <button onClick={handelClick}>Login</button>
         <Login handelClick={handelClick} open={openModel} />
       </div>
+     
     </>
   );
 };
