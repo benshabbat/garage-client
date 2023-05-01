@@ -2,7 +2,7 @@ import { useState } from "react";
 import Form from "../form/Form";
 import OpenModel from "../openModel/OpenModel";
 import { createCar } from "../../Utils";
-const Register = ({ handelClick, open,userId }) => {
+const CreateCar = ({ handelClick, open,userId }) => {
   const [formData, setFormData] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,4 +32,4 @@ const Register = ({ handelClick, open,userId }) => {
   );
 };
 
-export default Register;
+export default CreateCar;

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
 import { CreateCar } from "../components";
 import useOpenModel from "../hooks/useOpenModel";
+import Manage from "../components/manage/Manage";
 const Users = () => {
   const { users } = useSelector((state) => state.admin);
   const [userId, setUserId] = useState("");
@@ -34,14 +35,24 @@ const Users = () => {
   const bodyUser = (user) => {
     return (
       <tr key={user?._id}>
+        <td>
+          <button value={user?._id} onClick={handleUserID}>
+            Manage
+          </button>
+        </td>
         <td>{user?.username}</td>
         <td>{user?.email}</td>
         <td>{user?.phone}</td>
-        <td>
+        {/* <td>
           <button value={user?._id} onClick={handleUserID}>
-            Create Car
+            Delete User
           </button>
         </td>
+        <td>
+          <button value={user?._id} onClick={handleUserID}>
+            Edit User
+          </button>
+        </td> */}
       </tr>
     );
   };
@@ -62,10 +73,12 @@ const Users = () => {
           <table>
             <thead>
               <tr>
+                <th></th>
                 <th>username</th>
                 <th>email</th>
                 <th>phone</th>
-                <th>Create Car</th>
+                {/* <th>Delete User</th>
+                <th>Edit User</th> */}
               </tr>
             </thead>
             <tbody>
@@ -74,7 +87,8 @@ const Users = () => {
           </table>
         </section>
       </div>
-      <CreateCar userId={userId} handelClick={handelClick} open={openModel} />
+      {/* <CreateCar userId={userId} handelClick={handelClick} open={openModel} /> */}
+      <Manage userId={userId} handelClick={handelClick} open={openModel} />
     </>
   );
 };

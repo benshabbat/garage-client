@@ -1,0 +1,12 @@
+.create-car{
+    background-color: greenyellow;
+}
+.edit-user{
+    background-color: skyblue;
+}
+.delete-user{
+    background-color: red;
+}
+.header,.form-label{
+    margin-bottom: 24px;
+}

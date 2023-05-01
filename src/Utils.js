@@ -1,5 +1,6 @@
 import axios from "axios";
 const API_URL_CAR = "/cars"
+const API_URL_USER = "/user"
 const getAll = (url) => {
   axios.get(url);
 };
@@ -18,7 +19,7 @@ const createCar = (id, obj) => {
 const deleteItem = (url, id) => {
   axios.delete(`${url}/${id}`);
 };
-const getUserFullData = (id) => {
+const getUser = (id) => {
   
 };
 
