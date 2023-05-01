@@ -14,4 +14,6 @@ export { default as Form } from "./form/Form";
 export { default as CreateCar } from "./createCar/CreateCar";
 export { default as Register } from "./register/Register";
 export { default as Login } from "./login/Login";
+export { default as MyAccount } from "./myAccount/MyAccount";
+export { default as NavAdmin } from "./NavAdmin";
 

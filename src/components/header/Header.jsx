@@ -3,9 +3,8 @@ import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/user/userSlice";
-import { NavUser, NavLanding } from "../index";
+import {MyAccount,NavAdmin, NavUser, NavLanding } from "../index";
 
-import NavAdmin from "../NavAdmin";
 
 const Header = () => {
   const { user: userAuth } = useSelector((state) => state.auth);
@@ -29,8 +28,13 @@ const Header = () => {
           <div>
             {userAuth ? (
               <>
-                {user?.isAdmin && <NavAdmin />}
-                <NavUser />
+                {user?.isAdmin ? <NavAdmin /> : <NavUser />}
+                <div className="item-nav">
+                  <Link to={`/messages`}>Messages</Link>
+                </div>
+                <div className="item-nav dropdown">
+                  <MyAccount />
+                </div>
               </>
             ) : (
               <NavLanding />
