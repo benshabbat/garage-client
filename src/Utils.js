@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_URL_CAR = "/cars"
-const API_URL_USER = "/user"
+const API_URL_CAR = "/cars";
+const API_URL_USER = "/user";
 const getAll = (url) => {
   axios.get(url);
 };
@@ -10,19 +10,17 @@ const getById = (url, id) => {
 const addItem = (url, obj) => {
   axios.post(url, obj);
 };
-const updateItem = (url, id, obj) => {
-  axios.put(`${url}/${id}`, obj);
+const updateUser = (id, obj) => {
+  axios.put(`${API_URL_USER}/${id}`, obj);
 };
 const createCar = (id, obj) => {
   axios.post(`${API_URL_CAR}/${id}`, obj);
 };
-const deleteItem = (url, id) => {
-  axios.delete(`${url}/${id}`);
+const deleteUser= (url, id) => {
+  axios.delete(`${API_URL_USER}/${id}`);
 };
 const getUser = (id) => {
-  
+  return axios.get(`${API_URL_USER}/${id}`);
 };
 
-
-
-export { getAll, getById, addItem, updateItem, deleteItem,createCar };
+export { getAll, getById, addItem, updateUser, deleteUser, createCar, getUser };

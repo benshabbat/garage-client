@@ -2,7 +2,7 @@ import "../components/table/table.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
-import { CreateCar } from "../components";
+// import { CreateCar } from "../components";
 import useOpenModel from "../hooks/useOpenModel";
 import Manage from "../components/manage/Manage";
 const Users = () => {
