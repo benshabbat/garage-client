@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import OpenModel from "../openModel/OpenModel";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { deleteUser} from "../../Utils";
+import { deleteUser } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
 import CreateCar from "../createCar/CreateCar";
 
@@ -19,9 +19,9 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
   console.log(user);
   const handleUserID = async (e) => {
     e.preventDefault();
-    const {name} =e.target
-    if(name==="createCar")setOpenModelCreateCar((current) => !current);
-    if(name==="deleteUser") await deleteUser(userId)
+    const { name } = e.target;
+    if (name === "createCar") setOpenModelCreateCar((current) => !current);
+    if (name === "deleteUser") {await deleteUser(userId); handelClick();}
     // if(name==="editUser") setOpenModelEditUser((current) => !current);
   };
 
@@ -36,17 +36,29 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${user?.username}`}</h2>
             <label className="form-label">
-              <button name="createCar" className="create-car" onClick={handleUserID}>
+              <button
+                name="createCar"
+                className="create-car"
+                onClick={handleUserID}
+              >
                 Create Car
               </button>
             </label>
             <label className="form-label">
-              <button name="editUser" className="edit-user" onClick={handleUserID}>
+              <button
+                name="editUser"
+                className="edit-user"
+                onClick={handleUserID}
+              >
                 Edit User
               </button>
             </label>
             <label className="form-label">
-              <button name="deleteUser" className="delete-user" onClick={handleUserID}>
+              <button
+                name="deleteUser"
+                className="delete-user"
+                onClick={handleUserID}
+              >
                 Delete User
               </button>
             </label>

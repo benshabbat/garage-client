@@ -1,6 +1,6 @@
 import axios from "axios";
 const API_URL_CAR = "/cars";
-const API_URL_USER = "/user";
+const API_URL_USER = "/users";
 const getAll = (url) => {
   axios.get(url);
 };
@@ -16,7 +16,7 @@ const updateUser = (id, obj) => {
 const createCar = (id, obj) => {
   axios.post(`${API_URL_CAR}/${id}`, obj);
 };
-const deleteUser= (url, id) => {
+const deleteUser= (id) => {
   axios.delete(`${API_URL_USER}/${id}`);
 };
 const getUser = (id) => {
