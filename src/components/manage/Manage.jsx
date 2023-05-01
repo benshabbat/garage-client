@@ -29,10 +29,10 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
     if (name === "createCar") setOpenModelCreateCar((current) => !current);
     if (name === "deleteUser") {
       await deleteUser(userId);
-      dispatch(getUsers());
       handelClick();
     }
-    if (name === "editUser") setOpenModelEditUser((current) => !current);
+    if (name === "editUser") {setOpenModelEditUser((current) => !current);}
+    dispatch(getUsers());
   };
 
   return (
