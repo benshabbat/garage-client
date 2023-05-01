@@ -1,12 +1,12 @@
 import "./manage.css";
 import React from "react";
-import { useSelector } from "react-redux";
-import OpenModel from "../openModel/OpenModel";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteUser } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
-import CreateCar from "../createCar/CreateCar";
-
+import { CreateCar, OpenModel } from "../index";
+import EditUser from "../editUser/EditUser";
 const Manage = ({ handelClick = null, open, userId = null }) => {
   const { users } = useSelector((state) => state.admin);
   const {
@@ -14,15 +14,25 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
     handelClick: handleCreateCar,
     setOpenModel: setOpenModelCreateCar,
   } = useOpenModel();
+  const {
+    openModel: openModelEditUser,
+    handelClick: handleEditUser,
+    setOpenModel: setOpenModelEditUser,
+  } = useOpenModel();
+
+  const dispatch = useDispatch();
 
   const user = users.find((user) => user._id === userId);
-  console.log(user);
   const handleUserID = async (e) => {
     e.preventDefault();
     const { name } = e.target;
     if (name === "createCar") setOpenModelCreateCar((current) => !current);
-    if (name === "deleteUser") {await deleteUser(userId); handelClick();}
-    // if(name==="editUser") setOpenModelEditUser((current) => !current);
+    if (name === "deleteUser") {
+      await deleteUser(userId);
+      dispatch(getUsers());
+      handelClick();
+    }
+    if (name === "editUser") setOpenModelEditUser((current) => !current);
   };
 
   return (
@@ -67,6 +77,11 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
             userId={userId}
             handelClick={handleCreateCar}
             open={openModelCreateCar}
+          />
+          <EditUser
+            userId={userId}
+            handelClick={handleEditUser}
+            open={openModelEditUser}
           />
         </>
       }
