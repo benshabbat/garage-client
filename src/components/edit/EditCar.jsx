@@ -21,7 +21,7 @@ const EditCar = ({ handelClick, open, carId }) => {
           sec_title="enter your name & password"
           inputs={[
             { name: "numberPlate", type: "text", value: formData?.numberPlate },
-            { name: "km", type: "number", value: formData?.km },
+            { name: "km", type: "number", value: formData?.km ,min:formData?.km },
             { name: "brand", type: "text", value: formData?.brand },
           ]}
           handelClick={handelClick}

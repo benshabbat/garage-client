@@ -15,7 +15,7 @@ const ManageCar = ({
 
   const {
     openModel: openModelEditCar,
-    handelClick: handleEditCarr,
+    handelClick: handleEditCar,
     setOpenModel: setOpenModelEditCar,
   } = useOpenModel();
 
@@ -64,8 +64,8 @@ const ManageCar = ({
             </label>
           </form>
           <EditCar
-            userId={carId}
-            handelClick={handleEditCarr}
+            carId={carId}
+            handelClick={handleEditCar}
             open={openModelEditCar}
           />
         </>

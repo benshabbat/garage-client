@@ -32,6 +32,7 @@ const Form = ({
               type={i.type}
               name={i.name}
               value={i.value}
+              min={i.min}
               onChange={handleChange}
               required
             />
