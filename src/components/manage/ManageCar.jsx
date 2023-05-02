@@ -26,7 +26,7 @@ const ManageCar = ({
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
-      await deleteCar(carId,car?.owner);
+      await deleteCar(carId,car?.owner.toString());
       handelClickManage();
     }
     if (name === "editCar") {
