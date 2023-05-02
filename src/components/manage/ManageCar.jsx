@@ -26,7 +26,7 @@ const ManageCar = ({
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
-      await deleteCar(carId);
+      await deleteCar(carId,car?.owner);
       handelClickManage();
     }
     if (name === "editCar") {
@@ -47,7 +47,7 @@ const ManageCar = ({
             <label className="form-label">
               <button
                 name="editCar"
-                className="edit-car"
+                className="edit"
                 onClick={handleCarID}
               >
                 Edit Car
@@ -56,7 +56,7 @@ const ManageCar = ({
             <label className="form-label">
               <button
                 name="deleteCar"
-                className="delete-car"
+                className="delete"
                 onClick={handleCarID}
               >
                 Delete Car

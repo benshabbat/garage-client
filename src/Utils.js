@@ -22,8 +22,8 @@ const createCar = (id, obj) => {
 const deleteUser= (id) => {
   axios.delete(`${API_URL_USER}/${id}`);
 };
-const deleteCar= (id) => {
-  axios.delete(`${API_URL_CAR}/${id}`);
+const deleteCar= (idCar ,idUser) => {
+  axios.delete(`${API_URL_CAR}/${idCar}/${idUser}`);
 };
 const getUser = (id) => {
   return axios.get(`${API_URL_USER}/${id}`);

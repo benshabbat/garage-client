@@ -52,7 +52,7 @@ const ManageUser = ({
             <label className="form-label">
               <button
                 name="createCar"
-                className="create-car"
+                className="create"
                 onClick={handleUserID}
               >
                 Create Car
@@ -61,7 +61,7 @@ const ManageUser = ({
             <label className="form-label">
               <button
                 name="editUser"
-                className="edit-user"
+                className="edit"
                 onClick={handleUserID}
               >
                 Edit User
@@ -70,7 +70,7 @@ const ManageUser = ({
             <label className="form-label">
               <button
                 name="deleteUser"
-                className="delete-user"
+                className="delete"
                 onClick={handleUserID}
               >
                 Delete User
