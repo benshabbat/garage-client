@@ -2,6 +2,8 @@ import "../components/table/table.css"
 import React, { useEffect, useState } from "react";
 import { getServicesByType } from "../features/admin/adminSlice";
 import { useSelector, useDispatch } from "react-redux";
+import useOpenModel from "../hooks/useOpenModel";
+import ManageService from "../components/manage/ManageService";
 const ServicesAdmin = () => {
   const { services } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
@@ -9,7 +11,8 @@ const ServicesAdmin = () => {
     dispatch(getServicesByType());
   }, []);
   const [servicesFilter, setServicesFilter] = useState();
-
+const [serviceId, setServiceId] = useState()
+const { openModel, handelClick, setOpenModel } = useOpenModel();
   const filterSearch = (e) => {
     const { value } = e.target;
 
@@ -25,9 +28,21 @@ const ServicesAdmin = () => {
       )
     );
   };
+  const handleServiceId = (e) => {
+    if (e.target.value) {
+      console.log(e.target.value);
+      setServiceId(e.target.value);
+      setOpenModel((current) => !current);
+    }
+  };
   const bodyServices = (service) => {
     return (
       <tr key={service?._id}>
+             <td>
+          <button value={service?._id} onClick={handleServiceId}>
+            Manage
+          </button>
+        </td>
         <td>{service?.car?.numberPlate}</td>
         <td>{service?.title}</td>
         <td>{service?.description}</td>
@@ -40,6 +55,8 @@ const ServicesAdmin = () => {
     );
   };
   return (
+    <>
+    
     <div className="table-container">
       <section className="table__header">
         <h1>Services</h1>
@@ -55,6 +72,7 @@ const ServicesAdmin = () => {
         <table>
           <thead>
             <tr>
+            <th></th>
               <th>car</th>
               <th>title</th>
               <th>description</th>
@@ -71,6 +89,8 @@ const ServicesAdmin = () => {
         </table>
       </section>
     </div>
+     <ManageService serviceId={serviceId} handelClick={handelClick} open={openModel} />
+     </>
   );
 };
 

@@ -25,7 +25,7 @@ const Cars = () => {
       )
     );
   };
-  const handleCarID = (e) => {
+  const handleCarId = (e) => {
     if (e.target.value) {
       console.log(e.target.value);
       setCarId(e.target.value);
@@ -36,7 +36,7 @@ const Cars = () => {
     return (
       <tr key={car?._id}>
         <td>
-          <button value={car?._id} onClick={handleCarID}>
+          <button value={car?._id} onClick={handleCarId}>
             Manage
           </button>
         </td>
