@@ -8,7 +8,6 @@ const EditCar = ({ handelClick, open, carId }) => {
   const [formData, setFormData] = useState(car);
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     await updateCar(carId, formData);
     handelClick();
   };
