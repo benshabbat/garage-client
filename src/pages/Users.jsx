@@ -2,7 +2,6 @@ import "../components/table/table.css";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
-// import { CreateCar } from "../components";
 import useOpenModel from "../hooks/useOpenModel";
 import Manage from "../components/manage/Manage";
 const Users = () => {
@@ -43,16 +42,6 @@ const Users = () => {
         <td>{user?.username}</td>
         <td>{user?.email}</td>
         <td>{user?.phone}</td>
-        {/* <td>
-          <button value={user?._id} onClick={handleUserID}>
-            Delete User
-          </button>
-        </td>
-        <td>
-          <button value={user?._id} onClick={handleUserID}>
-            Edit User
-          </button>
-        </td> */}
       </tr>
     );
   };
@@ -77,8 +66,6 @@ const Users = () => {
                 <th>username</th>
                 <th>email</th>
                 <th>phone</th>
-                {/* <th>Delete User</th>
-                <th>Edit User</th> */}
               </tr>
             </thead>
             <tbody>
@@ -87,7 +74,6 @@ const Users = () => {
           </table>
         </section>
       </div>
-      {/* <CreateCar userId={userId} handelClick={handelClick} open={openModel} /> */}
       <Manage userId={userId} handelClick={handelClick} open={openModel} />
     </>
   );

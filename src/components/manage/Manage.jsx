@@ -5,9 +5,12 @@ import { getUsers } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteUser } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
-import { CreateCar, OpenModel } from "../index";
-import EditUser from "../editUser/EditUser";
-const Manage = ({ handelClick = null, open, userId = null }) => {
+import { CreateCar, OpenModel, EditUser } from "../index";
+const Manage = ({
+  handelClick: handelClickManage = null,
+  open,
+  userId = null,
+}) => {
   const { users } = useSelector((state) => state.admin);
   const {
     openModel: openModelCreateCar,
@@ -29,10 +32,13 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
     if (name === "createCar") setOpenModelCreateCar((current) => !current);
     if (name === "deleteUser") {
       await deleteUser(userId);
-      handelClick();
+      handelClickManage();
     }
-    if (name === "editUser") {setOpenModelEditUser((current) => !current);}
+    if (name === "editUser") {
+      setOpenModelEditUser((current) => !current);
+    }
     dispatch(getUsers());
+    
   };
 
   return (
@@ -40,9 +46,7 @@ const Manage = ({ handelClick = null, open, userId = null }) => {
       comp={
         <>
           <form className="form">
-            {handelClick && (
-              <CancelIcon onClick={handelClick} className="form-close" />
-            )}
+            <CancelIcon onClick={handelClickManage} className="form-close" />
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${user?.username}`}</h2>
             <label className="form-label">
