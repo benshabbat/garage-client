@@ -6,6 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteService } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
 import { OpenModel} from "../index";
+import EditService from "../edit/EditService";
 const ManageService = ({
   handelClick: handelClickManage = null,
   open,
@@ -43,7 +44,7 @@ const ManageService = ({
           <form className="form">
             <CancelIcon onClick={handelClickManage} className="form-close" />
             <h1 className="header">Manage Admin</h1>
-            {/* <h2>{`Hello ${service?.username}`}</h2> */}
+            <h2>{`Hello ${service?.car?.numberPlate}`}</h2>
             <label className="form-label">
               <button
                 name="editService"
@@ -63,11 +64,11 @@ const ManageService = ({
               </button>
             </label>
           </form>
-          {/* <EditService
+          <EditService
             serviceId={serviceId}
             handelClick={handleEditService}
             open={openModelEditService}
-          /> */}
+          />
         </>
       }
       open={open}

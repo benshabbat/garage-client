@@ -14,6 +14,9 @@ const addItem = (url, obj) => {
 const updateUser = (id, obj) => {
   axios.put(`${API_URL_USER}/${id}`, obj);
 };
+const updateService = (id, obj) => {
+  axios.put(`${API_URL_SERVICE}/${id}`, obj);
+};
 const updateCar = (id, obj) => {
   axios.put(`${API_URL_CAR}/${id}`, obj);
 };
@@ -33,4 +36,4 @@ const getUser = (id) => {
   return axios.get(`${API_URL_USER}/${id}`);
 };
 
-export { getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };
+export {updateService, getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };

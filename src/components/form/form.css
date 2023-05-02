@@ -31,7 +31,7 @@
 }
 .form-label span {
   text-transform: capitalize;
-  margin: 12px 0 12px 0;
+  margin: 0 0 4px 0;
   color: rgba(142, 154, 222, 0.615);
 }
 

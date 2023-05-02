@@ -28,7 +28,6 @@ const Form = ({
             <span>{i.name}</span>
             <input
               placeholder={i.name}
-              className="form-control"
               type={i.type}
               name={i.name}
               value={i.value}
