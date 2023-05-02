@@ -6,7 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteUser } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
 import { CreateCar, OpenModel, EditUser } from "../index";
-const Manage = ({
+const ManageUser = ({
   handelClick: handelClickManage = null,
   open,
   userId = null,
@@ -94,4 +94,4 @@ const Manage = ({
   );
 };
 
-export default Manage;
+export default ManageUser;

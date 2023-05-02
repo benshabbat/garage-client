@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../features/admin/adminSlice";
 import useOpenModel from "../hooks/useOpenModel";
-import Manage from "../components/manage/Manage";
+import ManageUser from "../components/manage/ManageUser";
 const Users = () => {
   const { users } = useSelector((state) => state.admin);
   const [userId, setUserId] = useState("");
@@ -74,7 +74,7 @@ const Users = () => {
           </table>
         </section>
       </div>
-      <Manage userId={userId} handelClick={handelClick} open={openModel} />
+      <ManageUser userId={userId} handelClick={handelClick} open={openModel} />
     </>
   );
 };

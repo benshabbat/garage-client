@@ -13,14 +13,20 @@ const addItem = (url, obj) => {
 const updateUser = (id, obj) => {
   axios.put(`${API_URL_USER}/${id}`, obj);
 };
+const updateCar = (id, obj) => {
+  axios.put(`${API_URL_CAR}/${id}`, obj);
+};
 const createCar = (id, obj) => {
   axios.post(`${API_URL_CAR}/${id}`, obj);
 };
 const deleteUser= (id) => {
   axios.delete(`${API_URL_USER}/${id}`);
 };
+const deleteCar= (id) => {
+  axios.delete(`${API_URL_CAR}/${id}`);
+};
 const getUser = (id) => {
   return axios.get(`${API_URL_USER}/${id}`);
 };
 
-export { getAll, getById, addItem, updateUser, deleteUser, createCar, getUser };
+export { getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar };

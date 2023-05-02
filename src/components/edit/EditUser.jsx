@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Form from "../form/Form";
-import OpenModel from "../openModel/OpenModel";
+import {Form,OpenModel} from "../index";
 import { useSelector } from "react-redux";
 import { updateUser } from "../../Utils";
 const EditUser = ({ handelClick, open,userId }) => {
