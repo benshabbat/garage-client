@@ -11,6 +11,7 @@ const Address = () => {
         height="450"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+        target="_blank" 
       ></iframe>
     </div>
   );

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
-import Form from "../form/Form";
-import OpenModel from "../openModel/OpenModel";
+import { OpenModel, Form } from "..";
 
 const Register = ({ handelClick, open }) => {
   const [formData, setFormData] = useState();

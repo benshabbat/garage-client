@@ -2,7 +2,7 @@ import "./account.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ReqService from "../../components/reqService/ReqService";
+import ReqService from "../../components/create/ReqService";
 import useOpenModel from "../../hooks/useOpenModel";
 const Account = () => {
   const { user } = useSelector((state) => state.user);

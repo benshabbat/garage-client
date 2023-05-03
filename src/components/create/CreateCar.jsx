@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { OpenModel, Form } from "../";
+import { OpenModel, Form } from "..";
 import { createCar } from "../../Utils";
 const CreateCar = ({ handelClick, open,userId }) => {
   const [formData, setFormData] = useState();
