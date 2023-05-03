@@ -1,14 +1,11 @@
 import "./reviews.css";
 import "react-multi-carousel/lib/styles.css";
-import React, { useState } from "react";
+import React from "react";
 import {CreateReviews,Review} from "../../index";
 import Carousel from "react-multi-carousel";
-
+import useOpenModel from "../../../hooks/useOpenModel";
 const Reviews = () => {
-  const [openModel, setOpenModel] = useState(false);
-  const handelClick = () => {
-    setOpenModel(!openModel);
-  };
+  const { openModel, handelClick } = useOpenModel();
 
   const reviewsCustomers = [
     {
