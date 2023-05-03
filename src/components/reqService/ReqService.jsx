@@ -1,8 +1,7 @@
-import "./reqService.css";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { createReqService } from "../../Utils";
-import { OpenModel, Form } from "../../components";
+import { OpenModel, Form } from "..";
 const ReqService = ({ handelClick, carId, open }) => {
   const { user } = useSelector((state) => state.user);
   const car = user?.cars.find((c) => c._id === carId);
