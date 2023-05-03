@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ReqService from "../reqService/ReqService";
-
+import useOpenModel from "../../hooks/useOpenModel";
 const Account = () => {
   const { user } = useSelector((state) => state.user);
   const [carId, setCarId] = useState("");
-  const [openModel, setOpenModel] = useState(false);
+  const {openModel, setOpenModel,handelClick} = useOpenModel();
 
-  const handelClick = (e) => {
+  const handelCarId = (e) => {
     console.log(e.target.value);
     setCarId(e.target.value);
     setOpenModel((current) => !current);
@@ -63,7 +63,7 @@ const Account = () => {
                     </button>
                   </td>
                   <td>
-                    <button value={car._id} onClick={handelClick}>
+                    <button value={car._id} onClick={handelCarId}>
                       req services
                     </button>
                   </td>

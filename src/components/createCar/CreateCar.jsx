@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Form from "../form/Form";
-import OpenModel from "../openModel/OpenModel";
+import { OpenModel, Form } from "../";
 import { createCar } from "../../Utils";
 const CreateCar = ({ handelClick, open,userId }) => {
   const [formData, setFormData] = useState();
@@ -16,7 +15,6 @@ const CreateCar = ({ handelClick, open,userId }) => {
         <Form
           setData={setFormData}
           title="Create Car"
-          sec_title="enter your name & password"
           inputs={[
             // { name: "username", type: "text" },
             { name: "numberPlate", type: "text" },

@@ -2,6 +2,8 @@ import axios from "axios";
 const API_URL_CAR = "/cars";
 const API_URL_USER = "/users";
 const API_URL_SERVICE = "/services";
+const API_URL_MESSAGES = "/messages"
+const ADMIN = "63e14deca4340e45d23f20b2"
 const getAll = (url) => {
   axios.get(url);
 };
@@ -23,6 +25,9 @@ const updateCar = (id, obj) => {
 const createCar = (id, obj) => {
   axios.post(`${API_URL_CAR}/${id}`, obj);
 };
+const createReqService = (obj) => {
+  axios.post(`${API_URL_MESSAGES}/to/${ADMIN}`, obj);
+};
 const deleteUser= (id) => {
   axios.delete(`${API_URL_USER}/${id}`);
 };
@@ -36,4 +41,4 @@ const getUser = (id) => {
   return axios.get(`${API_URL_USER}/${id}`);
 };
 
-export {updateService, getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };
+export {createReqService,updateService, getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };

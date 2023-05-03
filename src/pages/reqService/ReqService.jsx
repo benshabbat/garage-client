@@ -1,34 +1,38 @@
 import "./reqService.css";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { createReqService } from "../../features/user/userSlice";
-
+import { useSelector } from "react-redux";
+import { createReqService } from "../../Utils";
 import { OpenModel, Form } from "../../components";
 const ReqService = ({ handelClick, carId, open }) => {
   const { user } = useSelector((state) => state.user);
-  const ADMIN = "63e14deca4340e45d23f20b2";
+  const car = user?.cars.find((c) => c._id === carId);
   const [formData, setFormData] = useState({
     from: user?._id,
-    to: ADMIN,
-    title: "",
-    description: "",
   });
-  const dispatch = useDispatch();
-  const car = user?.cars.find((c) => c._id === carId);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createReqService(formData));
+    setFormData((prevState) => ({
+      ...prevState,
+      description: car?.numberPlate.toString(),
+    }));
+    if (formData?.description) {
+      await createReqService(formData);
+      handelClick();
+    }
   };
   return (
     <OpenModel
       comp={
         <Form
           setData={setFormData}
-          title="Login"
-          sec_title="enter your name & password"
+          title="Request Service"
           inputs={[
             { name: "title", type: "text" },
-            { name: "Description", type: "text", value: car?.numberPlate },
+            {
+              name: "description",
+              type: "text",
+              value: car?.numberPlate.toString(),
+            },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}
