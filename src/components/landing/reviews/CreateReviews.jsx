@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Rating } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
-import "./createReviews.css";
 import { OpenModel } from "../index";
 const CreateReviews = ({ handelClick,open }) => {
   const nameRef = useRef();

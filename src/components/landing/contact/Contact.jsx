@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { createReqService } from "../../features/user/userSlice";
+import { createReqService } from "../../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 import "./contact.css";
-import { Form } from "../index";
+import { Form } from "../../index";
 const Contact = () => {
   const ADMIN = "63e14deca4340e45d23f20b2";
   const [formData, setFormData] = useState({

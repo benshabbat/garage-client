@@ -1,6 +1,5 @@
 import React from "react";
 import { Rating } from "@mui/material";
-import "./review.css";
 const Review = ({ customer, index }) => {
   return (
     <div className="one-review" key={index}>
