@@ -1,6 +1,6 @@
+import "./address.css"
 import React from "react";
 import { BiMap } from "react-icons/bi";
-import "./addressLink.css"
 const AddressLink = ({ address }) => {
   return (
     <a

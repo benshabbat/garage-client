@@ -1,6 +1,6 @@
 import "./address.css";
 import React from "react";
-import AddressLink from "../addressLink/AddressLink";
+import AddressLink from "./AddressLink";
 const Address = () => {
   return (
     <div id="address">
