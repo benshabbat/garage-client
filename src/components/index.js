@@ -3,8 +3,6 @@ export { default as Header } from "./header/Header";
 export { default as Address } from "./address/Address";
 export { default as Contact } from "./contact/Contact";
 export { default as CreateReviews } from "./createReviews/CreateReviews";
-export { default as NavLanding } from "./navLanding/NavLanding";
-export { default as NavUser } from "./navUser/NavUser";
 export { default as Review } from "./review/Review";
 export { default as Reviews } from "./reviews/Reviews";
 export { default as Service } from "./service/Service";
@@ -18,5 +16,7 @@ export { default as MyAccount } from "./myAccount/MyAccount";
 export { default as EditUser } from "./edit/EditUser";
 export { default as EditCar } from "./edit/EditCar";
 export { default as Manage } from "./manage/ManageUser";
-export { default as NavAdmin } from "./NavAdmin";
+export { default as NavUser } from "./nav/NavUser";
+export { default as NavLanding } from "./nav/NavLanding";
+export { default as NavAdmin } from "./nav/NavAdmin";
 

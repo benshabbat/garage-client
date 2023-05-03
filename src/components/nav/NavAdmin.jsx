@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import useOpenModel from "../hooks/useOpenModel";
-import {Register,CreateCar} from "../components"
+import useOpenModel from "../../hooks/useOpenModel";
+import {Register,CreateCar} from ".."
 const NavAdmin = () => {
   const { openModel, handelClick,setOpenModel } = useOpenModel();
   const { openModel:openModel2, handelClick:handelClick2,setOpenModel:setOpenModel2 } = useOpenModel();
