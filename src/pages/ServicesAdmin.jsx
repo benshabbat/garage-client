@@ -1,18 +1,11 @@
-import "../components/table/table.css"
-import React, { useEffect, useState } from "react";
-import { getServicesByType } from "../features/admin/adminSlice";
-import { useSelector, useDispatch } from "react-redux";
+import "../components/table/table.css";
+import React, { useState } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageService from "../components/manage/ManageService";
-const ServicesAdmin = () => {
-  const { services } = useSelector((state) => state.admin);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getServicesByType());
-  }, []);
+const ServicesAdmin = ({ services }) => {
   const [servicesFilter, setServicesFilter] = useState();
-const [serviceId, setServiceId] = useState()
-const { openModel, handelClick, setOpenModel } = useOpenModel();
+  const [serviceId, setServiceId] = useState();
+  const [handelService, isOpenService] = useOpenModel();
   const filterSearch = (e) => {
     const { value } = e.target;
 
@@ -32,13 +25,13 @@ const { openModel, handelClick, setOpenModel } = useOpenModel();
     if (e.target.value) {
       console.log(e.target.value);
       setServiceId(e.target.value);
-      setOpenModel((current) => !current);
+      handelService();
     }
   };
   const bodyServices = (service) => {
     return (
       <tr key={service?._id}>
-             <td>
+        <td>
           <button value={service?._id} onClick={handleServiceId}>
             Manage
           </button>
@@ -56,41 +49,44 @@ const { openModel, handelClick, setOpenModel } = useOpenModel();
   };
   return (
     <>
-    
-    <div className="table-container">
-      <section className="table__header">
-        <h1>Services</h1>
-        <div className="input-group">
-          <input
-            type="search"
-            placeholder="Search Data..."
-            onChange={filterSearch}
-          />
-        </div>
-      </section>
-      <section className="table__body">
-        <table>
-          <thead>
-            <tr>
-            <th></th>
-              <th>car</th>
-              <th>title</th>
-              <th>description</th>
-              <th>price</th>
-              <th>paid</th>
-              <th>status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {servicesFilter
-              ? servicesFilter?.map(bodyServices)
-              : services?.map(bodyServices)}
-          </tbody>
-        </table>
-      </section>
-    </div>
-     <ManageService serviceId={serviceId} handelClick={handelClick} open={openModel} />
-     </>
+      <div className="table-container">
+        <section className="table__header">
+          <h1>Services</h1>
+          <div className="input-group">
+            <input
+              type="search"
+              placeholder="Search Data..."
+              onChange={filterSearch}
+            />
+          </div>
+        </section>
+        <section className="table__body">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>car</th>
+                <th>title</th>
+                <th>description</th>
+                <th>price</th>
+                <th>paid</th>
+                <th>status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {servicesFilter
+                ? servicesFilter?.map(bodyServices)
+                : services?.map(bodyServices)}
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <ManageService
+        serviceId={serviceId}
+        handelClick={handelService}
+        isOpen={isOpenService}
+      />
+    </>
   );
 };
 

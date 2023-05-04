@@ -14,21 +14,26 @@ import {
 } from "./pages";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, getMessagesByIdUser } from "./features/user/userSlice";
-import { getCarsByType, getUsers } from "./features/admin/adminSlice";
+import {
+  getCarsByType,
+  getUsers,
+  getServicesByType,
+} from "./features/admin/adminSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { user: userAuth } = useSelector((state) => state.auth);
   const { messages, user } = useSelector((state) => state.user);
-  const { cars, users } = useSelector((state) => state.admin);
+  const { services, cars, users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (userAuth&&user?.isAdmin) {
+    if (userAuth && user?.isAdmin) {
       dispatch(getCarsByType(user?._id));
       dispatch(getUsers());
+      dispatch(getServicesByType());
     }
-    if (userAuth&&user?._id) dispatch(getMessagesByIdUser(user?._id));
+    if (userAuth && user?._id) dispatch(getMessagesByIdUser(user?._id));
     else if (userAuth) dispatch(getUser(userAuth?._id));
   }, [userAuth, user?._id, user?.isAdmin]);
   return (
@@ -47,7 +52,10 @@ function App() {
                 path="/messages"
                 element={<Messages messages={messages} />}
               />
-              <Route path="/services" element={<ServicesAdmin />} />
+              <Route
+                path="/services"
+                element={<ServicesAdmin services={services} />}
+              />
               <Route path="/services/user/" element={<Services />} />
               <Route path="/services/car/:carId" element={<Services />} />
             </>

@@ -9,7 +9,7 @@ import { OpenModel} from "../index";
 import EditService from "../edit/EditService";
 const ManageService = ({
   handelClick: handelClickManage = null,
-  open,
+  isOpen,
   serviceId = null,
 }) => {
   const { services } = useSelector((state) => state.admin);
@@ -71,7 +71,7 @@ const ManageService = ({
           />
         </>
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };
