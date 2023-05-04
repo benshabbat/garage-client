@@ -1,16 +1,10 @@
 import "./header.css";
-import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
-import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "../../features/user/userSlice";
-const Header = () => {
-  const { user: userAuth } = useSelector((state) => state.auth);
+import { useSelector } from "react-redux";
+
+const Header = ({ userAuth }) => {
   const { user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (userAuth) dispatch(getUser(userAuth?._id));
-  }, [userAuth]);
   return (
     <>
       <div className="main-header">
