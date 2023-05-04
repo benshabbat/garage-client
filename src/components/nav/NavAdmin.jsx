@@ -7,7 +7,7 @@ const NavAdmin = () => {
   const [handleCreateCar, isOpenCreateCar] = useOpenModel();
   return (
     <>
-      <Link to="/get">
+      <Link to="/">
         <div className="item-nav">
           <button onClick={handleCreateUser}>Create User</button>
           <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
@@ -22,7 +22,7 @@ const NavAdmin = () => {
       <div className="item-nav">
         <Link to={`/services`}>Get Services</Link>
       </div>
-      <Link to="/get">
+      <Link to="/">
         <div className="item-nav">
           <button onClick={handleCreateCar}>Create Car</button>
           <CreateCar handelClick={handleCreateCar} isOpen={isOpenCreateCar} />
