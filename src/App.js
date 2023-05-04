@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import {Account,Services,Messages,PageLanding,Users,Cars,ServicesAdmin,} from "./pages";
+import {Account,Services,Messages,PageLanding,Users,Cars,ServicesAdmin,GetPage} from "./pages";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser,getMessagesByIdUser } from "./features/user/userSlice";
 import { getCarsByType,getUsers } from "./features/admin/adminSlice";
@@ -26,6 +26,7 @@ function App() {
         <Header userAuth={userAuth} user={user} />
         <Routes>
           <Route path="/" element={<PageLanding />} />
+          <Route path="/get" element={<GetPage />} />
           <Route path="/account" element={<Account />} />
           <Route path="/users" element={<Users users={users}/>} />
           <Route path="/cars" element={<Cars cars={cars}/>} />

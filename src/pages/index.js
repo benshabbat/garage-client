@@ -6,5 +6,6 @@ export { default as Services } from "./services/Services";
 export { default as Users } from "./Users";
 export { default as Cars } from "./Cars";
 export { default as ServicesAdmin } from "./ServicesAdmin";
+export { default as GetPage } from "./GetPage";
 
 
