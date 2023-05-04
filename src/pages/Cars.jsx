@@ -1,18 +1,11 @@
 import "../components/table/table.css";
-import React, { useEffect, useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { getCarsByType } from "../features/admin/adminSlice";
+import React, { useState } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageCar from "../components/manage/ManageCar";
 
-const Cars = ({cars}) => {
-  // const { cars } = useSelector((state) => state.admin);
+const Cars = ({ cars }) => {
   const [car, setCar] = useState();
   const [handleManageCar, isOpenManageCar] = useOpenModel();
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getCarsByType());
-  // }, []);
   const [filterCars, setFilterCars] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
