@@ -1,10 +1,8 @@
 import "./header.css";
 import { Link, Outlet } from "react-router-dom";
 import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
-import { useSelector } from "react-redux";
 
-const Header = ({ userAuth }) => {
-  const { user } = useSelector((state) => state.user);
+const Header = ({ userAuth,user }) => {
   return (
     <>
       <div className="main-header">

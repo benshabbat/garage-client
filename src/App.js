@@ -1,18 +1,16 @@
 import "./App.css";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Header} from "./components";
-import {Account,Services,Messages,
-  PageLanding,Users,Cars,ServicesAdmin} from "./pages";
+import { Header } from "./components";
+import {Account,Services,Messages,PageLanding,Users,Cars,ServicesAdmin,} from "./pages";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "./features/user/userSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-  import { useSelector, useDispatch } from "react-redux";
-  import { getUser } from "./features/user/userSlice";
-
-  import { ToastContainer } from "react-toastify";
-  import "react-toastify/dist/ReactToastify.css";
-  
-  function App() {
+function App() {
   const { user: userAuth } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     if (userAuth) dispatch(getUser(userAuth?._id));
@@ -20,7 +18,7 @@ import {Account,Services,Messages,
   return (
     <>
       <BrowserRouter>
-        <Header userAuth={userAuth} />
+        <Header userAuth={userAuth} user={user} />
         <Routes>
           <Route path="/" element={<PageLanding />} />
           <Route path="/account" element={<Account />} />
