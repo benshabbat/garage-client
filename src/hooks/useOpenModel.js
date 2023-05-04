@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 const useOpenModel = () => {
-  const [openModel, setOpenModel] = useState(false);
-  const handelClick = (e) => {
-  setOpenModel(!openModel);
+  const [isOpenModel, setIsOpenModel] = useState(false);
+  const handelOpenModel = (e) => {
+    setIsOpenModel(!isOpenModel);
 };
-  return { handelClick, openModel, setOpenModel };
+  return { handelOpenModel, isOpenModel, setIsOpenModel };
 };
 export default useOpenModel;
