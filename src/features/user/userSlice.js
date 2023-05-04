@@ -9,7 +9,7 @@ const fetchState = {
 };
 
 const initialState = {
-  user: { _id: "", cars: [] },
+  user:{ _id: "", cars: []},
   services: [],
   messages: [],
   fetchState,
@@ -99,12 +99,11 @@ export const getMessagesByIdUser = createAsyncThunk(
   }
 );
 
-
 export const createReqService = createAsyncThunk(
   "user/createReqService",
   async (data, thunkAPI) => {
     try {
-      return await userService.createReqService(data); 
+      return await userService.createReqService(data);
     } catch (error) {
       const message =
         (error.response &&
@@ -208,7 +207,7 @@ const userSlice = createSlice({
         state.fetchState.isError = true;
         state.fetchState.message = action.payload;
         state.user.cars = null;
-      })
+      });
   },
 });
 

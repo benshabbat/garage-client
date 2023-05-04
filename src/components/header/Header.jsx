@@ -1,22 +1,15 @@
 import "./header.css";
 import React, { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/user/userSlice";
-import {MyAccount,NavAdmin, NavUser, NavLanding } from "../index";
-
-
 const Header = () => {
-  const { user: userAuth } = useSelector((state) => state.auth);
-  const { user, isError, message } = useSelector((state) => state.user);
+  const { user:userAuth} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    if (isError) {
-      console.log(message);
-    } else if (userAuth) {
-      dispatch(getUser(userAuth?._id));
-    }
+    if(userAuth)dispatch(getUser(userAuth?._id));
   }, [userAuth]);
   return (
     <>
@@ -26,9 +19,12 @@ const Header = () => {
             <Link to="/">Garage770</Link>
           </div>
           <div>
-            {userAuth ? (
+            {!userAuth||user?.isAdmin===undefined ? (
+              <NavLanding />
+            ) : (
               <>
-                {user?.isAdmin ? <NavAdmin /> : <NavUser />}
+                {console.log(user?.isAdmin)}
+                {!!user.isAdmin ? <NavAdmin /> : <NavUser />}
                 <div className="item-nav">
                   <Link to={`/messages`}>Messages</Link>
                 </div>
@@ -36,8 +32,6 @@ const Header = () => {
                   <MyAccount />
                 </div>
               </>
-            ) : (
-              <NavLanding />
             )}
           </div>
         </div>

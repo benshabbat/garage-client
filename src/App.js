@@ -1,15 +1,25 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Account,Services,Messages,PageLanding,Users,Cars,ServicesAdmin} from "./pages"
+import {
+  Account,
+  Services,
+  Messages,
+  PageLanding,
+  Users,
+  Cars,
+  ServicesAdmin,
+} from "./pages";
 import Header from "./components/header/Header.jsx";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header/>
         <Routes>
           <Route path="/" element={<PageLanding />} />
           <Route path="/account" element={<Account />} />
