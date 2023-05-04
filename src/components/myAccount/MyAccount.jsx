@@ -1,10 +1,8 @@
 import "./myAccount.css";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import useLogout from "../../hooks/useLogout";
-const MyAccount = () => {
-  const { user } = useSelector((state) => state.user);
+const MyAccount = ({ user }) => {
   const { onLogout } = useLogout();
   return (
     <>

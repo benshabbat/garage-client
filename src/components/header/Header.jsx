@@ -2,7 +2,7 @@ import "./header.css";
 import { Link, Outlet } from "react-router-dom";
 import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
 
-const Header = ({ userAuth=null, user=null }) => {
+const Header = ({ userAuth = null, user = null }) => {
   if (userAuth && user?.isAdmin === undefined) {
     return null;
   }
@@ -25,7 +25,7 @@ const Header = ({ userAuth=null, user=null }) => {
                   <Link to={`/messages`}>Messages</Link>
                 </div>
                 <div className="item-nav dropdown">
-                  <MyAccount />
+                  <MyAccount user={user} />
                 </div>
               </>
             )}
