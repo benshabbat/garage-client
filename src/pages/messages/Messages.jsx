@@ -1,13 +1,13 @@
 import "../../components/table/table.css"
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getMessagesByIdUser } from "../../features/user/userSlice";
-const Messages = () => {
-  const { messages, user } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (user?._id) dispatch(getMessagesByIdUser(user?._id));
-  }, [user?._id]);
+// import { useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { getMessagesByIdUser } from "../../features/user/userSlice";
+const Messages = ({messages}) => {
+  // const { messages, user } = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (user?._id) dispatch(getMessagesByIdUser(user?._id));
+  // }, [user?._id]);
   return (
     <div className="table-container">
       <section className="table__header">
