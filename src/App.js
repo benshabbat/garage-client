@@ -15,10 +15,10 @@ function App() {
   const { cars,users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
+    if (userAuth) dispatch(getUser(userAuth?._id));
     if (user?.isAdmin) {dispatch(getCarsByType(user?._id));
       dispatch(getUsers());}
     if (user?._id) dispatch(getMessagesByIdUser(user?._id));
-    else if (userAuth) dispatch(getUser(userAuth?._id));
   }, [userAuth,user?._id,user?.isAdmin]);
   return (
     <>

@@ -1,5 +1,5 @@
 import "../../components/table/table.css";
-const Messages = ({ messages }) => {
+const Messages = ({ messages=null }) => {
   return (
     <div className="table-container">
       <section className="table__header">

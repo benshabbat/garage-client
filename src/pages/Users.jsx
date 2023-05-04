@@ -2,7 +2,7 @@ import "../components/table/table.css";
 import React, {useState } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageUser from "../components/manage/ManageUser";
-const Users = ({users}) => {
+const Users = ({users=null}) => {
 
   const [userId, setUserId] = useState("");
   const { openModel, handelClick,setOpenModel } = useOpenModel();
