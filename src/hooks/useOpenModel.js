@@ -5,6 +5,7 @@ const useOpenModel = () => {
   const handelOpenModel = (e) => {
     setIsOpenModel(!isOpenModel);
 };
-  return { handelOpenModel, isOpenModel, setIsOpenModel };
+  // return { handelOpenModel, isOpenModel };
+  return [handelOpenModel, isOpenModel];
 };
 export default useOpenModel;

@@ -1,9 +1,9 @@
 import "./openModel.css";
 import React from "react";
 
-const OpenModel = ({ comp = null, open = false }) => {
+const OpenModel = ({ comp = null, isOpen = false }) => {
   return (
-    open && (
+    isOpen && (
       <div className="open-model-background">
         <div className="open-model-container">{comp} </div>
       </div>

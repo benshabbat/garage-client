@@ -2,7 +2,10 @@ import React from "react";
 import Login from "../login/Login";
 import useOpenModel from "../../hooks/useOpenModel";
 const NavLanding = () => {
-  const { openModel, handelClick } = useOpenModel();
+  const [ 
+    handelLogin,
+    isOpenLogin,
+    ] = useOpenModel();
   return (
     <>
       <div className="item-nav">
@@ -25,8 +28,8 @@ const NavLanding = () => {
       </div>
 
       <div className="item-nav">
-        <button onClick={handelClick}>Login</button>
-        <Login handelClick={handelClick} open={openModel} />
+        <button onClick={handelLogin}>Login</button>
+        <Login handelClick={handelLogin} isOpen={isOpenLogin} />
       </div>
      
     </>

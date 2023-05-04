@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { OpenModel, Form } from "..";
 import { createCar } from "../../Utils";
-const CreateCar = ({ handelClick, open,userId }) => {
+const CreateCar = ({ handelClick, isOpen,userId }) => {
   const [formData, setFormData] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const CreateCar = ({ handelClick, open,userId }) => {
           onSubmit={onSubmit}
         />
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };

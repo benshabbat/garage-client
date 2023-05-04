@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
 import { Form, OpenModel } from "../index";
 
-const Login = ({ handelClick=null, open }) => {
+const Login = ({ handelClick, isOpen }) => {
   const [formData, setFormData] = useState();
   const dispatch = useDispatch();
   const onSubmit = (e) => {
@@ -27,7 +27,7 @@ const Login = ({ handelClick=null, open }) => {
           onSubmit={onSubmit}
         />
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };
