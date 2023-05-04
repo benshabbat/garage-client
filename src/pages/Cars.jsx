@@ -7,7 +7,7 @@ import ManageCar from "../components/manage/ManageCar";
 
 const Cars = () => {
   const { cars } = useSelector((state) => state.admin);
-  const [carId, setCarId] = useState();
+  const [car, setCar] = useState();
   const [handleManageCar, isOpenManageCar] = useOpenModel();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,8 +28,8 @@ const Cars = () => {
   };
   const handleCarId = (e) => {
     if (e.target.value) {
-      console.log(e.target.value);
-      setCarId(e.target.value);
+      setCar(cars.find((car) => car._id === e.target.value));
+      console.log(car);
       handleManageCar();
     }
   };
@@ -79,7 +79,7 @@ const Cars = () => {
         </section>
       </div>
       <ManageCar
-        carId={carId}
+        car={car}
         handelClick={handleManageCar}
         isOpen={isOpenManageCar}
       />

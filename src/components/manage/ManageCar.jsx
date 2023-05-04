@@ -9,26 +9,26 @@ import { OpenModel, EditCar } from "../index";
 const ManageCar = ({
   handelClick: handelClickManage = null,
   isOpen,
-  carId = null,
+  car = null,
 }) => {
-  const { cars } = useSelector((state) => state.admin);
+  // const { cars } = useSelector((state) => state.admin);
 
   const [handleEditCar, isOpenModelEditCar] = useOpenModel();
 
   const dispatch = useDispatch();
 
-  const car = cars.find((car) => car._id === carId);
+  // const car = cars.find((car) => car._id === carId);
   const handleCarID = async (e) => {
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
-      await deleteCar(carId, car?.owner.toString());
+      await deleteCar(car?._id, car?.owner._id.toString());
       handelClickManage();
     }
     if (name === "editCar") {
       handleEditCar();
     }
-    dispatch(getCars());
+     dispatch(getCars());
   };
 
   return (
@@ -51,7 +51,7 @@ const ManageCar = ({
             </label>
           </form>
           <EditCar
-            carId={carId}
+            car={car}
             handelClick={handleEditCar}
             isOpen={isOpenModelEditCar}
           />
