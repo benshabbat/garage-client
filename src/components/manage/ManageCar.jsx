@@ -8,16 +8,12 @@ import useOpenModel from "../../hooks/useOpenModel";
 import { OpenModel, EditCar } from "../index";
 const ManageCar = ({
   handelClick: handelClickManage = null,
-  open,
+  isOpen,
   carId = null,
 }) => {
   const { cars } = useSelector((state) => state.admin);
 
-  const {
-    openModel: openModelEditCar,
-    handelClick: handleEditCar,
-    setOpenModel: setOpenModelEditCar,
-  } = useOpenModel();
+  const [handleEditCar, isOpenModelEditCar] = useOpenModel();
 
   const dispatch = useDispatch();
 
@@ -26,14 +22,13 @@ const ManageCar = ({
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
-      await deleteCar(carId,car?.owner.toString());
+      await deleteCar(carId, car?.owner.toString());
       handelClickManage();
     }
     if (name === "editCar") {
-      setOpenModelEditCar((current) => !current);
+      handleEditCar();
     }
     dispatch(getCars());
-    
   };
 
   return (
@@ -45,20 +40,12 @@ const ManageCar = ({
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${car?.owner?.username}`}</h2>
             <label className="form-label">
-              <button
-                name="editCar"
-                className="edit"
-                onClick={handleCarID}
-              >
+              <button name="editCar" className="edit" onClick={handleCarID}>
                 Edit Car
               </button>
             </label>
             <label className="form-label">
-              <button
-                name="deleteCar"
-                className="delete"
-                onClick={handleCarID}
-              >
+              <button name="deleteCar" className="delete" onClick={handleCarID}>
                 Delete Car
               </button>
             </label>
@@ -66,11 +53,11 @@ const ManageCar = ({
           <EditCar
             carId={carId}
             handelClick={handleEditCar}
-            open={openModelEditCar}
+            isOpen={isOpenModelEditCar}
           />
         </>
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };

@@ -1,14 +1,17 @@
+import "./App.css";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Header} from "./components";
 import {Account,Services,Messages,
   PageLanding,Users,Cars,ServicesAdmin} from "./pages";
-import Header from "./components/header/Header.jsx";
-import "./App.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useSelector, useDispatch } from "react-redux";
-import { getUser } from "./features/user/userSlice";
-function App() {
+
+  import { useSelector, useDispatch } from "react-redux";
+  import { getUser } from "./features/user/userSlice";
+
+  import { ToastContainer } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
+  
+  function App() {
   const { user: userAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {

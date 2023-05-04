@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCarsByType } from "../features/admin/adminSlice";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageCar from "../components/manage/ManageCar";
+
 const Cars = () => {
   const { cars } = useSelector((state) => state.admin);
   const [carId, setCarId] = useState();
-  const { openModel, handelClick, setOpenModel } = useOpenModel();
+  const [handleManageCar, isOpenManageCar] = useOpenModel();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCarsByType());
@@ -29,7 +30,7 @@ const Cars = () => {
     if (e.target.value) {
       console.log(e.target.value);
       setCarId(e.target.value);
-      setOpenModel((current) => !current);
+      handleManageCar();
     }
   };
   const bodyCars = (car) => {
@@ -77,7 +78,11 @@ const Cars = () => {
           </table>
         </section>
       </div>
-      <ManageCar carId={carId} handelClick={handelClick} open={openModel} />
+      <ManageCar
+        carId={carId}
+        handelClick={handleManageCar}
+        isOpen={isOpenManageCar}
+      />
     </>
   );
 };
