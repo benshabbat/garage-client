@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { Form, OpenModel } from "../index";
-import { useSelector } from "react-redux";
 import { updateCar } from "../../Utils";
 const EditCar = ({ handelClick, isOpen, car }) => {
-  // const { cars } = useSelector((state) => state.admin);
-  // const car = cars.find((car) => car._id === carId);
   const [formData, setFormData] = useState(car);
   const onSubmit = async (e) => {
     e.preventDefault();

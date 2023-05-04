@@ -1,6 +1,6 @@
 import "./manage.css";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getCars } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteCar } from "../../Utils";
@@ -11,24 +11,21 @@ const ManageCar = ({
   isOpen,
   car = null,
 }) => {
-  // const { cars } = useSelector((state) => state.admin);
-
   const [handleEditCar, isOpenModelEditCar] = useOpenModel();
-
   const dispatch = useDispatch();
 
-  // const car = cars.find((car) => car._id === carId);
   const handleCarID = async (e) => {
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
       await deleteCar(car?._id, car?.owner._id.toString());
       handelClickManage();
+      // dispatch(getCars());
     }
     if (name === "editCar") {
       handleEditCar();
+      // dispatch(getCars());
     }
-     dispatch(getCars());
   };
 
   return (
