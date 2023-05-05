@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Form, OpenModel } from "../index";
-import { useSelector } from "react-redux";
 import { updateService } from "../../Utils";
-const EditService = ({ handelClick, open, serviceId }) => {
-  const { services } = useSelector((state) => state.admin);
-  const service = services.find((service) => service._id === serviceId);
+const EditService = ({ handelClick, isOpen, service }) => {
+  
   const [formData, setFormData] = useState(service);
   const onSubmit = async (e) => {
     e.preventDefault();
-    await updateService(serviceId, formData);
+    await updateService(service?._id, formData);
     handelClick();
   };
 
@@ -31,7 +29,7 @@ const EditService = ({ handelClick, open, serviceId }) => {
           onSubmit={onSubmit}
         />
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };

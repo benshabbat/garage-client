@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import useOpenModel from "../../hooks/useOpenModel";
 import { Register, CreateCar } from "..";
 const NavAdmin = () => {
-  const [handleCreateUser, isOpenCreateUser] = useOpenModel();
-  const [handleCreateCar, isOpenCreateCar] = useOpenModel();
+  const [handelCreateUser, isOpenCreateUser] = useOpenModel();
+  const [handelCreateCar, isOpenCreateCar] = useOpenModel();
   return (
     <>
       <Link to="/">
         <div className="item-nav">
-          <button onClick={handleCreateUser}>Create User</button>
-          <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
+          <button onClick={handelCreateUser}>Create User</button>
+          <Register handelClick={handelCreateUser} isOpen={isOpenCreateUser} />
         </div>
       </Link>
       <div className="item-nav">
@@ -24,8 +24,8 @@ const NavAdmin = () => {
       </div>
       <Link to="/">
         <div className="item-nav">
-          <button onClick={handleCreateCar}>Create Car</button>
-          <CreateCar handelClick={handleCreateCar} isOpen={isOpenCreateCar} />
+          <button onClick={handelCreateCar}>Create Car</button>
+          <CreateCar handelClick={handelCreateCar} isOpen={isOpenCreateCar} />
         </div>
       </Link>
     </>

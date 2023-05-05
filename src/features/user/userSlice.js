@@ -9,7 +9,7 @@ const fetchState = {
 };
 
 const initialState = {
-  user:{ _id: "", cars: []},
+  user:undefined,
   services: [],
   messages: [],
   fetchState,

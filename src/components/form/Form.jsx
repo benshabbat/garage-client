@@ -1,6 +1,5 @@
 import "./form.css";
 import React from "react";
-
 import CancelIcon from "@mui/icons-material/Cancel";
 
 const Form = ({
@@ -25,13 +24,13 @@ const Form = ({
       {inputs.map((i, index) => {
         return (
           <label key={index} className="form-label">
-            <span>{i.name}</span>
+            <span>{i?.name}</span>
             <input
-              placeholder={i.name}
-              type={i.type}
-              name={i.name}
-              value={i.value}
-              min={i.min}
+              placeholder={i?.name}
+              type={i?.type}
+              name={i?.name}
+              value={i?.value}
+              min={i?.min}
               onChange={handleChange}
               required
             />

@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/auth/authSlice";
-import { OpenModel, Form } from "..";
+import { Form, OpenModel } from "..";
 
-const Register = ({ handelClick, isOpen }) => {
+const Register= ({ handelClick, isOpen }) => {
   const [formData, setFormData] = useState();
   const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     dispatch(register(formData));
-    handelClick()
+    handelClick();
   };
 
   return (

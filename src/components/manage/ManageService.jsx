@@ -1,40 +1,32 @@
 import "./manage.css";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getServices } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteService } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
-import { OpenModel} from "../index";
+import { OpenModel } from "../index";
 import EditService from "../edit/EditService";
 const ManageService = ({
   handelClick: handelClickManage = null,
   isOpen,
-  serviceId = null,
+  service = null,
 }) => {
-  const { services } = useSelector((state) => state.admin);
-
-  const {
-    openModel: openModelEditService,
-    handelClick: handleEditService,
-    setOpenModel: setOpenModelEditService,
-  } = useOpenModel();
+  const [handleEditService, isOpenEditService] = useOpenModel();
 
   const dispatch = useDispatch();
 
-  const service = services.find((service) => service._id === serviceId);
   const handleCarID = async (e) => {
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteService") {
-      await deleteService(serviceId);
+      await deleteService(service?._id);
       handelClickManage();
     }
     if (name === "editService") {
-      setOpenModelEditService((current) => !current);
+      handleEditService();
     }
     dispatch(getServices());
-    
   };
 
   return (
@@ -46,11 +38,7 @@ const ManageService = ({
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${service?.car?.numberPlate}`}</h2>
             <label className="form-label">
-              <button
-                name="editService"
-                className="edit"
-                onClick={handleCarID}
-              >
+              <button name="editService" className="edit" onClick={handleCarID}>
                 Edit Service
               </button>
             </label>
@@ -65,9 +53,9 @@ const ManageService = ({
             </label>
           </form>
           <EditService
-            serviceId={serviceId}
+            service={service}
             handelClick={handleEditService}
-            open={openModelEditService}
+            isOpen={isOpenEditService}
           />
         </>
       }

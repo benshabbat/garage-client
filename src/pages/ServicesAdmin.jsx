@@ -4,7 +4,7 @@ import useOpenModel from "../hooks/useOpenModel";
 import ManageService from "../components/manage/ManageService";
 const ServicesAdmin = ({ services }) => {
   const [servicesFilter, setServicesFilter] = useState();
-  const [serviceId, setServiceId] = useState();
+  const [service, setService] = useState();
   const [handelService, isOpenService] = useOpenModel();
   const filterSearch = (e) => {
     const { value } = e.target;
@@ -24,7 +24,7 @@ const ServicesAdmin = ({ services }) => {
   const handleServiceId = (e) => {
     if (e.target.value) {
       console.log(e.target.value);
-      setServiceId(e.target.value);
+      setService(services.find((service) => service._id === e.target.value));
       handelService();
     }
   };
@@ -82,7 +82,7 @@ const ServicesAdmin = ({ services }) => {
         </section>
       </div>
       <ManageService
-        serviceId={serviceId}
+        service={service}
         handelClick={handelService}
         isOpen={isOpenService}
       />
