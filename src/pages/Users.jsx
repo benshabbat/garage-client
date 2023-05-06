@@ -1,9 +1,9 @@
 import "../components/table/table.css";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageUser from "../components/manage/ManageUser";
 import { Register } from "../components";
+
 const Users = ({ users = null }) => {
   const [userId, setUserId] = useState("");
   const [handleManageUser, isOpenManageUser] = useOpenModel();
@@ -69,12 +69,11 @@ const Users = ({ users = null }) => {
             </tbody>
           </table>
         </section>
-
       </div>
-        <div>
-          <button onClick={handleCreateUser}>Create User</button>
-          <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
-        </div>
+      <div>
+        <button onClick={handleCreateUser}>Create User</button>
+        <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
+      </div>
       <ManageUser
         userId={userId}
         handelClick={handleManageUser}
