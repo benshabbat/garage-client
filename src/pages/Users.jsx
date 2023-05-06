@@ -1,13 +1,12 @@
 import "../components/table/table.css";
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageUser from "../components/manage/ManageUser";
 import { Register } from "../components";
-const Users = ({users=null}) => {
-
+const Users = ({ users = null }) => {
   const [userId, setUserId] = useState("");
-  const [handleManageUser,isOpenManageUser] = useOpenModel();
+  const [handleManageUser, isOpenManageUser] = useOpenModel();
   const [handleCreateUser, isOpenCreateUser] = useOpenModel();
   const [filterUsers, setFilterUsers] = useState();
   const filterSearch = (e) => {
@@ -25,7 +24,7 @@ const Users = ({users=null}) => {
     if (e.target.value) {
       console.log(e.target.value);
       setUserId(e.target.value);
-      handleManageUser()
+      handleManageUser();
     }
   };
   const bodyUser = (user) => {
@@ -70,17 +69,19 @@ const Users = ({users=null}) => {
             </tbody>
           </table>
         </section>
-        <Link to="/">
+
+      </div>
         <div>
           <button onClick={handleCreateUser}>Create User</button>
           <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
         </div>
-      </Link>
-      </div>
-      <ManageUser userId={userId} handelClick={handleManageUser} isOpen={isOpenManageUser} />
+      <ManageUser
+        userId={userId}
+        handelClick={handleManageUser}
+        isOpen={isOpenManageUser}
+      />
     </>
   );
 };
 
 export default Users;
-
