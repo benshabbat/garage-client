@@ -8,7 +8,7 @@ import useOpenModel from "../../hooks/useOpenModel";
 import { CreateCar, OpenModel, EditUser } from "../index";
 const ManageUser = ({
   handelClick: handelClickManage = null,
-  open,
+  isOpen,
   userId = null,
 }) => {
   const { users } = useSelector((state) => state.admin);
@@ -89,7 +89,7 @@ const ManageUser = ({
           />
         </>
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };
