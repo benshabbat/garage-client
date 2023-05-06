@@ -5,9 +5,10 @@ import ManageUser from "../components/manage/ManageUser";
 import { Register } from "../components";
 
 const Users = ({ users = null }) => {
-  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState();
   const [handleManageUser, isOpenManageUser] = useOpenModel();
   const [handleCreateUser, isOpenCreateUser] = useOpenModel();
+  // const [data, setData] = useState(false)
   const [filterUsers, setFilterUsers] = useState();
   const filterSearch = (e) => {
     const { value } = e.target;
@@ -20,10 +21,10 @@ const Users = ({ users = null }) => {
       )
     );
   };
-  const handleUserID = (e) => {
+  const handleUser = (e) => {
     if (e.target.value) {
       console.log(e.target.value);
-      setUserId(e.target.value);
+      setUser(users.find((user) => user._id === e.target.value));
       handleManageUser();
     }
   };
@@ -31,7 +32,7 @@ const Users = ({ users = null }) => {
     return (
       <tr key={user?._id}>
         <td>
-          <button value={user?._id} onClick={handleUserID}>
+          <button value={user?._id} onClick={handleUser}>
             Manage
           </button>
         </td>
@@ -69,13 +70,11 @@ const Users = ({ users = null }) => {
             </tbody>
           </table>
         </section>
+      <button onClick={handleCreateUser}>Create User</button>
       </div>
-      <div>
-        <button onClick={handleCreateUser}>Create User</button>
-        <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
-      </div>
+      <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
       <ManageUser
-        userId={userId}
+        user={user}
         handelClick={handleManageUser}
         isOpen={isOpenManageUser}
       />

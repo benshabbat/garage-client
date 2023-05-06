@@ -1,6 +1,6 @@
 import "./manage.css";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUsers } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { deleteUser } from "../../Utils";
@@ -9,33 +9,23 @@ import { CreateCar, OpenModel, EditUser } from "../index";
 const ManageUser = ({
   handelClick: handelClickManage = null,
   isOpen,
-  userId = null,
+  user = null,
 }) => {
-  const { users } = useSelector((state) => state.admin);
-  const {
-    openModel: openModelCreateCar,
-    handelClick: handleCreateCar,
-    setOpenModel: setOpenModelCreateCar,
-  } = useOpenModel();
-  const {
-    openModel: openModelEditUser,
-    handelClick: handleEditUser,
-    setOpenModel: setOpenModelEditUser,
-  } = useOpenModel();
+const [handleCreateCar,isOpenModelCreateCar] = useOpenModel();
+const [handleEditUser,isOpenModelEditUser] = useOpenModel();
 
   const dispatch = useDispatch();
 
-  const user = users.find((user) => user._id === userId);
-  const handleUserID = async (e) => {
+  const handleUser = async (e) => {
     e.preventDefault();
     const { name } = e.target;
-    if (name === "createCar") setOpenModelCreateCar((current) => !current);
+    if (name === "createCar") handleCreateCar();
     if (name === "deleteUser") {
-      await deleteUser(userId);
+      await deleteUser(user?._id);
       handelClickManage();
     }
     if (name === "editUser") {
-      setOpenModelEditUser((current) => !current);
+      handleEditUser();
     }
     dispatch(getUsers());
     
@@ -53,7 +43,7 @@ const ManageUser = ({
               <button
                 name="createCar"
                 className="create"
-                onClick={handleUserID}
+                onClick={handleUser}
               >
                 Create Car
               </button>
@@ -62,7 +52,7 @@ const ManageUser = ({
               <button
                 name="editUser"
                 className="edit"
-                onClick={handleUserID}
+                onClick={handleUser}
               >
                 Edit User
               </button>
@@ -71,21 +61,21 @@ const ManageUser = ({
               <button
                 name="deleteUser"
                 className="delete"
-                onClick={handleUserID}
+                onClick={handleUser}
               >
                 Delete User
               </button>
             </label>
           </form>
           <CreateCar
-            userId={userId}
+            user={user}
             handelClick={handleCreateCar}
-            open={openModelCreateCar}
+            isOpen={isOpenModelCreateCar}
           />
           <EditUser
-            userId={userId}
+            user={user}
             handelClick={handleEditUser}
-            open={openModelEditUser}
+            isOpen={isOpenModelEditUser}
           />
         </>
       }

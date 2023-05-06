@@ -19,7 +19,7 @@ const Cars = ({ cars=null }) => {
       )
     );
   };
-  const handleCarId = (e) => {
+  const handleCar = (e) => {
     if (e.target.value) {
       setCar(cars.find((car) => car._id === e.target.value));
       console.log(car);
@@ -30,7 +30,7 @@ const Cars = ({ cars=null }) => {
     return (
       <tr key={car?._id}>
         <td>
-          <button value={car?._id} onClick={handleCarId}>
+          <button value={car?._id} onClick={handleCar}>
             Manage
           </button>
         </td>

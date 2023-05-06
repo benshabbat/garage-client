@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { OpenModel, Form } from "..";
 import { createCar } from "../../Utils";
-const CreateCar = ({ handelClick, isOpen,userId }) => {
+const CreateCar = ({ handelClick, isOpen,user }) => {
   const [formData, setFormData] = useState();
   const onSubmit = async (e) => {
     e.preventDefault();
-   await createCar(userId,formData);
+   await createCar(user?._id,formData);
     handelClick();
   };
 

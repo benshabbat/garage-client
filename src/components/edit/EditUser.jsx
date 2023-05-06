@@ -1,14 +1,12 @@
 import { useState } from "react";
 import {Form,OpenModel} from "../index";
-import { useSelector } from "react-redux";
 import { updateUser } from "../../Utils";
-const EditUser = ({ handelClick, open,userId }) => {
-  const { users } = useSelector((state) => state.admin);
-  const user = users.find((user) => user._id === userId);
+const EditUser = ({ handelClick, isOpen ,user }) => {
+
   const [formData, setFormData] = useState(user);
   const onSubmit = async (e) => {
     e.preventDefault();
-   await updateUser(userId,formData);
+   await updateUser(user?._id,formData);
     handelClick();
   };
 
@@ -30,7 +28,7 @@ const EditUser = ({ handelClick, open,userId }) => {
           onSubmit={onSubmit}
         />
       }
-      open={open}
+      isOpen={isOpen}
     />
   );
 };

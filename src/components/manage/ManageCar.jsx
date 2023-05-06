@@ -14,7 +14,7 @@ const ManageCar = ({
   const [handleEditCar, isOpenModelEditCar] = useOpenModel();
   const dispatch = useDispatch();
 
-  const handleCarID = async (e) => {
+  const handleCar = async (e) => {
     e.preventDefault();
     const { name } = e.target;
     if (name === "deleteCar") {
@@ -37,12 +37,12 @@ const ManageCar = ({
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${car?.owner?.username}`}</h2>
             <label className="form-label">
-              <button name="editCar" className="edit" onClick={handleCarID}>
+              <button name="editCar" className="edit" onClick={handleCar}>
                 Edit Car
               </button>
             </label>
             <label className="form-label">
-              <button name="deleteCar" className="delete" onClick={handleCarID}>
+              <button name="deleteCar" className="delete" onClick={handleCar}>
                 Delete Car
               </button>
             </label>
