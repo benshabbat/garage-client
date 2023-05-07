@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { register } from "../../features/auth/authSlice";
 import { createUser } from "../../Utils";
@@ -12,9 +12,10 @@ const Register= ({ handelClick, isOpen }) => {
     e.preventDefault();
     console.log(formData)
     await createUser(formData)
-    handelClick();
+    handelClick(); 
     dispatch(getUsers());
   };
+
 
   return (
     <OpenModel

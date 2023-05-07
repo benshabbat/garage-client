@@ -1,5 +1,5 @@
 import "../components/table/table.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageUser from "../components/manage/ManageUser";
 import { Register } from "../components";
@@ -10,6 +10,11 @@ const Users = ({ users = null }) => {
   const [handleCreateUser, isOpenCreateUser] = useOpenModel();
   // const [data, setData] = useState(false)
   const [filterUsers, setFilterUsers] = useState();
+
+  useEffect(() => {
+    
+  }, [users])
+  
   const filterSearch = (e) => {
     const { value } = e.target;
     setFilterUsers(
@@ -67,10 +72,14 @@ const Users = ({ users = null }) => {
             </thead>
             <tbody>
               {filterUsers ? filterUsers?.map(bodyUser) : users?.map(bodyUser)}
+              <tr>
+                <td>
+                  <button onClick={handleCreateUser}>Create User</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </section>
-      <button onClick={handleCreateUser}>Create User</button>
       </div>
       <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
       <ManageUser
