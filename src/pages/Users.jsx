@@ -1,5 +1,5 @@
 import "../components/table/table.css";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import useOpenModel from "../hooks/useOpenModel";
 import ManageUser from "../components/manage/ManageUser";
 import { Register } from "../components";
@@ -10,10 +10,6 @@ const Users = ({ users = null }) => {
   const [handleCreateUser, isOpenCreateUser] = useOpenModel();
   // const [data, setData] = useState(false)
   const [filterUsers, setFilterUsers] = useState();
-
-  useEffect(() => {
-    
-  }, [users])
   
   const filterSearch = (e) => {
     const { value } = e.target;
@@ -81,7 +77,8 @@ const Users = ({ users = null }) => {
           </table>
         </section>
       </div>
-      <Register handelClick={handleCreateUser} isOpen={isOpenCreateUser} />
+      <Register handelClick={handleCreateUser} 
+      isOpen={isOpenCreateUser} />
       <ManageUser
         user={user}
         handelClick={handleManageUser}
