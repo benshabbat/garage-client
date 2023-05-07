@@ -4,13 +4,13 @@ const NavAdmin = () => {
   return (
     <>
       <div className="item-nav">
-        <Link to={`/users`}>Get Users</Link>
+        <Link to={`/users`}>Users</Link>
       </div>
       <div className="item-nav">
-        <Link to={`/cars`}>Get Cars</Link>
+        <Link to={`/cars`}>Cars</Link>
       </div>
       <div className="item-nav">
-        <Link to={`/services`}>Get Services</Link>
+        <Link to={`/services`}>Services</Link>
       </div>
     </>
   );
