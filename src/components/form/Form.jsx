@@ -32,6 +32,8 @@ const Form = ({
               name={i?.name}
               value={i?.value}
               min={i?.min}
+              pattern={i?.pattern}
+              title={i?.title}
               onChange={handleChange}
               required
             />
