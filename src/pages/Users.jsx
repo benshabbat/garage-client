@@ -61,20 +61,17 @@ const Users = ({ users = null }) => {
             <thead>
               <tr>
                 <th></th>
-                <th>username</th>
+                <th>user name</th>
                 <th>email</th>
-                <th>phone</th>
+                <th>phone number</th>
               </tr>
             </thead>
             <tbody>
               {filterUsers ? filterUsers?.map(bodyUser) : users?.map(bodyUser)}
-              <tr>
-                <td>
-                  <button onClick={handleCreateUser}>Create User</button>
-                </td>
-              </tr>
+      
             </tbody>
           </table>
+                  <button onClick={handleCreateUser}>Create User</button>
         </section>
       </div>
       <Register handelClick={handleCreateUser} 

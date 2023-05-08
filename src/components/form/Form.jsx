@@ -14,6 +14,7 @@ const Form = ({
     const { name, value } = e.target;
     setData((prevState) => ({ ...prevState, [name]: value }));
   };
+
   return (
     <form className="form" onSubmit={onSubmit}>
       {handelClick && (
