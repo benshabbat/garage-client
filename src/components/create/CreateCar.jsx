@@ -24,7 +24,7 @@ const CreateCar = ({ handelClick, isOpen, user }) => {
                 "[0-9]{3}[-][0-9]{2}[-][0-9]{3}|[0-9]{2}[-][0-9]{3}[-][0-9]{2}|[0-9]{7,8}",
               title: "Number of car must 00-000-00 OR 000-00-000",
             },
-            { name: "km", type: "number" },
+            { name: "km", type: "number" ,min:0},
             { name: "brand", type: "text" },
           ]}
           handelClick={handelClick}
