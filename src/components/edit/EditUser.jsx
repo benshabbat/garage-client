@@ -22,12 +22,18 @@ const EditUser = ({ handelClick, isOpen, user }) => {
             { name: "email", type: "email", value: formData?.email },
             {
               name: "phone",
-              type: "phone",
+              type: "text",
               value: formData?.phone,
               pattern: "[0-9]{3}[-][0-9]{7}|[0-9]{10}",
               title: "Number of phone must 050-1234567",
             },
-            { name: "password", type: "password", value: formData?.password },
+            {
+              name: "password",
+              type: "password",
+              min: 8,
+              title: "minimum 8 chars for password",
+              value: formData?.password,
+            },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}

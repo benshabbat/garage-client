@@ -1,21 +1,20 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { register } from "../../features/auth/authSlice";
 import { createUser } from "../../Utils";
 import { getUsers } from "../../features/admin/adminSlice";
 import { Form, OpenModel } from "..";
 
-const Register= ({ handelClick, isOpen }) => {
+const Register = ({ handelClick, isOpen }) => {
   const [formData, setFormData] = useState();
   const dispatch = useDispatch();
-  const onSubmit = async(e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    await createUser(formData)
-    handelClick(); 
+    console.log(formData);
+    await createUser(formData);
+    handelClick();
     dispatch(getUsers());
   };
-
 
   return (
     <OpenModel
@@ -26,9 +25,19 @@ const Register= ({ handelClick, isOpen }) => {
           sec_title="enter your name & password"
           inputs={[
             { name: "username", type: "text" },
-            { name: "phone", type: "phone" },
             { name: "email", type: "email" },
-            { name: "password", type: "password" },
+            {
+              name: "phone",
+              type: "text",
+              pattern: "[0-9]{3}[-][0-9]{7}|[0-9]{10}",
+              title: "Number of phone must 050-1234567",
+            },
+            {
+              name: "password",
+              type: "password",
+              min: 8,
+              title: "minimum 8 chars for password",
+            },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}
