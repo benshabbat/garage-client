@@ -32,6 +32,7 @@ const EditUser = ({ handelClick, isOpen, user }) => {
               type: "password",
               min: 8,
               title: "minimum 8 chars for password",
+              pattern:"(?=.*\d)(?=.*?[#?!@$%^&*-])(?=.*[a-z])(?=.*[A-Z]).{8,}",
               value: formData?.password,
             },
           ]}
