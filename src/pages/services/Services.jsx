@@ -3,10 +3,9 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
 import { getCarsByIdUser } from "../../features/user/userSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const Services = () => {
-  const { user } = useSelector((state) => state.user);
+const Services = ({user}) => {
   const { carId } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {

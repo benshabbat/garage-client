@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { createReqService } from "../../Utils";
 import { OpenModel, Form } from "..";
-const ReqService = ({ handelClick, car, isOpen }) => {
-  const { user } = useSelector((state) => state.user);
+const ReqService = ({ handelClick, car, isOpen, user }) => {
   const [formData, setFormData] = useState({
     from: user?._id,
   });

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { OpenModel, Form } from "..";
 import { createMessage } from "../../Utils";
-import { useSelector } from "react-redux";
-const CreateMessage = ({ handelClick, isOpen }) => {
-  const { user } = useSelector((state) => state.user);
+
+const CreateMessage = ({ handelClick, isOpen ,user }) => {
   const [formData, setFormData] = useState({
     from: user?._id,
   });

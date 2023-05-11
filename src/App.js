@@ -28,7 +28,7 @@ function App() {
   const { services, cars, users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (userAuth&&user===undefined) dispatch(getUser(userAuth?._id));
+    if (userAuth && user === undefined) dispatch(getUser(userAuth?._id));
     if (userAuth && user?.isAdmin) {
       dispatch(getCarsByType(user?._id));
       dispatch(getUsers());
@@ -51,14 +51,17 @@ function App() {
               <Route path="/cars" element={<Cars cars={cars} />} />
               <Route
                 path="/messages"
-                element={<Messages messages={messages} />}
+                element={<Messages messages={messages} user={user}/>}
               />
               <Route
                 path="/services"
                 element={<ServicesAdmin services={services} />}
               />
-              <Route path="/services/user/" element={<Services />} />
-              <Route path="/services/car/:carId" element={<Services />} />
+              <Route
+                path="/services/user/"
+                element={<Services user={user} />}
+              />
+              <Route path="/services/car/:carId" element={<Services user={user} />} />
             </>
           )}
         </Routes>

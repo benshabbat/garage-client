@@ -1,7 +1,7 @@
 import "../../components/table/table.css";
 import CreateMessage from "../../components/create/CreateMessage";
 import useOpenModel from "../../hooks/useOpenModel";
-const Messages = ({ messages = null }) => {
+const Messages = ({ messages = null,user }) => {
   const [handleCreateMessage, isOpenCreateMessage] = useOpenModel();
   return (
     <>
@@ -47,6 +47,7 @@ const Messages = ({ messages = null }) => {
         <CreateMessage
           handelClick={handleCreateMessage}
           isOpen={isOpenCreateMessage}
+          user={user}
         />
       }
     </>

@@ -78,6 +78,7 @@ const Account = ({user}) => {
           car={car}
           handelClick={handleReqService}
           isOpen={isOpenReqService}
+          user={user}
         />
       }
     </>
