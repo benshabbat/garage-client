@@ -1,5 +1,8 @@
 import "../../components/table/table.css";
+import CreateMessage from "../../components/create/CreateMessage";
+
 const Messages = ({ messages=null }) => {
+  const [handleReqService,isOpenReqService] = useOpenModel();
   return (
     <div className="table-container">
       <section className="table__header">
@@ -38,6 +41,7 @@ const Messages = ({ messages=null }) => {
         </table>
       </section>
         <button>New Message</button>
+        {<CreateMessage handelClick={handleReqService} isOpen={isOpenReqService} />}
     </div>
   );
 };

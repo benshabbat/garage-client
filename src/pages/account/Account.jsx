@@ -7,12 +7,12 @@ import useOpenModel from "../../hooks/useOpenModel";
 const Account = () => {
   const { user } = useSelector((state) => state.user);
   const [carId, setCarId] = useState("");
-  const [handleReqService] = useOpenModel();
+  const [handleReqService,isOpenReqService] = useOpenModel();
 
   const handelCarId = (e) => {
     console.log(e.target.value);
     setCarId(e.target.value);
-    setOpenModel((current) => !current);
+    handleReqService();
   };
 
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ const Account = () => {
         </tbody>
       </table>
       </section>
-      {<ReqService carId={carId} handelClick={handelClick} open={openModel} />}
+      {<ReqService carId={carId} handelClick={handleReqService} isOpen={isOpenReqService} />}
     </>
   );
 };
