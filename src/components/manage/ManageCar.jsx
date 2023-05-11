@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { getCars } from "../../features/admin/adminSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
+import CreateService from "../create/CreateService";
 import { deleteCar } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
 import { OpenModel, EditCar } from "../index";
@@ -12,11 +13,13 @@ const ManageCar = ({
   car = null,
 }) => {
   const [handleEditCar, isOpenModelEditCar] = useOpenModel();
+  const [handleCreateService, isOpenModelCreateService] = useOpenModel();
   const dispatch = useDispatch();
 
   const handleCar = async (e) => {
     e.preventDefault();
     const { name } = e.target;
+    if (name === "createService") handleCreateService();
     if (name === "deleteCar") {
       await deleteCar(car?._id, car?.owner._id.toString());
       handelClickManage();
@@ -37,6 +40,11 @@ const ManageCar = ({
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${car?.owner?.username}`}</h2>
             <label className="form-label">
+              <button name="createService" className="create" onClick={handleCar}>
+                Create Service
+              </button>
+            </label>
+            <label className="form-label">
               <button name="editCar" className="edit" onClick={handleCar}>
                 Edit Car
               </button>
@@ -47,6 +55,11 @@ const ManageCar = ({
               </button>
             </label>
           </form>
+          <CreateService
+            user={car}
+            handelClick={handleCreateService}
+            isOpen={isOpenModelCreateService}
+          />
           <EditCar
             car={car}
             handelClick={handleEditCar}
