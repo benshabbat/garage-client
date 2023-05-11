@@ -6,12 +6,13 @@ import ReqService from "../../components/create/ReqService";
 import useOpenModel from "../../hooks/useOpenModel";
 const Account = () => {
   const { user } = useSelector((state) => state.user);
-  const [carId, setCarId] = useState("");
+  const [car, setCar] = useState();
   const [handleReqService,isOpenReqService] = useOpenModel();
 
   const handelCarId = (e) => {
+    const {value}=e.target
     console.log(e.target.value);
-    setCarId(e.target.value);
+    setCar(user?.cars.find((c) => c._id === value));
     handleReqService();
   };
 
@@ -73,7 +74,7 @@ const Account = () => {
         </tbody>
       </table>
       </section>
-      {<ReqService carId={carId} handelClick={handleReqService} isOpen={isOpenReqService} />}
+      {<ReqService car={car} handelClick={handleReqService} isOpen={isOpenReqService} />}
     </>
   );
 };
