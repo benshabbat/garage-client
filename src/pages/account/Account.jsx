@@ -1,16 +1,15 @@
 import "./account.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import ReqService from "../../components/create/ReqService";
 import useOpenModel from "../../hooks/useOpenModel";
-const Account = () => {
-  const { user } = useSelector((state) => state.user);
-  const [car, setCar] = useState();
-  const [handleReqService,isOpenReqService] = useOpenModel();
 
-  const handelCarId = (e) => {
-    const {value}=e.target
+const Account = ({user}) => {
+  const [car, setCar] = useState();
+  const [handleReqService, isOpenReqService] = useOpenModel();
+
+  const handelCar = (e) => {
+    const { value } = e.target;
     console.log(e.target.value);
     setCar(user?.cars.find((c) => c._id === value));
     handleReqService();
@@ -19,62 +18,68 @@ const Account = () => {
   const navigate = useNavigate();
 
   const onServices = (e) => {
+    const { value } = e.target;
     console.log(e.target.value);
-    const carId = e.target.value;
-    navigate(`/services/car/${carId}`);
+    // setCar(user?.cars.find((c) => c._id === value));
+    navigate(`/services/car/${value}`);
   };
   return (
     <>
-      <h1 className="h-title">{`hello ${user?.username}`}</h1>
-      <h2 className="title">Your cars</h2>
-      <section className="table__body">
-      <table>
-        <thead>
-          <tr>
-            <th>mark</th>
-            <th>brand</th>
-            <th>model</th>
-            <th>numberPlate</th>
-            <th>km</th>
-            {/* <th>owner</th> */}
-            <th>last treatment</th>
-            <th>history service</th>
-            <th>Request Service</th>
-          </tr>
-        </thead>
-        <tbody>
-          {user?.cars?.[0]?._id &&
-            user?.cars?.map((car) => {
-              const dateArray = car.updatedAt.slice(0, 10).split("-");
-              const [year, month, day] = dateArray;
-              return (
-                <tr key={car._id}>
-                  <td>
-                    <input type="checkbox" />
-                  </td>
-                  <td>{car.brand.split("-")[0]}</td>
-                  <td>{car.brand.split("-")[1]}</td>
-                  <td>{car.numberPlate}</td>
-                  <td>{car.km}</td>
-                  {/* <td>{car.updatedAt}</td> */}
-                  <td>{`${day}/${month}/${year}`}</td>
-                  <td>
-                    <button value={car._id} onClick={onServices}>
-                      services
-                    </button>
-                  </td>
-                  <td>
-                    <button value={car._id} onClick={handelCarId}>
-                      req services
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
-      </section>
-      {<ReqService car={car} handelClick={handleReqService} isOpen={isOpenReqService} />}
+      <div className="table-container">
+        <section className="table__header">
+          <h1>{`hello ${user?.username}`}</h1>
+          <h2 className="title">Your cars</h2>
+          <div className="input-group">
+            <input type="search" placeholder="Search Data..." />
+          </div>
+        </section>
+        <section className="table__body">
+          <table>
+            <thead>
+              <tr>
+                <th>mark</th>
+                <th>brand</th>
+                <th>numberPlate</th>
+                <th>km</th>
+                <th>history service</th>
+                <th>Request Service</th>
+              </tr>
+            </thead>
+            <tbody>
+              {user?.cars?.[0]?._id &&
+                user?.cars?.map((car) => {
+                  return (
+                    <tr key={car._id}>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+                      <td>{car.brand}</td>
+                      <td>{car.numberPlate}</td>
+                      <td>{car.km}</td>
+                      <td>
+                        <button value={car._id} onClick={onServices}>
+                          services
+                        </button>
+                      </td>
+                      <td>
+                        <button value={car._id} onClick={handelCar}>
+                          req services
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </section>
+      </div>
+      {
+        <ReqService
+          car={car}
+          handelClick={handleReqService}
+          isOpen={isOpenReqService}
+        />
+      }
     </>
   );
 };

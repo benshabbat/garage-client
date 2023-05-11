@@ -46,7 +46,7 @@ function App() {
           {user && (
             <>
               {/* <Route path="/get" element={<GetPage />} /> */}
-              <Route path="/account" element={<Account />} />
+              <Route path="/account" element={<Account user={user} />} />
               <Route path="/users" element={<Users users={users} />} />
               <Route path="/cars" element={<Cars cars={cars} />} />
               <Route
