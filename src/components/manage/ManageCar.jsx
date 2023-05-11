@@ -20,6 +20,7 @@ const ManageCar = ({
     e.preventDefault();
     const { name } = e.target;
     if (name === "createService") handleCreateService();
+
     if (name === "deleteCar") {
       await deleteCar(car?._id, car?.owner._id.toString());
       handelClickManage();
@@ -40,7 +41,11 @@ const ManageCar = ({
             <h1 className="header">Manage Admin</h1>
             <h2>{`Hello ${car?.owner?.username}`}</h2>
             <label className="form-label">
-              <button name="createService" className="create" onClick={handleCar}>
+              <button
+                name="createService"
+                className="create"
+                onClick={handleCar}
+              >
                 Create Service
               </button>
             </label>

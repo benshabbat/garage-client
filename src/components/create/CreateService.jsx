@@ -17,10 +17,7 @@ const CreateService = ({ handelClick, isOpen, car }) => {
           title="Create Service"
           inputs={[
             // { name: "username", type: "text" },
-            {
-              name: "title",
-              type: "text",
-            },
+            { name: "title", type: "text" },
             { name: "description", type: "text" },
             { name: "price", type: "number" },
             { name: "paid", type: "boolean" },
