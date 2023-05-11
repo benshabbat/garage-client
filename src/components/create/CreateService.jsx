@@ -18,14 +18,13 @@ const CreateService = ({ handelClick, isOpen, car }) => {
           inputs={[
             // { name: "username", type: "text" },
             {
-              name: "numberPlate",
+              name: "title",
               type: "text",
-              pattern:
-                "[0-9]{3}[-][0-9]{2}[-][0-9]{3}|[0-9]{2}[-][0-9]{3}[-][0-9]{2}|[0-9]{7,8}",
-              title: "Number of car must 00-000-00 OR 000-00-000",
             },
-            { name: "km", type: "number" ,min:0},
-            { name: "brand", type: "text" },
+            { name: "description", type: "text" },
+            { name: "price", type: "number" },
+            { name: "paid", type: "boolean" },
+            { name: "status", type: "text" },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}
