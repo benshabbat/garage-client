@@ -35,6 +35,9 @@ const createService = (id, obj) => {
 const createReqService = (obj) => {
   axios.post(`${API_URL_MESSAGES}/to/${ADMIN}`, obj);
 };
+const createMessage = (obj) => {
+  axios.post(`${API_URL_MESSAGES}/to/${ADMIN}`, obj);
+};
 const deleteUser= (id) => {
   axios.delete(`${API_URL_USER}/${id}`);
 };
@@ -48,4 +51,4 @@ const getUser = (id) => {
   return axios.get(`${API_URL_USER}/${id}`);
 };
 
-export {createService,createUser,createReqService,updateService, getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };
+export {createMessage,createService,createUser,createReqService,updateService, getAll, getById, addItem, updateUser, deleteUser, createCar, getUser,deleteCar,updateCar,deleteService };

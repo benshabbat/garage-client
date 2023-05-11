@@ -37,6 +37,7 @@ const Messages = ({ messages=null }) => {
           </tbody>
         </table>
       </section>
+        <button>New Message</button>
     </div>
   );
 };

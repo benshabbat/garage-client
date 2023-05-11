@@ -7,7 +7,7 @@ import useOpenModel from "../../hooks/useOpenModel";
 const Account = () => {
   const { user } = useSelector((state) => state.user);
   const [carId, setCarId] = useState("");
-  const {openModel, setOpenModel,handelClick} = useOpenModel();
+  const [handleReqService] = useOpenModel();
 
   const handelCarId = (e) => {
     console.log(e.target.value);
