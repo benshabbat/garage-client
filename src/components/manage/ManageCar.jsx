@@ -61,7 +61,7 @@ const ManageCar = ({
             </label>
           </form>
           <CreateService
-            user={car}
+            car={car}
             handelClick={handleCreateService}
             isOpen={isOpenModelCreateService}
           />

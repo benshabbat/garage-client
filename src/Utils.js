@@ -30,7 +30,7 @@ const createCar = (id, obj) => {
   axios.post(`${API_URL_CAR}/${id}`, obj);
 };
 const createService = (id, obj) => {
-  axios.post(`${API_URL_CAR}/${id}`, obj);
+  axios.post(`${API_URL_SERVICE}/${id}`, obj);
 };
 const createReqService = (obj) => {
   axios.post(`${API_URL_MESSAGES}/to/${ADMIN}`, obj);

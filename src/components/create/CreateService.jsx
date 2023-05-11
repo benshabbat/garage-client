@@ -16,7 +16,7 @@ const CreateService = ({ handelClick, isOpen, car }) => {
           setData={setFormData}
           title="Create Service"
           inputs={[
-            // { name: "username", type: "text" },
+            // { name: "numberPlate", type: "text" },
             { name: "title", type: "text" },
             { name: "description", type: "text" },
             { name: "price", type: "number" },
