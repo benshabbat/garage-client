@@ -11,8 +11,11 @@ const Form = ({
   setData,
 }) => {
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData((prevState) => ({ ...prevState, [name]: value }));
+    const { name, value,checked,type } = e.target;
+    console.log(e.target)
+    
+    setData((prevState) => ({ ...prevState, [name]: type==="checkbox"? checked:value }));
+    // setData((prevState) => ({ ...prevState, [name]: value }));
   };
 
   return (
@@ -31,11 +34,12 @@ const Form = ({
               type={i?.type}
               name={i?.name}
               value={i?.value}
+              checked={i?.checked}
               min={i?.min}
               pattern={i?.pattern}
               title={i?.title}
               onChange={handleChange}
-              required
+              // required
             />
           </label>
         );

@@ -20,7 +20,7 @@ const CreateMessage = ({ handelClick, isOpen ,user }) => {
           title="Create Car"
           inputs={[
             { name: "title", type: "text" },
-            { name: "description", type: "text" },
+            { name: "description", type: "textarea" },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}

@@ -19,13 +19,13 @@ const CreateService = ({ handelClick, isOpen, car }) => {
             // { name: "numberPlate", type: "text" },
             { name: "title", type: "text" },
             { name: "description", type: "text" },
-            { name: "price", type: "number" },
-            { name: "paid", type: "boolean" },
+            { name: "price", type: "number",min:0 },
+            { name: "paid", type: "checkbox" },
             { name: "status", type: "text" },
           ]}
           handelClick={handelClick}
           onSubmit={onSubmit}
-        />
+          />
       }
       isOpen={isOpen}
     />

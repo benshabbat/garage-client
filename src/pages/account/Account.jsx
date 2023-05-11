@@ -37,7 +37,6 @@ const Account = ({user}) => {
           <table>
             <thead>
               <tr>
-                <th>mark</th>
                 <th>brand</th>
                 <th>numberPlate</th>
                 <th>km</th>
@@ -50,9 +49,6 @@ const Account = ({user}) => {
                 user?.cars?.map((car) => {
                   return (
                     <tr key={car._id}>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
                       <td>{car.brand}</td>
                       <td>{car.numberPlate}</td>
                       <td>{car.km}</td>

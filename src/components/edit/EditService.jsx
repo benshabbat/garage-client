@@ -22,7 +22,7 @@ const EditService = ({ handelClick, isOpen, service }) => {
             { name: "title", type: "text", value:formData?.title },
             { name: "description", type: "text", value: formData?.description },
             { name: "price", type: "number", value: formData?.price },
-            { name: "paid", type: "text", value: formData?.paid },
+            { name: "paid", type: "checkbox", checked: formData?.paid },
             { name: "status", type: "text", value: formData?.status },
           ]}
           handelClick={handelClick}
