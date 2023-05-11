@@ -10,10 +10,13 @@ import {
   Users,
   Cars,
   ServicesAdmin,
-  GetPage,
 } from "./pages";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser, getMessagesByIdUser,getCarsByIdUser } from "./features/user/userSlice";
+import {
+  getUser,
+  getMessagesByIdUser,
+  getCarsByIdUser,
+} from "./features/user/userSlice";
 import {
   getCarsByType,
   getUsers,
@@ -35,10 +38,9 @@ function App() {
       dispatch(getServicesByType());
     }
     if (userAuth && user?._id) {
-      dispatch(getMessagesByIdUser(user?._id))
-      dispatch(getCarsByIdUser(user?._id))
-    }
-    else if (userAuth) dispatch(getUser(userAuth?._id));
+      dispatch(getMessagesByIdUser(user?._id));
+      dispatch(getCarsByIdUser(user?._id));
+    } else if (userAuth) dispatch(getUser(userAuth?._id));
   }, [userAuth, user?._id, user?.isAdmin]);
   return (
     <>
@@ -46,27 +48,22 @@ function App() {
         <Header userAuth={userAuth} user={user} />
         <Routes>
           <Route path="/" element={<PageLanding />} />
-          {user && (
-            <>
-              {/* <Route path="/get" element={<GetPage />} /> */}
-              <Route path="/account" element={<Account user={user} />} />
-              <Route path="/users" element={<Users users={users} />} />
-              <Route path="/cars" element={<Cars cars={cars} />} />
-              <Route
-                path="/messages"
-                element={<Messages messages={messages} user={user}/>}
-              />
-              <Route
-                path="/services"
-                element={<ServicesAdmin services={services} />}
-              />
-              <Route
-                path="/services/user/"
-                element={<Services user={user} />}
-              />
-              <Route path="/services/car/:carId" element={<Services user={user} />} />
-            </>
-          )}
+          <Route path="/account" element={<Account user={user} />} />
+          <Route path="/users" element={<Users users={users} />} />
+          <Route path="/cars" element={<Cars cars={cars} />} />
+          <Route
+            path="/messages"
+            element={<Messages messages={messages} user={user} />}
+          />
+          <Route
+            path="/services"
+            element={<ServicesAdmin services={services} />}
+          />
+          <Route path="/services/user/" element={<Services user={user} />} />
+          <Route
+            path="/services/car/:carId"
+            element={<Services user={user} />}
+          />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
