@@ -10,6 +10,11 @@ const EditService = ({ handelClick, isOpen, service }) => {
     handelClick();
   };
 
+  const options = [
+    { value: "pending", label: "Pending" },
+    { value: "done", label: "Done" },
+    { value: "on-work", label: "On work" },
+  ];
   return (
     <OpenModel
       comp={
@@ -23,8 +28,10 @@ const EditService = ({ handelClick, isOpen, service }) => {
             { name: "description", type: "text", value: formData?.description },
             { name: "price", type: "number", value: formData?.price },
             { name: "paid", type: "checkbox", checked: formData?.paid },
-            { name: "status", type: "text", value: formData?.status },
+            // { name: "status", type: "text", value: formData?.status },
           ]}
+          options={options}
+          nameSelect="status"
           handelClick={handelClick}
           onSubmit={onSubmit}
         />
