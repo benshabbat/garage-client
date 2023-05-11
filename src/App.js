@@ -13,7 +13,7 @@ import {
   GetPage,
 } from "./pages";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser, getMessagesByIdUser } from "./features/user/userSlice";
+import { getUser, getMessagesByIdUser,getCarsByIdUser } from "./features/user/userSlice";
 import {
   getCarsByType,
   getUsers,
@@ -34,7 +34,10 @@ function App() {
       dispatch(getUsers());
       dispatch(getServicesByType());
     }
-    if (userAuth && user?._id) dispatch(getMessagesByIdUser(user?._id));
+    if (userAuth && user?._id) {
+      dispatch(getMessagesByIdUser(user?._id))
+      dispatch(getCarsByIdUser(user?._id))
+    }
     else if (userAuth) dispatch(getUser(userAuth?._id));
   }, [userAuth, user?._id, user?.isAdmin]);
   return (

@@ -1,17 +1,11 @@
 import "./services.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Service from "../../components/service/Service";
-import { getCarsByIdUser } from "../../features/user/userSlice";
-import { useDispatch } from "react-redux";
+
 
 const Services = ({user}) => {
   const { carId } = useParams();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (user?._id) dispatch(getCarsByIdUser(user?._id));
-  }, [user?._id]);
-
   const carFilter = user?.cars?.filter((car) => car._id === carId);
 
   return (
