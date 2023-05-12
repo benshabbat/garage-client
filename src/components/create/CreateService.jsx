@@ -8,7 +8,11 @@ const CreateService = ({ handelClick, isOpen, car }) => {
     await createService(car?._id, formData);
     handelClick();
   };
-
+  const options = [
+    { value: "pending", label: "Pending" },
+    { value: "done", label: "Done" },
+    { value: "on-work", label: "On work" },
+  ];
   return (
     <OpenModel
       comp={
@@ -21,8 +25,10 @@ const CreateService = ({ handelClick, isOpen, car }) => {
             { name: "description", type: "text" },
             { name: "price", type: "number",min:0 },
             { name: "paid", type: "checkbox" },
-            { name: "status", type: "text" },
+            // { name: "status", type: "text" },
           ]}
+          options={options}
+          nameSelect="status"
           handelClick={handelClick}
           onSubmit={onSubmit}
           />
