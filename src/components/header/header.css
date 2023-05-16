@@ -5,6 +5,7 @@
 .main-header{
   position: sticky;
   top: 0;
+  margin-bottom: 40px;
 }
 .navbar {
   overflow: hidden;

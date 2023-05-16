@@ -3,9 +3,9 @@ import { Link, Outlet } from "react-router-dom";
 import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
 
 const Header = ({ userAuth = null, user = null }) => {
-  if (userAuth && user?.isAdmin === undefined) {
-    return null;
-  }
+  // if (userAuth && user?.isAdmin === undefined) {
+  //   return null;
+  // }
   return (
     <>
       <div className="main-header">
