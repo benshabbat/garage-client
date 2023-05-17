@@ -32,9 +32,9 @@ function App() {
   const { services, cars, users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    // if (user?._id === undefined) {
-    //   dispatch(logout());
-    // }
+    if (userAuth?._id === undefined) {
+      dispatch(logout());
+    }
     if (userAuth && user?.isAdmin) {
       dispatch(getCarsByType(user?._id));
       dispatch(getUsers());

@@ -3,9 +3,9 @@ import { Link, Outlet } from "react-router-dom";
 import { MyAccount, NavAdmin, NavUser, NavLanding } from "../index";
 
 const Header = ({ userAuth = null, user = null }) => {
-  if (userAuth && user?.isAdmin === undefined) {
-    return "Loading..";
-  }
+  // if (userAuth && user?.isAdmin === undefined) {
+  //   return "Loading..";
+  // }
   return (
     <>
       <div className="main-header">
@@ -16,11 +16,13 @@ const Header = ({ userAuth = null, user = null }) => {
           {console.log(user?.isAdmin)}
           {console.log(userAuth)}
           <div>
-            {userAuth===null && user?.isAdmin === undefined&& user===null? (
-              <NavLanding />
-            ) : (
+            {userAuth === null &&
+            <NavLanding />
+            }
+            {user?.isAdmin !== undefined && (
               <>
-                {!!user.isAdmin ? <NavAdmin /> : <NavUser />}
+                {user?.isAdmin && <NavAdmin />}
+                {user?.isAdmin === false && <NavUser />}
                 <div className="item-nav">
                   <Link to={`/messages`}>Messages</Link>
                 </div>
