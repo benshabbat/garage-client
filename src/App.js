@@ -24,6 +24,7 @@ import {
 } from "./features/admin/adminSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { logout } from "./features/auth/authSlice";
 
 function App() {
   const { user: userAuth } = useSelector((state) => state.auth);
@@ -31,7 +32,9 @@ function App() {
   const { services, cars, users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    // if (userAuth && user === undefined) dispatch(getUser(userAuth?._id));
+    // if (user?._id === undefined) {
+    //   dispatch(logout());
+    // }
     if (userAuth && user?.isAdmin) {
       dispatch(getCarsByType(user?._id));
       dispatch(getUsers());
