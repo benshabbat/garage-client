@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { OpenModel, Form } from "..";
-import { createMessage } from "../../Utils";
+import { createMessage,createMessageToAdmin } from "../../Utils";
 
 const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
   const [formData, setFormData] = useState({
@@ -8,7 +8,8 @@ const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
   });
   const onSubmit = async (e) => {
     e.preventDefault();
-    await createMessage(formData);
+    if(user?.isAdmin){await createMessage(formData,formData?.to);}
+    else {await createMessageToAdmin(formData);}
     handelClick();
   };
   let usersName = null
