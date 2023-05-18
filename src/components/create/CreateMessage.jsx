@@ -11,7 +11,7 @@ const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
     await createMessage(formData);
     handelClick();
   };
-  let usersName = []
+  let usersName = null
   if(user?.isAdmin) usersName = users.map(user=> user?.username)
   return (
     <OpenModel
@@ -23,7 +23,7 @@ const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
             { name: "title", type: "text" },
             { name: "description", type: "textarea" },
           ]}
-          options={user?.isAdmin?usersName:null}
+          options={usersName}
           nameSelect="to"
           handelClick={handelClick}
           onSubmit={onSubmit}

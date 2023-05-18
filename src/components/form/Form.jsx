@@ -14,7 +14,6 @@ const Form = ({
 }) => {
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
-    console.log(e.target);
     setData((prevState) => ({
       ...prevState,
       [name]: type === "checkbox" ? checked : value,
