@@ -16,6 +16,7 @@ import {
   getUser,
   getMessagesByIdUser,
   getCarsByIdUser,
+  resetUser,
 } from "./features/user/userSlice";
 import {
   getCarsByType,
@@ -24,7 +25,7 @@ import {
 } from "./features/admin/adminSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { logout } from "./features/auth/authSlice";
+
 
 function App() {
   const { user: userAuth } = useSelector((state) => state.auth);
@@ -32,9 +33,6 @@ function App() {
   const { services, cars, users } = useSelector((state) => state.admin);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (userAuth?._id === undefined) {
-      dispatch(logout());
-    }
     if (userAuth && user?.isAdmin) {
       dispatch(getCarsByType(user?._id));
       dispatch(getUsers());
@@ -43,7 +41,7 @@ function App() {
     if (userAuth && user?._id) {
       dispatch(getMessagesByIdUser(user?._id));
       dispatch(getCarsByIdUser(user?._id));
-    } else if (userAuth) dispatch(getUser(userAuth?._id));
+    } else if (userAuth?._id) dispatch(getUser(userAuth?._id));
   }, [userAuth, user?._id, user?.isAdmin]);
   return (
     <>
@@ -56,7 +54,7 @@ function App() {
           <Route path="/cars" element={<Cars cars={cars} />} />
           <Route
             path="/messages"
-            element={<Messages messages={messages} user={user} />}
+            element={<Messages messages={messages} user={user} users={users}/>}
           />
           <Route
             path="/services"

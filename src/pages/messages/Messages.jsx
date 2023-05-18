@@ -1,7 +1,7 @@
 import "../../components/table/table.css";
 import CreateMessage from "../../components/create/CreateMessage";
 import useOpenModel from "../../hooks/useOpenModel";
-const Messages = ({ messages = null,user }) => {
+const Messages = ({ messages = null,user,users=null }) => {
   const [handleCreateMessage, isOpenCreateMessage] = useOpenModel();
   return (
     <>
@@ -43,11 +43,12 @@ const Messages = ({ messages = null,user }) => {
         </section>
         <button onClick={handleCreateMessage}>New Message</button>
       </div>
-      {
+      {user&&
         <CreateMessage
           handelClick={handleCreateMessage}
           isOpen={isOpenCreateMessage}
           user={user}
+          users={user?.isAdmin?users:null}
         />
       }
     </>
