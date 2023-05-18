@@ -32,11 +32,11 @@ const Form = ({
         <label className="form-label">
           <span>{nameSelect}</span>
           <select name={nameSelect} onChange={handleChange}>
-            <option>Names</option>
-            {options.map((option, index) => {
+            <option>{nameSelect}</option>
+            {options?.map((option, index) => {
               return (
-                <option key={index} value={option?._id}>
-                  {option?.username}
+                <option key={index} value={nameSelect==="status"?option?.value:option?._id}>
+                 { nameSelect==="status"?option?.label:option?.username}
                 </option>
               );
             })}
