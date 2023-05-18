@@ -2,7 +2,7 @@ import { useState } from "react";
 import { OpenModel, Form } from "..";
 import { createMessage,createMessageToAdmin } from "../../Utils";
 
-const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
+const CreateMessage = ({ handelClick, isOpen ,user,users=null }) => {
   const [formData, setFormData] = useState({
     from: user?._id,
   });
@@ -12,8 +12,7 @@ const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
     else {await createMessageToAdmin(formData);}
     handelClick();
   };
-  let usersName = null
-  if(user?.isAdmin) usersName = users.map(user=> user?.username)
+  
   return (
     <OpenModel
       comp={
@@ -24,7 +23,7 @@ const CreateMessage = ({ handelClick, isOpen ,user,users }) => {
             { name: "title", type: "text" },
             { name: "description", type: "textarea" },
           ]}
-          options={usersName}
+          options={user?.isAdmin?users:null}
           nameSelect="to"
           handelClick={handelClick}
           onSubmit={onSubmit}

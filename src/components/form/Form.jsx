@@ -35,8 +35,8 @@ const Form = ({
             <option>Names</option>
             {options.map((option, index) => {
               return (
-                <option key={index} value={option}>
-                  {option}
+                <option key={index} value={option?._id}>
+                  {option?.username}
                 </option>
               );
             })}
