@@ -1,15 +1,47 @@
 import "../../components/table/table.css";
+import React, { useState } from "react";
 import CreateMessage from "../../components/create/CreateMessage";
 import useOpenModel from "../../hooks/useOpenModel";
-const Messages = ({ messages = null,user,users=null }) => {
+const Messages = ({ messages = null, user, users = null }) => {
   const [handleCreateMessage, isOpenCreateMessage] = useOpenModel();
+  const [filterMessages, setFilterMessages] = useState();
+  const filterSearch = (e) => {
+    const { value } = e.target;
+    setFilterMessages(
+      messages.filter(
+        (item) =>
+          item?.from?.username.includes(value) ||
+          item?.to?.username.includes(value) ||
+          item?.title.includes(value) ||
+          item?.description.includes(value)||
+          item?.updatedAt.includes(value)
+      )
+    );
+  };
+  const bodyMessages = (message) => {
+    const dateArray = message?.updatedAt.slice(0, 10).split("-");
+    const [year, month, day] = dateArray;
+    return (
+      <tr key={message?._id}>
+        <td>{message?.from?.username}</td>
+        <td>{message?.to?.username}</td>
+        <td>{message?.title}</td>
+        <td>{message?.description}</td>
+        <td>{`${day}/${month}/${year}`}</td>
+      </tr>
+    );
+  };
   return (
     <>
       <div className="table-container">
         <section className="table__header">
           <h1>Messages</h1>
           <div className="input-group">
-            <input type="search" placeholder="Search Data..." />
+            <input
+              type="search"
+              placeholder="Search Data..."
+              onChange={filterSearch}
+            />
           </div>
         </section>
         <section className="table__body">
@@ -24,33 +56,22 @@ const Messages = ({ messages = null,user,users=null }) => {
               </tr>
             </thead>
             <tbody>
-              {messages &&
-                messages.map((message) => {
-                  const dateArray = message?.updatedAt.slice(0, 10).split("-");
-                  const [year, month, day] = dateArray;
-                  return (
-                    <tr key={message?._id}>
-                      <td>{message?.from?.username}</td>
-                      <td>{message?.to?.username}</td>
-                      <td>{message?.title}</td>
-                      <td>{message?.description}</td>
-                      <td>{`${day}/${month}/${year}`}</td>
-                    </tr>
-                  );
-                })}
+              {filterMessages
+                ? filterMessages?.map(bodyMessages)
+                : messages?.map(bodyMessages)}
             </tbody>
           </table>
         </section>
         <button onClick={handleCreateMessage}>New Message</button>
       </div>
-      {user&&
+      {user && (
         <CreateMessage
           handelClick={handleCreateMessage}
           isOpen={isOpenCreateMessage}
           user={user}
-          users={user?.isAdmin?users:null}
+          users={user?.isAdmin ? users : null}
         />
-      }
+      )}
     </>
   );
 };
