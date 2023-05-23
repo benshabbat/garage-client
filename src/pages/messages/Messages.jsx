@@ -27,7 +27,7 @@ const Messages = ({ messages = null, user, users = null }) => {
         <td>{message?.to?.username}</td>
         <td>{message?.title}</td>
         <td>{message?.description}</td>
-        <td>{`${day}/${month}/${year}`}</td>
+        <td>{message?.updatedAt}</td>
       </tr>
     );
   };
