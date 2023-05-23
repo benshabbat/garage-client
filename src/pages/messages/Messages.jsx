@@ -19,8 +19,6 @@ const Messages = ({ messages = null, user, users = null }) => {
     );
   };
   const bodyMessages = (message) => {
-    const dateArray = message?.updatedAt.slice(0, 10).split("-");
-    const [year, month, day] = dateArray;
     return (
       <tr key={message?._id}>
         <td>{message?.from?.username}</td>

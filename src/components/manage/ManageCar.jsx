@@ -7,6 +7,7 @@ import CreateService from "../create/CreateService";
 import { deleteCar } from "../../Utils";
 import useOpenModel from "../../hooks/useOpenModel";
 import { OpenModel, EditCar } from "../index";
+import {BsPencilSquare} from "react-icons/bs"
 const ManageCar = ({
   handelClick: handelClickManage = null,
   isOpen,
@@ -51,6 +52,7 @@ const ManageCar = ({
             </label>
             <label className="form-label">
               <button name="editCar" className="edit" onClick={handleCar}>
+                <BsPencilSquare/>
                 Edit Car
               </button>
             </label>
