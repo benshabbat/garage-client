@@ -46,7 +46,7 @@ const Form = ({
       {inputs.map((i, index) => {
         return (
           <label key={index} className="form-label">
-            <span>{i?.name}</span>
+            {(!i.hidden) &&<span>{i?.name}</span>}
             <input
               placeholder={i?.name}
               type={i?.type}
@@ -56,6 +56,7 @@ const Form = ({
               min={i?.min}
               pattern={i?.pattern}
               title={i?.title}
+              hidden={i?.hidden}
               onChange={handleChange}
               required={i?.type !== "checkbox" ? true : false}
             />

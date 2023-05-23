@@ -8,7 +8,7 @@ const ReqService = ({ handelClick, car, isOpen, user }) => {
     setFormData((prevState) => ({
       ...prevState,
       title: car?.numberPlate.toString(),
-      from: user?._id
+      from: user?._id,
     }));
     if (formData?.title) {
       await createReqService(formData);
